@@ -1,0 +1,31 @@
+<CLIENTES>
+  <CLIENTE>
+	<DNI tipo="PK">
+	   17744687D
+	</DNI>
+	<nombre tipo="NN">
+	   Luis
+	</nombre>
+	<telefono tipo="NN">
+	   976466598
+	</telefono>
+	<email>
+	   Luis@luisland.com
+	</email>
+   </CLIENTE>
+   <CLIENTE>
+	<DNI>
+	   14785687D
+	</DNI>
+	<nombre>
+	   Lolo
+	</nombre>
+	<telefono>
+	   976466599
+	</telefono>
+	<email>
+	   Lolo@lololand.com
+	</email>
+    </CLIENTE>
+</CLIENTES>
+

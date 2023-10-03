@@ -1,0 +1,33 @@
+CREATE TABLE Cliente (
+    ClienteID INTEGER PRIMARY KEY,
+    DNI VARCHAR(10),
+    Nombre VARCHAR(50),
+    Apellidos VARCHAR(50),
+    Direccion VARCHAR(100),
+    FechaNacimiento DATE
+);
+
+
+CREATE TABLE Compra (
+    IDCompra INTEGER PRIMARY KEY,
+    ClienteID INTEGER REFERENCES Cliente(ClienteID),
+    ProductoID INTEGER REFERENCES Producto(ProductoID),
+    FechaCompra DATE
+);
+
+
+
+CREATE TABLE Producto (
+    ProductoID INTEGER PRIMARY KEY,
+    Codigo VARCHAR(5),
+    Nombre VARCHAR(100),
+    PrecioUnitario DECIMAL(10, 2),
+    ProveedorID INTEGER REFERENCES Proveedor(ProveedorID)
+);
+
+CREATE TABLE Proveedor (
+    ProveedorID INTEGER PRIMARY KEY,
+    NIF VARCHAR(10),
+    Nombre VARCHAR(50),
+    Direccion VARCHAR(100)
+);

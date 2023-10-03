@@ -1,0 +1,19 @@
+<CLIENTES>
+  <CLIENTE>
+	<DNI tipo="PK">
+	   17744687D
+	</DNI>
+	<nombre tipo="NN">
+	   Luis
+	</nombre>
+	<telefono tipo="NN">
+	   976466598
+	</telefono>
+	<email>
+	   Luis@luisland.com
+	</email>
+   </CLIENTE>
+   <CLIENTE DNI = "14785687D" nombre = "Lolo" telefono="976466588" email="lolo@lololand.com">
+    </CLIENTE>
+</CLIENTES>
+
