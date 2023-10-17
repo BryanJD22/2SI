@@ -10,7 +10,7 @@
                     mensaje='Desbes completar los campos';
                 }else{
                     let opciones={method: "GET"};
-                    let parametros= "usuario="+usuario+"&pass="+pass;
+                    let parametros= "usuario="+usuario.value+"&pass="+pass.value;
                     fetch("validarUsuario.php?"+parametros, opciones)
                         .then(res => {
                             if(res.ok){
@@ -18,8 +18,17 @@
                                 return res.json();
                             }
                         })
-                        .then()
-                        .catch();
+                        .then(respuestaJson=>{
+                                console.log(respuestaJson);
+                                if(respuestaJson.valido=='SI'){
+                                    location.href ="index.php";
+                                }else{
+                                    document.getElementById("msj").innerHTML=respuestaJson.msj;
+                                }
+                        })
+                        .catch(err=>{
+                            console.log("Error al realizar la petición", err.message);
+                        });
 
 
 
