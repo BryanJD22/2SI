@@ -15,6 +15,7 @@
         <link rel="stylesheet" 
             href="librerias/bootstrap-5.1.3-dist/css/bootstrap.min.css">
         </link>
+        <script src="js/app.js"></script>
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/menu.css">
     </head>
@@ -27,9 +28,9 @@
                 <div class="divTituloApp col-lg-8 col-md-8 d-none d-md-block">Desarrollo de Interfaces.</div>
                 <div class="divLog col-lg-2 col-md-2 col-sm-2">
                     <?php
-                        if(isset($_SESSION['nombre'])){
+                        if(isset($_SESSION['usuario'])){
                             echo '<a href="logout.php" title="Salir">';
-                            echo $_SESSION['nombre'];
+                            echo $_SESSION['usuario'];
                             echo    '<img src="imagenes/logout.jpg">';
                             echo '</a>';
                         }else{
@@ -64,8 +65,10 @@
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                      aria-expanded="false">CRUD's</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" >Usuarios</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" 
+                                        onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')">Usuarios</a></li>
+                                    <li><a class="dropdown-item" href="#"
+                                        onclick="getVistaMenuSeleccionado('Pedidos', 'getVistaPedidos')">Pedidos</a></li>
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>

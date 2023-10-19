@@ -1,5 +1,6 @@
 <?php
     require_once 'controladores/Controlador.php';
+    require_once 'vistas/Vista.php';
     
     class C_Usuarios extends Controlador{
         public function __construct(){
@@ -16,6 +17,10 @@
                 $valido='S';   
             }
             echo $valido;
+        }
+
+        public function getVistaUsuarios(){
+            Vista::render('vistas/Usuarios/V_Usuarios.php');
         }
 
     }
