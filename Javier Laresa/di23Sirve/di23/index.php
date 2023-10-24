@@ -6,6 +6,7 @@
     }
     // https://es.cooltext.com/
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <html>
