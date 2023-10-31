@@ -14,6 +14,16 @@ public class Main {
         hilo4.start();
 
 
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        hilo2.interrupt();
+
+
         System.out.println("Soy el Main, adios Mundo!!!");
 
 

@@ -8,12 +8,22 @@ public class Mi2Hilo implements Runnable{
     @Override
     public void run() {
         for (int i = 0; i < 10; i++) {
-            System.out.println("Hola soy el Hilo "+ letra +"; Hola Mundo!!!");
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            if (letra=="a"){
+                System.out.println("Hola soy el Hilo "+ letra +"; Hola Mundo!!!");
+
+            }else {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+
+                    System.out.println("Hola soy el Hilo "+ letra+" y me acaban de despertar");
+
+                }
+
             }
+
+
+
         }
     }
 }
