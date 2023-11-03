@@ -1,4 +1,4 @@
-package com.example.movieapp;
+package com.example.movieapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.movieapp.R;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_color"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -37,6 +37,7 @@
                 android:layout_height="200dp">
 
                 <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewpagerSlider"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingStart="60dp"
@@ -115,7 +116,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar3"
+                    android:id="@+id/progressBar2"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -155,7 +156,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar6"
+                    android:id="@+id/progressBar3"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
