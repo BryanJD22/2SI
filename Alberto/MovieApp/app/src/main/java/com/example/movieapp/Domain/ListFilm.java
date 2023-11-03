@@ -1,4 +1,3 @@
-
 package com.example.movieapp.Domain;
 
 import java.util.List;
