@@ -13,7 +13,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.example.movieapp.Domian.SliderItems;
+import com.example.movieapp.Domain.SliderItems;
 import com.example.movieapp.R;
 import com.bumptech.glide.request.RequestOptions;
 

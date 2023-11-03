@@ -10,15 +10,22 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.movieapp.Adapters.FilmListAdapter;
 import com.example.movieapp.Adapters.SliderAdapters;
-import com.example.movieapp.Domian.SliderItems;
+import com.example.movieapp.Domain.ListFilm;
+import com.example.movieapp.Domain.SliderItems;
 import com.example.movieapp.R;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +45,23 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
         banners();
+        sendRequest();
+    }
+
+    private void sendRequest() {
+        mRequestQueue= Volley.newRequestQueue(this);
+        loading1.setVisibility(View.VISIBLE);
+        mStringRequest=new StringRequest(Request.Method.GET, "https://moviesapi.ir/api/v1/movies?page=1", response -> {
+            Gson gson = new Gson();
+            loading1.setVisibility(View.GONE);
+            ListFilm items = gson.fromJson(response,ListFilm.class);
+            adapterBestMovies=new FilmListAdapter(items);
+            recyclerViewBestMovies.setAdapter(adapterBestMovies);
+        }, error -> {
+            loading1.setVisibility(View.GONE);
+            Log.i("UiLover", "onErrorResponse:" + error.toString());
+        });
+        mRequestQueue.add(mStringRequest);
     }
 
     private void banners() {
