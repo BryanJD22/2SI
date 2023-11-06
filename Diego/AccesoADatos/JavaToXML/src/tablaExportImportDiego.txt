@@ -1,0 +1,35 @@
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    DNI VARCHAR(10) NOT NULL,
+    telefono VARCHAR(15),
+    correo VARCHAR(255),
+    direccion VARCHAR(255)
+);
+
+INSERT INTO usuarios (nombre, DNI, telefono, correo, direccion) VALUES
+('Juan Pérez', '1234567890', '555-123-4567', 'juan.perez@example.com', '123 Calle Principal'),
+('María González', '9876543210', '555-987-6543', 'maria.gonzalez@example.com', '456 Avenida Secundaria'),
+('Carlos Rodríguez', '4567890123', '555-456-7890', 'carlos.rodriguez@example.com', '789 Camino Terciario'),
+('Laura Sánchez', '7890123456', '555-789-0123', 'laura.sanchez@example.com', '101 Calle Cuarta'),
+('Roberto Martínez', '2345678901', '555-234-5678', 'roberto.martinez@example.com', '202 Avenida Quinta'),
+('Ana López', '3456789012', '555-345-6789', 'ana.lopez@example.com', '303 Camino Sexto'),
+('Pedro González', '5678901234', '555-567-8901', 'pedro.gonzalez@example.com', '404 Calle Séptima'),
+('Sofía Pérez', '6789012345', '555-678-9012', 'sofia.perez@example.com', '505 Avenida Octava'),
+('Miguel Rodríguez', '7890123456', '555-789-0123', 'miguel.rodriguez@example.com', '606 Camino Noveno'),
+('Luisa Martínez', '8901234567', '555-890-1234', 'luisa.martinez@example.com', '707 Calle Décima'),
+('Javier García', '9012345678', '555-901-2345', 'javier.garcia@example.com', '808 Avenida Onceava'),
+('Patricia Fernández', '1234567890', '555-123-4567', 'patricia.fernandez@example.com', '909 Camino Doceavo'),
+('Ricardo Pérez', '2345678901', '555-234-5678', 'ricardo.perez@example.com', '1010 Calle Treceava'),
+('Elena Sánchez', '3456789012', '555-345-6789', 'elena.sanchez@example.com', '1111 Avenida Catorceava'),
+('Mario González', '4567890123', '555-456-7890', 'mario.gonzalez@example.com', '1212 Camino Quinceava'),
+('Isabel Martínez', '5678901234', '555-567-8901', 'isabel.martinez@example.com', '1313 Calle Dieciséis'),
+('Raul Rodríguez', '7890123456', '555-789-0123', 'raul.rodriguez@example.com', '1414 Avenida Diecisiete'),
+('Olivia López', '9012345678', '555-901-2345', 'olivia.lopez@example.com', '1515 Camino Dieciocho'),
+('Diego Pérez', '1234567890', '555-123-4567', 'diego.perez@example.com', '1616 Calle Diecinueve'),
+('Sara García', '2345678901', '555-234-5678', 'sara.garcia@example.com', '1717 Avenida Veinte'),
+('Andrés Martínez', '3456789012', '555-345-6789', 'andres.martinez@example.com', '1818 Camino Veintiuno'),
+('Carmen Sánchez', '4567890123', '555-456-7890', 'carmen.sanchez@example.com', '1919 Calle Veintidós'),
+('Alejandro Rodríguez', '5678901234', '555-567-8901', 'alejandro.rodriguez@example.com', '2020 Avenida Veintitrés'),
+('Natalia López', '6789012345', '555-678-9012', 'natalia.lopez@example.com', '2121 Camino Veinticuatro'),
+('Gustavo González', '7890123456', '555-789-0123', 'gustavo.gonzalez@example.com', '2222 Calle Veinticinco');
