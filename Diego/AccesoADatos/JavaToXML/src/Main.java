@@ -70,10 +70,11 @@ public class Main {
 
 
             /*IMPORTACIÓNNNNNNN*/
-            /*
+
             try {
 
                 // Ruta al archivo XML que deseas importar
+
                 String xmlFilePath = "usuarios.xml";
 
                 File xmlFile = new File(xmlFilePath);
@@ -111,8 +112,8 @@ public class Main {
 
             } catch (Exception e) {
                 e.printStackTrace();
-            }*/
-            /*FIN DE IMPORTACIÓNNNNN*/
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
