@@ -17,6 +17,7 @@ public class Main {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(url, username, password);
             Statement st = conn.createStatement();
+
             /*EXPORTACIÓNNNNNN*/
 
             ResultSet rs = st.executeQuery("SELECT * FROM usuarios");
@@ -71,7 +72,7 @@ public class Main {
 
             /*IMPORTACIÓNNNNNNN*/
 
-            try {
+            /*try {
 
                 // Ruta al archivo XML que deseas importar
 
@@ -112,7 +113,7 @@ public class Main {
 
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            }*/
 
 
         } catch (Exception e) {
