@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<articulos>
+    <articulo>
+        <id_articulo>1</id_articulo>
+        <nombre>Juguete1</nombre>
+        <descripcion>Juguete divertido para niños</descripcion>
+        <stock>50</stock>
+        <precio_unitario>10.99</precio_unitario>
+    </articulo>
+    <articulo>
+        <id_articulo>2</id_articulo>
+        <nombre>Juguete2</nombre>
+        <descripcion>Otro juguete emocionante</descripcion>
+        <stock>30</stock>
+        <precio_unitario>15.49</precio_unitario>
+    </articulo>
+    <articulo>
+        <id_articulo>3</id_articulo>
+        <nombre>Juguete3</nombre>
+        <descripcion>Juguete educativo para aprender</descripcion>
+        <stock>20</stock>
+        <precio_unitario>12.99</precio_unitario>
+    </articulo>
+    <articulo>
+        <id_articulo>4</id_articulo>
+        <nombre>Juguete4</nombre>
+        <descripcion>Juguete interactivo para la familia</descripcion>
+        <stock>40</stock>
+        <precio_unitario>19.99</precio_unitario>
+    </articulo>
+    <articulo>
+        <id_articulo>5</id_articulo>
+        <nombre>Juguete5</nombre>
+        <descripcion>Juguete creativo para estimular la imaginación</descripcion>
+        <stock>25</stock>
+        <precio_unitario>8.99</precio_unitario>
+    </articulo>
+</articulos>

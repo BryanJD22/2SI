@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<empresas>
+    <empresa>
+        <id_empresa>1</id_empresa>
+        <nombre>Empresa1</nombre>
+        <CIF>12345678A</CIF>
+        <CP>28001</CP>
+        <telefono>123456789</telefono>
+        <nombre_contacto_empresa>Contacto1</nombre_contacto_empresa>
+    </empresa>
+    <empresa>
+        <id_empresa>2</id_empresa>
+        <nombre>Empresa2</nombre>
+        <CIF>87654321B</CIF>
+        <CP>28002</CP>
+        <telefono>987654321</telefono>
+        <nombre_contacto_empresa>Contacto2</nombre_contacto_empresa>
+    </empresa>
+    <empresa>
+        <id_empresa>3</id_empresa>
+        <nombre>Empresa3</nombre>
+        <CIF>56789012C</CIF>
+        <CP>28003</CP>
+        <telefono>567890123</telefono>
+        <nombre_contacto_empresa>Contacto3</nombre_contacto_empresa>
+    </empresa>
+    <empresa>
+        <id_empresa>4</id_empresa>
+        <nombre>Empresa4</nombre>
+        <CIF>90123456D</CIF>
+        <CP>28004</CP>
+        <telefono>901234567</telefono>
+        <nombre_contacto_empresa>Contacto4</nombre_contacto_empresa>
+    </empresa>
+    <empresa>
+        <id_empresa>5</id_empresa>
+        <nombre>Empresa5</nombre>
+        <CIF>34567890E</CIF>
+        <CP>28005</CP>
+        <telefono>345678901</telefono>
+        <nombre_contacto_empresa>Contacto5</nombre_contacto_empresa>
+    </empresa>
+</empresas>

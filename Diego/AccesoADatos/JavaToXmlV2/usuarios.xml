@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<usuarios>
+    <usuario>
+        <id>1</id>
+        <nombre>Juan Pérez</nombre>
+        <DNI>1234567890</DNI>
+        <telefono>555-123-4567</telefono>
+        <correo>juan.perez@example.com</correo>
+        <direccion>123 Calle Principal</direccion>
+    </usuario>
+    <usuario>
+        <id>2</id>
+        <nombre>María González</nombre>
+        <DNI>9876543210</DNI>
+        <telefono>555-987-6543</telefono>
+        <correo>maria.gonzalez@example.com</correo>
+        <direccion>456 Avenida Secundaria</direccion>
+    </usuario>
+    <usuario>
+        <id>3</id>
+        <nombre>Carlos Rodríguez</nombre>
+        <DNI>4567890123</DNI>
+        <telefono>555-456-7890</telefono>
+        <correo>carlos.rodriguez@example.com</correo>
+        <direccion>789 Camino Terciario</direccion>
+    </usuario>
+    <usuario>
+        <id>4</id>
+        <nombre>Laura Sánchez</nombre>
+        <DNI>7890123456</DNI>
+        <telefono>555-789-0123</telefono>
+        <correo>laura.sanchez@example.com</correo>
+        <direccion>101 Calle Cuarta</direccion>
+    </usuario>
+    <usuario>
+        <id>5</id>
+        <nombre>Roberto Martínez</nombre>
+        <DNI>2345678901</DNI>
+        <telefono>555-234-5678</telefono>
+        <correo>roberto.martinez@example.com</correo>
+        <direccion>202 Avenida Quinta</direccion>
+    </usuario>
+    <usuario>
+        <id>6</id>
+        <nombre>Ana López</nombre>
+        <DNI>3456789012</DNI>
+        <telefono>555-345-6789</telefono>
+        <correo>ana.lopez@example.com</correo>
+        <direccion>303 Camino Sexto</direccion>
+    </usuario>
+    <usuario>
+        <id>7</id>
+        <nombre>Pedro González</nombre>
+        <DNI>5678901234</DNI>
+        <telefono>555-567-8901</telefono>
+        <correo>pedro.gonzalez@example.com</correo>
+        <direccion>404 Calle Séptima</direccion>
+    </usuario>
+    <usuario>
+        <id>8</id>
+        <nombre>Sofía Pérez</nombre>
+        <DNI>6789012345</DNI>
+        <telefono>555-678-9012</telefono>
+        <correo>sofia.perez@example.com</correo>
+        <direccion>505 Avenida Octava</direccion>
+    </usuario>
+    <usuario>
+        <id>9</id>
+        <nombre>Miguel Rodríguez</nombre>
+        <DNI>7890123456</DNI>
+        <telefono>555-789-0123</telefono>
+        <correo>miguel.rodriguez@example.com</correo>
+        <direccion>606 Camino Noveno</direccion>
+    </usuario>
+    <usuario>
+        <id>10</id>
+        <nombre>Luisa Martínez</nombre>
+        <DNI>8901234567</DNI>
+        <telefono>555-890-1234</telefono>
+        <correo>luisa.martinez@example.com</correo>
+        <direccion>707 Calle Décima</direccion>
+    </usuario>
+    <usuario>
+        <id>11</id>
+        <nombre>Javier García</nombre>
+        <DNI>9012345678</DNI>
+        <telefono>555-901-2345</telefono>
+        <correo>javier.garcia@example.com</correo>
+        <direccion>808 Avenida Onceava</direccion>
+    </usuario>
+    <usuario>
+        <id>12</id>
+        <nombre>Patricia Fernández</nombre>
+        <DNI>1234567890</DNI>
+        <telefono>555-123-4567</telefono>
+        <correo>patricia.fernandez@example.com</correo>
+        <direccion>909 Camino Doceavo</direccion>
+    </usuario>
+    <usuario>
+        <id>13</id>
+        <nombre>Ricardo Pérez</nombre>
+        <DNI>2345678901</DNI>
+        <telefono>555-234-5678</telefono>
+        <correo>ricardo.perez@example.com</correo>
+        <direccion>1010 Calle Treceava</direccion>
+    </usuario>
+    <usuario>
+        <id>14</id>
+        <nombre>Elena Sánchez</nombre>
+        <DNI>3456789012</DNI>
+        <telefono>555-345-6789</telefono>
+        <correo>elena.sanchez@example.com</correo>
+        <direccion>1111 Avenida Catorceava</direccion>
+    </usuario>
+    <usuario>
+        <id>15</id>
+        <nombre>Mario González</nombre>
+        <DNI>4567890123</DNI>
+        <telefono>555-456-7890</telefono>
+        <correo>mario.gonzalez@example.com</correo>
+        <direccion>1212 Camino Quinceava</direccion>
+    </usuario>
+    <usuario>
+        <id>16</id>
+        <nombre>Isabel Martínez</nombre>
+        <DNI>5678901234</DNI>
+        <telefono>555-567-8901</telefono>
+        <correo>isabel.martinez@example.com</correo>
+        <direccion>1313 Calle Dieciséis</direccion>
+    </usuario>
+    <usuario>
+        <id>17</id>
+        <nombre>Raul Rodríguez</nombre>
+        <DNI>7890123456</DNI>
+        <telefono>555-789-0123</telefono>
+        <correo>raul.rodriguez@example.com</correo>
+        <direccion>1414 Avenida Diecisiete</direccion>
+    </usuario>
+    <usuario>
+        <id>18</id>
+        <nombre>Olivia López</nombre>
+        <DNI>9012345678</DNI>
+        <telefono>555-901-2345</telefono>
+        <correo>olivia.lopez@example.com</correo>
+        <direccion>1515 Camino Dieciocho</direccion>
+    </usuario>
+    <usuario>
+        <id>19</id>
+        <nombre>Diego Pérez</nombre>
+        <DNI>1234567890</DNI>
+        <telefono>555-123-4567</telefono>
+        <correo>diego.perez@example.com</correo>
+        <direccion>1616 Calle Diecinueve</direccion>
+    </usuario>
+    <usuario>
+        <id>20</id>
+        <nombre>Sara García</nombre>
+        <DNI>2345678901</DNI>
+        <telefono>555-234-5678</telefono>
+        <correo>sara.garcia@example.com</correo>
+        <direccion>1717 Avenida Veinte</direccion>
+    </usuario>
+    <usuario>
+        <id>21</id>
+        <nombre>Andrés Martínez</nombre>
+        <DNI>3456789012</DNI>
+        <telefono>555-345-6789</telefono>
+        <correo>andres.martinez@example.com</correo>
+        <direccion>1818 Camino Veintiuno</direccion>
+    </usuario>
+    <usuario>
+        <id>22</id>
+        <nombre>Carmen Sánchez</nombre>
+        <DNI>4567890123</DNI>
+        <telefono>555-456-7890</telefono>
+        <correo>carmen.sanchez@example.com</correo>
+        <direccion>1919 Calle Veintidós</direccion>
+    </usuario>
+    <usuario>
+        <id>23</id>
+        <nombre>Alejandro Rodríguez</nombre>
+        <DNI>5678901234</DNI>
+        <telefono>555-567-8901</telefono>
+        <correo>alejandro.rodriguez@example.com</correo>
+        <direccion>2020 Avenida Veintitrés</direccion>
+    </usuario>
+    <usuario>
+        <id>24</id>
+        <nombre>Natalia López</nombre>
+        <DNI>6789012345</DNI>
+        <telefono>555-678-9012</telefono>
+        <correo>natalia.lopez@example.com</correo>
+        <direccion>2121 Camino Veinticuatro</direccion>
+    </usuario>
+    <usuario>
+        <id>25</id>
+        <nombre>Gustavo González</nombre>
+        <DNI>7890123456</DNI>
+        <telefono>555-789-0123</telefono>
+        <correo>gustavo.gonzalez@example.com</correo>
+        <direccion>2222 Calle Veinticinco</direccion>
+    </usuario>
+</usuarios>

@@ -1,0 +1,119 @@
+html {
+    background: linear-gradient(180deg, #4CAF50 0%, #689F38 100%) !important;
+    min-height: 100%;
+}
+
+body {
+    background-color: transparent;
+    min-height: 100% !important;
+}
+
+.divLogotipo {
+    text-align: left;
+}
+
+.divLogotipo img {
+    height: 3em;
+}
+
+.divLog {
+    text-align: right;
+}
+
+.divLog img {
+    height: 2em;
+}
+
+.divTituloApp {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#secEncabezadoPagina {
+    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#cabeceraApartados {
+    background-color: #4CAF50;
+}
+
+#miNombre {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+#logoLogin {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+#logOut {
+    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    border-radius: 10px;
+}
+
+#secMenuPagina {
+    padding-left: unset;
+    padding-right: unset;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#bloqueContenido {
+    background: transparent;
+}
+
+#secContenidoPagina {
+    background: transparent;
+}
+
+#bloqueTxt {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#txtBusqueda {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+input {
+    background: linear-gradient(180deg, #4CAF50 0%, #689F38 100%);
+    border: none;
+}
+
+#btnBuscar {
+    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    border: none;
+}
+
+#tablaListado {
+    border: solid #4CAF50 1px;
+    width: 100%;
+    margin-top: 15px;
+    color: #fff; 
+}
+
+#tablaListado th,
+#tablaListado td {
+    border-top: 1px solid #4CAF50;
+    border-bottom: 1px solid #4CAF50;
+    padding: 8px;
+    text-align: left;
+}
+
+#capaResultadosBusqueda {
+    width: 100% !important;
+    height: 700px;
+    overflow: auto;
+    border: solid #4CAF50 1px;
+}
+
+select {
+    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    border: none;
+}
+

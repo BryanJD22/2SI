@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<particulares>
+    <particular>
+        <id_particular>1</id_particular>
+        <nombre>Particular1</nombre>
+        <direccion>Calle A, 123</direccion>
+        <telefono>123456789</telefono>
+    </particular>
+    <particular>
+        <id_particular>2</id_particular>
+        <nombre>Particular2</nombre>
+        <direccion>Calle B, 456</direccion>
+        <telefono>987654321</telefono>
+    </particular>
+    <particular>
+        <id_particular>3</id_particular>
+        <nombre>Particular3</nombre>
+        <direccion>Calle C, 789</direccion>
+        <telefono>567890123</telefono>
+    </particular>
+    <particular>
+        <id_particular>4</id_particular>
+        <nombre>Particular4</nombre>
+        <direccion>Calle D, 101</direccion>
+        <telefono>901234567</telefono>
+    </particular>
+    <particular>
+        <id_particular>5</id_particular>
+        <nombre>Particular5</nombre>
+        <direccion>Calle E, 111</direccion>
+        <telefono>345678901</telefono>
+    </particular>
+</particulares>
