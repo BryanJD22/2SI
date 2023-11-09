@@ -1,3 +1,4 @@
+import model.Exportación;
 import model.Importación;
 
 public class Main {
@@ -5,9 +6,9 @@ public class Main {
         System.out.println("Hello world!");
 
 
+        //Exportación.DBtoXML("articulos");
 
-
-        Importación.XMLtoDB("particulares","particular", "particulares.xml");
+        //Importación.XMLtoDB("particulares","particular", "particulares.xml");
     }
 
 }

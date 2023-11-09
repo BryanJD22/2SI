@@ -31,7 +31,7 @@ public class Exportación {
         while (rs.next()) {
             // Escribir cada fila según el nombre de la tabla
             if (nombre_tabla.equals("articulos")) {
-                pw.println("    <articulo>");
+                pw.println("    <articulo PK=id_articulo>");
                 pw.println("        <id_articulo>" + rs.getInt(1) + "</id_articulo>");
                 pw.println("        <nombre>" + rs.getString(2) + "</nombre>");
                 pw.println("        <descripcion>" + rs.getString(3) + "</descripcion>");
@@ -39,7 +39,7 @@ public class Exportación {
                 pw.println("        <precio_unitario>" + rs.getDouble(5) + "</precio_unitario>");
                 pw.println("    </articulo>");
             } else if (nombre_tabla.equals("empresas")) {
-                pw.println("    <empresa>");
+                pw.println("    <empresa PK=id_empresa>");
                 pw.println("        <id_empresa>" + rs.getInt(1) + "</id_empresa>");
                 pw.println("        <nombre>" + rs.getString(2) + "</nombre>");
                 pw.println("        <CIF>" + rs.getString(3) + "</CIF>");
@@ -48,7 +48,7 @@ public class Exportación {
                 pw.println("        <nombre_contacto_empresa>" + rs.getString(6) + "</nombre_contacto_empresa>");
                 pw.println("    </empresa>");
             } else if (nombre_tabla.equals("usuarios")) {
-                pw.println("    <usuario>");
+                pw.println("    <usuario PK=id>");
                 pw.println("        <id>" + rs.getInt(1) + "</id>");
                 pw.println("        <nombre>" + rs.getString(2) + "</nombre>");
                 pw.println("        <DNI>" + rs.getString(3) + "</DNI>");
@@ -57,7 +57,7 @@ public class Exportación {
                 pw.println("        <direccion>" + rs.getString(6) + "</direccion>");
                 pw.println("    </usuario>");
             } else if (nombre_tabla.equals("particulares")) {
-                pw.println("    <particular>");
+                pw.println("    <particular PK=id_particular>");
                 pw.println("        <id_particular>" + rs.getInt(1) + "</id_particular>");
                 pw.println("        <nombre>" + rs.getString(2) + "</nombre>");
                 pw.println("        <direccion>" + rs.getString(3) + "</direccion>");
