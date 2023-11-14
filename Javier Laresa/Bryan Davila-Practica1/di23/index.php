@@ -70,7 +70,7 @@
                                     <li><a class="dropdown-item" 
                                         onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')" >Usuarios</a></li>
                                     <li><a class="dropdown-item" 
-                                        onclick="getVistaMenuSeleccionado('Pedidos', 'getVistaPedidos')">Another action</a></li>
+                                        onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaAñadir')">Añadir Usuario</a></li>
                                     <li><a class="dropdown-item" 
                                         onclick="getVistaMenuSeleccionado('', '')">Something else here</a></li>
                                 </ul>

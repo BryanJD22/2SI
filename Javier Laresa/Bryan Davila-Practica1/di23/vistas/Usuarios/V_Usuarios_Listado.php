@@ -20,8 +20,8 @@
                 return "Hombre";
              }elseif($fila['sexo'] == 'M'){
                  return"Mujer";
+            }
         }
-    }
 
         function returnActivos($fila){
             if($fila['activo'] == 'S'){
