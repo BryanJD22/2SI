@@ -63,6 +63,8 @@ body {
 
 #bloqueContenido {
     background: transparent;
+    padding-bottom: 45px;
+
 }
 
 #secContenidoPagina {
@@ -122,6 +124,7 @@ select {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 20px;
 }
 
 #boton_agregar {
@@ -141,7 +144,3 @@ select {
     background-color: #4CAF50;
 }
 
-#alerta{
-    text-align: center;
-    color: red;
-}

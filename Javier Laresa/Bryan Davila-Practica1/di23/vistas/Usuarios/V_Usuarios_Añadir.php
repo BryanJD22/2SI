@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir Usuario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <!-- Incluye la biblioteca de Bootstrap -->
 
     <!-- Puedes incluir tu archivo de estilos personalizado aquí si es necesario -->
@@ -15,11 +16,7 @@
 <div class="container mt-5" >
 
 
-    <form id="formulario_añadir" action="procesar_formulario.php" method="post">
-            <?php
-            
-            include("controladores/controlador_registro.php")
-            ?>
+    <form id="formulario_añadir" action="" method="post">
 
         <div class="form-group">
             <label for="nombre">Nombre:</label>
@@ -74,7 +71,7 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary" id="boton_agregar" name="registro">Añadir Usuario</button>
+        <button class="btn btn-primary" id="boton_agregar" name="registro">Añadir Usuario</button>
     </form>
 </div>
 
@@ -82,6 +79,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script src="js/Usuarios.js"></script>
 </body>
 </html>

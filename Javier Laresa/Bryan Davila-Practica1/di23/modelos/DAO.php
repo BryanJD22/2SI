@@ -5,7 +5,7 @@
     define('DB', 'di23');
 
     class DAO{
-		private $conexion; 
+		public $conexion; 
 				
 		public function __construct(){ //constructor
 			$this->conexion= new mysqli(HOST,USER,PASS,DB);

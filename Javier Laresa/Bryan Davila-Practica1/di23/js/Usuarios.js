@@ -38,3 +38,23 @@ function getCrearUsuarios(){
         });
 
 }
+
+function agregarUsuario() {
+    let opciones = { method: "POST" };
+    
+    let parametros = "controlador=Usuarios&metodo=AñadirUsuario";
+    
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formulario_añadir"))).toString();
+
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log('Usuario agregado correctamente');
+                // Puedes redirigir o realizar alguna acción adicional después de agregar el usuario
+            }
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición.", err.message);
+        });
+
+}

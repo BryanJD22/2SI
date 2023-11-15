@@ -56,6 +56,7 @@ class M_Usuarios extends Modelo
         return $usuarios;
     }
 
+
     // public function buscarUsuariosMayores($filtros=array()){
     //     $c_texto='';
     //     $usuario='';
@@ -78,5 +79,45 @@ class M_Usuarios extends Modelo
     //     $usuarios=$this->DAO->consultar($SQL);
     //     return $usuarios;
     // }
+
+    public function añadirUsuario($nombre, $apellido_1, $apellido_2, $sexo, $email, $contrasena, $telefono, $actividad) {
+        // Sanitizar y escapar datos
+        $nombre = $this->DAO->conexion->real_escape_string($nombre);
+        $apellido_1 = $this->DAO->conexion->real_escape_string($apellido_1);
+        $apellido_2 = $this->DAO->conexion->real_escape_string($apellido_2);
+        $sexo = $this->DAO->conexion->real_escape_string($sexo);
+        $actividad = $this->DAO->conexion->real_escape_string($actividad);
+        $email = $this->DAO->conexion->real_escape_string($email);
+    
+        // Hash de la contraseña utilizando password_hash
+        $hashedPassword = password_hash($contrasena, PASSWORD_DEFAULT);
+    
+        // Construir la consulta SQL utilizando consultas preparadas para evitar inyecciones SQL
+        $SQL = "INSERT INTO usuarios (`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`, `pass`, `email`)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    
+        // Preparar la consulta
+        $stmt = $this->DAO->conexion->prepare($SQL);
+    
+        if ($stmt) {
+            // Asociar parámetros y ejecutar la consulta
+            $stmt->bind_param("ssssssss", $nombre, $apellido_1, $apellido_2, $sexo, $actividad, $email, $hashedPassword, $email);
+            $stmt->execute();
+    
+            // Verificar si la inserción fue exitosa
+            if ($stmt->affected_rows > 0) {
+                echo "Usuario agregado correctamente";
+            } else {
+                echo "Error al agregar el usuario";
+            }
+    
+            // Cerrar la consulta preparada
+            $stmt->close();
+        } else {
+            echo "Error al preparar la consulta";
+        }
+    }
+
+
 
 }
