@@ -20,7 +20,7 @@ function buscarUsuarios(){
 
 
 function agregarUsuario(event) {
-
+    
     event.preventDefault();
     
     let opciones = { method: "POST" };
@@ -35,7 +35,7 @@ function agregarUsuario(event) {
         .then(res => {
             if (res.ok) {
                 console.log('Usuario agregado correctamente');
-                // Puedes redirigir o realizar alguna acción adicional después de agregar el usuario
+                
             }
         })
         .catch(err => {

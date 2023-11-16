@@ -84,42 +84,60 @@ class M_Usuarios extends Modelo
         $nombre='';
         $apellido1='';
         $apellido2='';
-        $usuario='';
+        $login='';
         $sexo='';
         $email='';
-        $contrasena='';
-        $telefono='';
+        $pass='';
+        $movil='';
         $actividad='';
 
         extract($filtros);
     
         // Construir la consulta SQL utilizando consultas preparadas para evitar inyecciones SQL
-        $SQL = "INSERT INTO usuarios (`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`, `pass`, `email`)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    
-        // Preparar la consulta
-        $stmt = $this->DAO->conexion->prepare($SQL);
-    
-        if ($stmt) {
-            // Asociar parámetros y ejecutar la consulta
-            $stmt->bind_param("ssssssss", $nombre, $apellido_1, $apellido_2, $sexo, $actividad, $email, $hashedPassword, $email);
-            $stmt->execute();
-    
-            // Verificar si la inserción fue exitosa
-            if ($stmt->affected_rows > 0) {
-                echo "Usuario agregado correctamente";
-            } else {
-                echo "Error al agregar el usuario";
-            }
-    
-            // Cerrar la consulta preparada
-            $stmt->close();
-        } else {
-            echo "Error al preparar la consulta";
-        }
-    }
-    
+        $SQL = "INSERT INTO usuarios (`nombre`, `apellido_1`, `apellido_2`, `sexo`,'fecha_Alta', `mail`, `movil`, `login`, `pass`,`activo`)
+                VALUES ('$nombre', '$apellido1', '$apellido2', '$sexo', NOW() ,'$email', '$movil', '$login', '$pass','$actividad')";
 
+
+        $usuarios = $this->DAO->insertar($SQL);
+        return $usuarios;
+
+    }
+
+    
+    
+    public function crearUsuario($parametros =  array())
+    {
+        $apellido_insert = '';
+        $nombre_insert = '';
+        $usuario_insert = '';
+        $sexo_insert = '';
+        $telefono_insert = '';
+        $password_insert = '';
+
+
+        extract($parametros);
+        $SQL = "INSERT INTO usuarios (nombre, apellido_1, apellido_2, sexo, fecha_Alta, mail,movil, login, pass, activo )";
+
+
+        $nombre_insert = addslashes($nombre_insert);
+        $apellido_insert = addslashes($apellido_insert);
+        $usuario_insert = addslashes($usuario_insert);
+        $telefono_insert = addslashes($telefono_insert);
+        $sexo_insert = addslashes($sexo_insert);
+        $password_insert = addslashes($password_insert);
+
+        $SQL .= "VALUES('$nombre_insert','$apellido_insert','$apellido_insert','$sexo_insert',NOW(),'$usuario_insert@correoPrueba.com','$telefono_insert','$usuario_insert',MD5('$password_insert'),'S')";
+
+
+
+
+        $this->DAO->insertar($SQL);
+
+        $mensaje = 'Usuario introducido correctamente';
+
+
+        return $mensaje;
+    }
 
 
 }

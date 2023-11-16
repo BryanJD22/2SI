@@ -37,7 +37,7 @@
 
         public function AñadirUsuario($filtros = array()) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Procesar el formulario y añadir el usuario a la base de datos
+                
                 $nombre = $_POST['nombre'];
                 $apellido1 = $_POST['apellido1'];
                 $apellido2 = $_POST['apellido2'];
@@ -60,12 +60,12 @@
                     'actividad' => $actividad
                 );
         
-                // Aquí deberías validar y sanitizar los datos antes de usarlos en la consulta SQL
+
         
                 $this->modelo->añadirUsuario($filtros);
                 
             } else {
-                // Mostrar el formulario de añadir usuario
+
                 Vista::render('vistas/Usuarios/V_Usuarios_Añadir.php');
             }
         }
