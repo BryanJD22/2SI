@@ -16,7 +16,7 @@
 <div class="container mt-5" >
 
 
-    <form id="formulario_añadir" action="" method="post">
+    <form id="formulario_añadir"  onsubmit="agregarUsuario(event)">
 
         <div class="form-group">
             <label for="nombre">Nombre:</label>
@@ -71,7 +71,7 @@
             </select>
         </div>
 
-        <button class="btn btn-primary" id="boton_agregar" name="registro">Añadir Usuario</button>
+        <button class="btn btn-primary" id="boton_agregar" name="registro" type="submit">Añadir Usuario</button>
     </form>
 </div>
 

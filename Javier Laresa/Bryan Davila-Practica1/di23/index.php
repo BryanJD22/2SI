@@ -10,6 +10,8 @@
 <html lang="es">
 <html>
     <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyJ8EQxFmRwOOj4BAaK86b1LZz97N6UwEy" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-e8qD9NRlAqw8C2an8lNdG8kHAWFDTyZtldz9n0aPnBcA6IeKKD5bqr25b9stHEi6" crossorigin="anonymous"></script>
         <meta name="viewport" 
             content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" 

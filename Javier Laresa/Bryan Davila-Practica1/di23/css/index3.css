@@ -91,20 +91,37 @@ input {
     background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
     border: none;
 }
-
 #tablaListado {
-    border: solid #4CAF50 1px;
-    width: 100%;
     margin-top: 15px;
-    color: #fff; 
 }
 
 #tablaListado th,
 #tablaListado td {
     border-top: 1px solid #4CAF50;
     border-bottom: 1px solid #4CAF50;
-    padding: 8px;
     text-align: left;
+}
+
+/* Personalización para colores de Bootstrap */
+.bg-success {
+    background-color: #4CAF50 !important;
+}
+
+.bg-info {
+    background-color: #689F38 !important;
+}
+
+.table-dark th, .table-dark td {
+    background-color: #4CAF50 !important;
+    color: #fff;
+}
+
+.table-dark tbody tr:nth-child(odd) td {
+    background-color: #4CAF50 !important;
+}
+
+.table-dark tbody tr:hover td {
+    background-color: #45a049 !important;
 }
 
 #capaResultadosBusqueda {
@@ -143,4 +160,6 @@ select {
 #body_formulario{
     background-color: #4CAF50;
 }
+
+
 

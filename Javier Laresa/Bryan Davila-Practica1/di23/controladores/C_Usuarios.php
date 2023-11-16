@@ -47,10 +47,22 @@
                 $contrasena = $_POST['contrasena'];
                 $telefono = $_POST['telefono'];
                 $actividad = $_POST['actividad'];
+
+                $filtros = array(
+                    'nombre' => $nombre,
+                    'apellido_1' => $apellido1,
+                    'apellido_2' => $apellido2,
+                    'usuario' => $usuario,
+                    'sexo' => $sexo,
+                    'email' => $email,
+                    'contrasena' => $contrasena,
+                    'telefono' => $telefono,
+                    'actividad' => $actividad
+                );
         
                 // Aquí deberías validar y sanitizar los datos antes de usarlos en la consulta SQL
         
-                $this->modelo->añadirUsuario($nombre, $apellido1, $apellido2, $usuario, $sexo, $email, $contrasena, $telefono, $actividad);
+                $this->modelo->añadirUsuario($filtros);
                 
             } else {
                 // Mostrar el formulario de añadir usuario

@@ -1,7 +1,7 @@
 <?php
     $usuarios= $datos['usuarios'];
 
-    echo '<table id="tablaListado">';
+    echo '<table id="tablaListado" class="table table-dark">';
         echo '<thead>';
         echo '<tr>';
         echo '<th>Apellido</th>';

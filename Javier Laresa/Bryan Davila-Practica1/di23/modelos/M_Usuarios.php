@@ -80,17 +80,18 @@ class M_Usuarios extends Modelo
     //     return $usuarios;
     // }
 
-    public function añadirUsuario($nombre, $apellido_1, $apellido_2, $sexo, $email, $contrasena, $telefono, $actividad) {
-        // Sanitizar y escapar datos
-        $nombre = $this->DAO->conexion->real_escape_string($nombre);
-        $apellido_1 = $this->DAO->conexion->real_escape_string($apellido_1);
-        $apellido_2 = $this->DAO->conexion->real_escape_string($apellido_2);
-        $sexo = $this->DAO->conexion->real_escape_string($sexo);
-        $actividad = $this->DAO->conexion->real_escape_string($actividad);
-        $email = $this->DAO->conexion->real_escape_string($email);
-    
-        // Hash de la contraseña utilizando password_hash
-        $hashedPassword = password_hash($contrasena, PASSWORD_DEFAULT);
+    public function añadirUsuario($filtros = array()) {
+        $nombre='';
+        $apellido1='';
+        $apellido2='';
+        $usuario='';
+        $sexo='';
+        $email='';
+        $contrasena='';
+        $telefono='';
+        $actividad='';
+
+        extract($filtros);
     
         // Construir la consulta SQL utilizando consultas preparadas para evitar inyecciones SQL
         $SQL = "INSERT INTO usuarios (`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`, `pass`, `email`)
@@ -117,6 +118,7 @@ class M_Usuarios extends Modelo
             echo "Error al preparar la consulta";
         }
     }
+    
 
 
 
