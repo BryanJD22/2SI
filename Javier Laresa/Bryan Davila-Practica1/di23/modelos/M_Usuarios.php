@@ -1,4 +1,5 @@
 <?php
+echo("dasa");
 require_once 'modelos/Modelo.php';
 require_once 'modelos/DAO.php';
 class M_Usuarios extends Modelo
@@ -80,32 +81,34 @@ class M_Usuarios extends Modelo
     //     return $usuarios;
     // }
 
-    public function añadirUsuario($filtros = array()) {
-        $nombre='';
-        $apellido1='';
-        $apellido2='';
-        $login='';
-        $sexo='';
-        $email='';
-        $pass='';
-        $movil='';
-        $actividad='';
+    public function crearUsuario($filtros = array()) {
+        $nombreEdt='';
+        $apellido1Edt='';
+        $apellido2Edt='';
+        $loginEdt='';
+        $sexoEdt='';
+        $emailEdt='';
+        $passEdt='';
+        $movilEdt='';
+        $actividadEdt='';
 
+        echo("1");
         extract($filtros);
-    
+        echo(extract($filtros));
         // Construir la consulta SQL utilizando consultas preparadas para evitar inyecciones SQL
-        $SQL = "INSERT INTO usuarios (`nombre`, `apellido_1`, `apellido_2`, `sexo`,'fecha_Alta', `mail`, `movil`, `login`, `pass`,`activo`)
-                VALUES ('$nombre', '$apellido1', '$apellido2', '$sexo', NOW() ,'$email', '$movil', '$login', '$pass','$actividad')";
+        $SQL = "INSERT INTO usuarios (`nombre`, `apellido_1`, `apellido_2`, `sexo`, 'fecha_Alta', `mail`, `movil`, `login`, `pass`, `activo`)
+        VALUES ('$nombreEdt', '$apellido1Edt', '$apellido2Edt', '$sexoEdt', NOW(), '$emailEdt', '$movilEdt', '$loginEdt', 'MD5($passEdt)', '$actividadEdt')";
 
 
+        echo($SQL);
+        
         $usuarios = $this->DAO->insertar($SQL);
-        return $usuarios;
 
     }
 
     
     
-    public function crearUsuario($parametros =  array())
+    public function xUsuario($parametros =  array())
     {
         $apellido_insert = '';
         $nombre_insert = '';
@@ -137,6 +140,7 @@ class M_Usuarios extends Modelo
 
 
         return $mensaje;
+
     }
 
 

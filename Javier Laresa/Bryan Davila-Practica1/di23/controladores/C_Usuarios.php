@@ -1,4 +1,5 @@
 <?php
+
     require_once 'controladores/Controlador.php';
     require_once 'vistas/Vista.php';
     require_once 'modelos/M_Usuarios.php';
@@ -25,7 +26,7 @@
         }
 
         public function getVistaAñadir(){
-            Vista::render('vistas/Usuarios/V_Usuarios_Añadir.php');
+            Vista::render('vistas/Usuarios/V_Usuarios_Crear.php');
         }
 
         public function buscarUsuarios($filtros=array()){
@@ -35,39 +36,9 @@
                             array('usuarios'=>$usuarios));
         }
 
-        public function AñadirUsuario($filtros = array()) {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                
-                $nombre = $_POST['nombre'];
-                $apellido1 = $_POST['apellido1'];
-                $apellido2 = $_POST['apellido2'];
-                $usuario = $_POST['usuario'];
-                $sexo = $_POST['sexo'];
-                $email = $_POST['email'];
-                $contrasena = $_POST['contrasena'];
-                $telefono = $_POST['telefono'];
-                $actividad = $_POST['actividad'];
-
-                $filtros = array(
-                    'nombre' => $nombre,
-                    'apellido_1' => $apellido1,
-                    'apellido_2' => $apellido2,
-                    'usuario' => $usuario,
-                    'sexo' => $sexo,
-                    'email' => $email,
-                    'contrasena' => $contrasena,
-                    'telefono' => $telefono,
-                    'actividad' => $actividad
-                );
-        
-
-        
-                $this->modelo->añadirUsuario($filtros);
-                
-            } else {
-
-                Vista::render('vistas/Usuarios/V_Usuarios_Añadir.php');
-            }
+        public function crearUsuario($filtros = array()) {
+            echo("4");
+            $usuarios=$this->modelo->crearUsuario($filtros);
         }
         
         

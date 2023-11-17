@@ -19,21 +19,19 @@ function buscarUsuarios(){
 }
 
 
-function agregarUsuario(event) {
-    
-    event.preventDefault();
-    
+function agregarUsuario() {
     let opciones = { method: "POST" };
     
-    let parametros = "controlador=Usuarios&metodo=AñadirUsuario";
+    let parametros = "controlador=Usuarios&metodo=crearUsuario";
     
-    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formulario_añadir"))).toString();
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formulario_crear"))).toString();
 
     console.log(parametros);
 
     fetch("C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
+
                 console.log('Usuario agregado correctamente');
                 
             }

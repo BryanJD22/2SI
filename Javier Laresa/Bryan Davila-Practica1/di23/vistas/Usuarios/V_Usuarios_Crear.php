@@ -16,62 +16,62 @@
 <div class="container mt-5" >
 
 
-    <form id="formulario_añadir"  onsubmit="agregarUsuario(event)">
+    <form id="formulario_crear" method="post" >
 
         <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" class="form-control" name="nombre" >
+            <label for="nombreEdt">Nombre:</label>
+            <input type="text" class="form-control" name="nombreEdt" >
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="apellido1">Apellido 1:</label>
-                <input type="text" class="form-control" name="apellido1" >
+                <label for="apellido1Edt">Apellido 1:</label>
+                <input type="text" class="form-control" name="apellido1Edt" >
             </div>
 
             <div class="form-group col-md-6">
-                <label for="apellido2">Apellido 2:</label>
-                <input type="text" class="form-control" name="apellido2" >
+                <label for="apellido2Edt">Apellido 2:</label>
+                <input type="text" class="form-control" name="apellido2Edt" >
             </div>
         </div>
 
         <div class="form-group">
-            <label for="usuario">Usuario:</label>
-            <input type="text" class="form-control" name="usuario" >
+            <label for="usuarioEdt">Usuario:</label>
+            <input type="text" class="form-control" name="usuarioEdt" >
         </div>
 
         <div class="form-group">
-            <label for="sexo">Sexo:</label>
-            <select class="form-control" name="sexo" >
+            <label for="sexoEdt">Sexo:</label>
+            <select class="form-control" name="sexoEdt" >
                 <option value="H">Hombre</option>
                 <option value="M">Mujer</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" name="email" >
+            <label for="emailEdt">Email:</label>
+            <input type="email" class="form-control" name="emailEdt" >
         </div>
 
         <div class="form-group">
-            <label for="contrasena">Contraseña:</label>
-            <input type="password" class="form-control" name="contrasena" >
+            <label for="contrasenaEdt">Contraseña:</label>
+            <input type="password" class="form-control" name="contrasenaEdt" >
         </div>
 
         <div class="form-group">
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" class="form-control" name="telefono">
+            <label for="telefonoEdt">Teléfono:</label>
+            <input type="tel" class="form-control" name="telefonoEdt">
         </div>
 
         <div class="form-group">
-            <label for="actividad">Actividad:</label>
-            <select class="form-control" name="actividad" >
+            <label for="actividadEdt">Actividad:</label>
+            <select class="form-control" name="actividadEdt" >
                 <option value="S">Activo</option>
                 <option value="N">Inactivo</option>
             </select>
         </div>
 
-        <button class="btn btn-primary" id="boton_agregar" name="registro" type="submit">Añadir Usuario</button>
+        <button class="btn btn-primary" id="boton_agregar" name="registro" type="button" onclick="agregarUsuario()">Añadir Usuario</button>
     </form>
 </div>
 

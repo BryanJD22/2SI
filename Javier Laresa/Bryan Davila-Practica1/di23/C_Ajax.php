@@ -1,4 +1,5 @@
 <?php session_start();
+    
     $getPost=array_merge($_POST,$_GET,$_FILES);
 
     if(isset($getPost['controlador'])){
