@@ -1,0 +1,9 @@
+usuario:sanv302
+contraseña:RangerBj20223014
+
+Datos de conexión servidor de aplicaciones:
+Description: S4HANA 2020 Server 22
+Application server: s4h22.sap4practice.com
+Instance number: 07
+System ID: S4H
+Client: 800
