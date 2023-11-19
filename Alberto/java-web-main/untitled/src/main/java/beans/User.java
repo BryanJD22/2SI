@@ -7,12 +7,17 @@ import java.util.ArrayList;
 
 public class User {
     private String username;
-    private String token; // Puedes agregar otros campos según tus necesidades
+    private String email; // Puedes agregar otros campos según tus necesidades
 
-    public User(String username, String token) {
+    private String pass;
+
+    public User(String username, String email, String pass) {
         this.username = username;
-        this.token = token;
+        this.email = email;
+        this.pass = pass;
     }
+
+
 
     public static String toArrayJson(ArrayList<User> usuarios) {
         GsonBuilder builder = new GsonBuilder();
@@ -23,6 +28,11 @@ public class User {
         return resp;
     }
 
+
+
+    // Getters y setters
+
+
     public String getUsername() {
         return username;
     }
@@ -31,14 +41,19 @@ public class User {
         this.username = username;
     }
 
-    public String getToken() {
-        return token;
+    public String getEmail() {
+        return email;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    // Getters y setters
+    public String getPass() {
+        return pass;
+    }
 
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
 }

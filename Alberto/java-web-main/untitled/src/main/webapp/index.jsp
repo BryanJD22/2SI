@@ -5,6 +5,7 @@
 <h1>Comunicación entre JSP y Servlet</h1>
 
 <form action="ServletTeatro" method="get">
+    <input type="hidden" name="ACTION" value="User.FIND_ALL">
     <input type="submit" value="Llamar al Servlet">
 </form>
 

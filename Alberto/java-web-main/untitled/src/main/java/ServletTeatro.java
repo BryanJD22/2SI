@@ -1,4 +1,5 @@
 import action.UserAction;
+import beans.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,7 +24,7 @@ public class ServletTeatro extends HttpServlet {
         String[] arrayAction = action.split("\\.");
 
         switch (arrayAction[0]) {
-            case "USER":
+            case "User":
                 try {
                     out.print(new UserAction().
                             execute(request, response));
@@ -33,53 +34,6 @@ public class ServletTeatro extends HttpServlet {
                 break;
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -176,5 +130,26 @@ public class ServletTeatro extends HttpServlet {
         return jsonBuilder.toString();
     }*/
 
+        public static String convertUsersToJSONString(List<User> users) {
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("[");
+
+        for (int i = 0; i < users.size(); i++) {
+            User user = users.get(i);
+            jsonBuilder.append("{");
+            jsonBuilder.append("\"username\": \"").append(user.getUsername()).append("\", ");
+            jsonBuilder.append("\"Email\": \"").append(user.getEmail()).append("\"");
+            jsonBuilder.append("\"Pass\": \"").append(user.getPass()).append("\"");
+            jsonBuilder.append("}");
+
+            // Si no es el último elemento, añade una coma
+            if (i < users.size() - 1) {
+                jsonBuilder.append(", ");
+            }
+        }
+
+        jsonBuilder.append("]");
+        return jsonBuilder.toString();
+    }
 }
 

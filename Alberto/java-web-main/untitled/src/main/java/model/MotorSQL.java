@@ -11,14 +11,17 @@ public class MotorSQL {
     private Connection conn;
     private ResultSet rs;
 
+
+
     ////////////////////////////////////////////MÉTODOS///////////////////////////////////////////
     //Conexión con la base de datos.
     public void conectar(){
         try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url,user,password);
             st = conn.createStatement();
 
-        }catch(SQLException e){
+        }catch(SQLException | ClassNotFoundException e){
             e.printStackTrace();
             System.out.println("Error en la conexión al servidor de bases de datos.");
         }

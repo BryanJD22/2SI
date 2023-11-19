@@ -39,8 +39,9 @@ public class UserDAO implements DAO<User, Integer> {
 
         try {
             while (rs.next()) {
-                User user = new User(rs.getString("NOMBRE"),
-                        rs.getString("EMAIL"));
+                User user = new User(rs.getString("USERNAME"),
+                        rs.getString("EMAIL"),
+                        rs.getString("PASS"));
 
                 usuarios.add(user);
             }
