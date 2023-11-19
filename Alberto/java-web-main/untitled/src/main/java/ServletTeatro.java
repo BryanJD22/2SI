@@ -109,26 +109,7 @@ public class ServletTeatro extends HttpServlet {
         out.close();*/
     }
 
-    /*public static String convertUsersToJSONString(List<User> users) {
-        StringBuilder jsonBuilder = new StringBuilder();
-        jsonBuilder.append("[");
 
-        for (int i = 0; i < users.size(); i++) {
-            User user = users.get(i);
-            jsonBuilder.append("{");
-            jsonBuilder.append("\"username\": \"").append(user.getUsername()).append("\", ");
-            jsonBuilder.append("\"token\": \"").append(user.getToken()).append("\"");
-            jsonBuilder.append("}");
-
-            // Si no es el último elemento, añade una coma
-            if (i < users.size() - 1) {
-                jsonBuilder.append(", ");
-            }
-        }
-
-        jsonBuilder.append("]");
-        return jsonBuilder.toString();
-    }*/
 
         public static String convertUsersToJSONString(List<User> users) {
         StringBuilder jsonBuilder = new StringBuilder();
