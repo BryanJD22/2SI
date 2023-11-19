@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Intranet</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/ayuda.css'>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="cafte-header">CAFTÉ</div>
+        <div class="page">Help</div>
+        <div class="user-intranet">
+            <img src="" alt="" class="profile-image">
+ <a href="inicio.html"><div class="usernameElement" id="usernameElement" style="color:white;"> </div></a>        </div>
+    </div>
+
+    <div class="content-container">
+
+        <div class="menu-left">
+            <div id="options">
+                <a class="option" id="inicio" class="links" href="inicio.html">- Profile -</a>
+                <a class="option" id="comite" class="links" href="comite.html">- Committee -</a>
+                <a class="option" id="ayuda" class="links" href="ayuda.html">- Help -</a>
+                <a class="option" id="noticias" class="links" href="noticias.html">- News -</a>
+                <a class="option" id="home" class="links" href="index.html">- Home -</a>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="ayuda-title" align="center">
+                <h1>Do you need help with something?</h1>
+                <h4> We are here to help you</h4>
+            </div>
+
+            <div class="content-info">
+                <div class="emailto">
+                    <img class="doubt" src="img/interrogacion.jpg" alt="">
+                    <div class="emailto-info">
+                        <a class="email-button" href="mailto:caftepersonal@gmail.com">Contact</a>
+                        <p align="center">Contact our staff directly via email
+                        </p>
+                    </div>
+                </div>
+
+                <div class="riesgos-laborales">
+                    <img class="riesgos-img" src="img/riesgos.jpg" alt="">
+                   
+                    <div class="riesgos-info">
+                        <div class="btn-container">
+                            <a class="riesgos-btn" href="" target="_blank">Table</a>
+                            <a class="riesgos-btn" href="https://youtu.be/6vAW6pcQk1s" target="_blank">Video</a>
+                        </div>
+                        <p align="center">Know all the risks that you should contemplate in your work area</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src='js/ayuda.js'></script>
+     <script>
+      // Recuperar el nombre de usuario almacenado en sessionStorage
+var username = sessionStorage.getItem('username');
+
+// Mostrar el nombre de usuario en tu página web
+document.getElementById('usernameElement').textContent = username;
+
+    AOS.init();
+  </script>
+</body>
+
+</html>

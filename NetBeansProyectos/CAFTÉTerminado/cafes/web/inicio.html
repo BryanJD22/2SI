@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Intranet</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/inicio.css'>
+</head>
+
+<body>
+    <div class="header">
+        <div class="cafte-header">CAFTÉ</div>
+        <div class="page">Inicio</div>
+        <div class="user-intranet">
+            <img src="" alt="" class="profile-image">
+            <a href="inicio.html"><div class="usernameElement" id="usernameElement" style="color: white;"> </div></a>
+            
+                   </div>
+    </div>
+    <div class="content-container">
+        <div class="menu-left">
+            <div id="options">
+                <a class="option" id="inicio" class="links" href="inicio.html">- Profile -</a>
+                <a class="option" id="comite" class="links" href="comite.html">- Committee -</a>
+                <a class="option" id="ayuda" class="links" href="ayuda.html">- Help -</a>
+                <a class="option" id="noticias" class="links" href="noticias.html">- News -</a>
+                                <a class="option" id="home" class="links" href="index.html">- Home -</a>
+
+            </div>
+
+
+        </div>
+        <div class="content">
+            <div class="welcome-user">
+                 <h4>WELCOME, <input type="text" id="name1" readonly></h4> 
+                <h3>We hope you have a great day at work</h3    >
+            </div>
+            <div class="content-user">
+                <div class="profile">
+                    <img src="images/carita.jpeg" alt="" id="profile-image">
+                    <div class="profile-info">
+                        <div class="description">
+                            <h4 for="name">Name:</label>
+                            <p></p><input type="text" id="name" readonly>
+                          </div>
+                          <div class="description">
+                            <h4 for="surname">Surnames:</label>
+                            <p></p><input type="text" id="surname" readonly>
+                          </div>
+                          
+                          <div class="description">
+                            <h4 for="date">Date of birth:</label>
+                            <p></p><input type="text" id="date" readonly>
+                          </div>
+                          
+                          <div class="description">
+                            <h4 for="job">Job:</label>
+                            <p></p><input type="text" id="job" readonly>
+                          </div>
+                          
+                          <div class="description">
+                            <h4 for="id">Id:</label>
+                            <p></p><input type="text" id="id" readonly>
+                          </div>
+                          
+
+                    </div>
+                </div>
+                <div class="notifications">
+                    <div class="notifications-title">NOTIFICATIONS</div>
+                    <div class="notification">
+                        <p>You have no pending notifications</p>
+                    </div>
+                </div>
+                <div class="clock">
+                    <div class="clock-title">
+                        <h3>CLOCKING-IN SYSTEM</h3>
+                    </div>
+                    <div class="timer">
+                        <div id="tiempo"><h1>00:00:00.000</h1></div>
+                    </div>
+                    <div class="buttons_clock">
+                        <button class="start-button" id="start-button">Start Day</button>
+                        <button class="end-button" id="end-button">End Day</button>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src='js/InfoPersonas.js'></script>    
+    <script src='js/intranet.js'></script>
+   <script>
+      // Recuperar el nombre de usuario almacenado en sessionStorage
+var username = sessionStorage.getItem('username');
+
+// Mostrar el nombre de usuario en tu página web
+document.getElementById('usernameElement').textContent = username;
+
+    AOS.init();
+  </script>
+
+</body>
+
+</html>
