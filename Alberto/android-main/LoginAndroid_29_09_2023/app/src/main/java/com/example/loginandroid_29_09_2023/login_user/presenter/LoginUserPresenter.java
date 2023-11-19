@@ -15,6 +15,7 @@ public class LoginUserPresenter implements ContractLoginUser.Presenter, Contract
     }
     @Override
     public void login(User user) {
+
         model.loginAPI(user, this);
     }
 
