@@ -2,18 +2,39 @@ package com.example.teatroapp.beans;
 
 public class Usuario {
     private int idUsuario;
-    private String nombre;
-    private String apellido;
+    private String usuario;
+
     private String email;
     private String password;
 
-    public Usuario(int idUsuario, String nombre, String apellido, String email, String password) {
+    public Usuario(String usuario, String email, String password) {
+        this.usuario = usuario;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Usuario(int idUsuario, String usuario, String email, String password) {
+        this.idUsuario = idUsuario;
+        this.usuario = usuario;
+        this.email = email;
+        this.password = password;
+
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+/* public Usuario(int idUsuario, String nombre, String apellido, String email, String password) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.password = password;
-    }
+    }*/
 
     public Usuario() {
     }
@@ -26,7 +47,7 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getNombre() {
+    /*public String getNombre() {
         return nombre;
     }
 
@@ -40,7 +61,7 @@ public class Usuario {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
+    }*/
 
     public String getEmail() {
         return email;

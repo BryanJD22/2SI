@@ -24,7 +24,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/edtUser"
+        android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -48,6 +48,23 @@
         android:inputType="textPassword"
         android:layout_gravity="center_horizontal"
         tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Usuario"
+        android:visibility="visible"
+        android:layout_gravity="right"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edtUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btnEnviar"
@@ -55,6 +72,5 @@
         android:layout_height="wrap_content"
         android:text="Enviar"
         android:layout_gravity="center_horizontal"
-
-        tools:ignore="MissingConstraints" />
+         />
 </LinearLayout>

@@ -22,7 +22,7 @@ public class LoginModel implements LoginContract.Model{
         ApiUsers apiUsers = ApiTeatro.getClient().
                 create(ApiUsers.class);
         //petición asíncrona.
-        Call<ArrayList<Usuario>> call = apiUsers.login("User");
+        Call<ArrayList<Usuario>> call = apiUsers.login("User.FIND_ALL");
         call.enqueue(new Callback<ArrayList<Usuario>>() {
             public void onResponse(Call<ArrayList<Usuario>> call,
                                    Response<ArrayList<Usuario>> response) {

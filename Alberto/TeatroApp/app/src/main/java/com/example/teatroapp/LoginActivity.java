@@ -2,8 +2,10 @@ package com.example.teatroapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -17,57 +19,69 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
-    private EditText edtUser;
+    private EditText edtUserName;
     private EditText edtPass;
+    private EditText edtEmail;
+
     private Button btnEnviar;
 
-    private String valorUsuario="";
+    private String valorEmail="";
     private String valorPass="";
+
+    private String valorUsername="";
     Usuario user = new Usuario();
 
      LoginPresenter presenter =
             new LoginPresenter(this);
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
 
-        edtUser=findViewById(R.id.edtUser);
+        Log.d("ObrasActivity", "La actividad ObrasActivity se ha creado correctamente");
+
+        edtUserName=findViewById(R.id.edtUsername);
         edtPass=findViewById(R.id.edtPass);
+        edtEmail=findViewById(R.id.edtEmail);
+
         btnEnviar=findViewById(R.id.btnEnviar);
 
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                valorUsuario=edtUser.getText().toString();
+                valorEmail=edtEmail.getText().toString();
                 valorPass=edtPass.getText().toString();
-                user.setEmail(valorUsuario);
+                valorUsername = edtUserName.getText().toString();
+                user.setEmail(valorEmail);
                 user.setPassword(valorPass);
+                user.setUsuario(valorUsername);
 
                 //1ºValidamos el formato de los datos insertados
-                if(comprobarEmail(valorUsuario) && comprobarPass(valorPass)){
+                if(comprobarEmail(valorEmail) && comprobarPass(valorPass)){
                     presenter.login(user);
-
                 }
 
             }
         });
 
+
     }
 
     private boolean comprobarEmail(String email) {
         if(email.isEmpty()){
-            edtUser.setError("El email no puede quedar vacío");
+            edtEmail.setError("El email no puede quedar vacío");
             return false;
 
         }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            edtUser.setError("Email no válido");
+            edtEmail.setError("Email no válido");
             return false;
 
         }else{
 
-            edtUser.setError(null);
+            edtEmail.setError(null);
             return true;
 
         }
@@ -87,7 +101,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         System.out.println("Login Hecho");
         Intent intent = new Intent(LoginActivity.this, ObrasActivity.class);
         startActivity(intent);
-
 
     }
 
