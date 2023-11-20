@@ -2,6 +2,7 @@ package com.example.teatroapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -45,16 +46,17 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 user.setPassword(valorPass);
 
                 //1ºValidamos el formato de los datos insertados
-                if(validarEmail(valorUsuario) && validarPass(valorPass)){
+                if(comprobarEmail(valorUsuario) && comprobarPass(valorPass)){
                     presenter.login(user);
 
                 }
 
             }
         });
+
     }
 
-    private boolean validarEmail(String email) {
+    private boolean comprobarEmail(String email) {
         if(email.isEmpty()){
             edtUser.setError("El email no puede quedar vacío");
             return false;
@@ -71,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         }
     }
 
-    private boolean validarPass(String pass) {
+    private boolean comprobarPass(String pass) {
         if(pass.isEmpty() || pass.equals("")){
             edtPass.setError("La contraseña no puede quedar vacía");
             return false;
@@ -82,6 +84,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void sucessLogin(ArrayList<Usuario> usuarios) {
+        System.out.println("Login Hecho");
+        Intent intent = new Intent(LoginActivity.this, ObrasActivity.class);
+        startActivity(intent);
+
 
     }
 

@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiTeatro {
 
     public static final String BASE_URL =
-            "http://localhost:8080/untitled/ServletTeatro?";
+            "http://localhost:8080/untitled/";
 
     private static Retrofit retrofit = null;
     //Creamos un interceptor  y le indicamos el log level a usar

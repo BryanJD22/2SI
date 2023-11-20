@@ -100,7 +100,7 @@ public class ServletTeatro extends HttpServlet {
         //out.print(convertUsersToJSONString(userList));
         // out.print(jsonResponseObject);
 
-        // Escribir el JSON en el PrintWriter
+        // Escribir el JSON en el PrintWriter1email.
         //out.print(jsonResponse);
             /*request.setAttribute("message", message);
             request.getRequestDispatcher("/index.jsp").forward(request, response);
