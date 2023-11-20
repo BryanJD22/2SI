@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
-    private EditText edtUserName;
+
     private EditText edtPass;
     private EditText edtEmail;
 
@@ -28,7 +28,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private String valorEmail="";
     private String valorPass="";
 
-    private String valorUsername="";
     Usuario user = new Usuario();
 
      LoginPresenter presenter =
@@ -40,11 +39,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
 
-        Log.d("ObrasActivity", "La actividad ObrasActivity se ha creado correctamente");
 
-        edtUserName=findViewById(R.id.edtUsername);
-        edtPass=findViewById(R.id.edtPass);
+
         edtEmail=findViewById(R.id.edtEmail);
+        edtPass=findViewById(R.id.edtPass);
+
 
         btnEnviar=findViewById(R.id.btnEnviar);
 
@@ -54,10 +53,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
                 valorEmail=edtEmail.getText().toString();
                 valorPass=edtPass.getText().toString();
-                valorUsername = edtUserName.getText().toString();
+
                 user.setEmail(valorEmail);
                 user.setPassword(valorPass);
-                user.setUsuario(valorUsername);
 
                 //1ºValidamos el formato de los datos insertados
                 if(comprobarEmail(valorEmail) && comprobarPass(valorPass)){
