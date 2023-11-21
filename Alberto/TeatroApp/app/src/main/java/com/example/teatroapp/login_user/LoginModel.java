@@ -29,7 +29,15 @@ public class LoginModel implements LoginContract.Model{
                 if(response.isSuccessful()){
                     ArrayList<Usuario> usuarios = response.body();// Aquí tengo el JSON
                     if(usuarios!=null) {
-                        onLoginUserListener.onFinished(usuarios);
+                        for (Usuario usuario : usuarios) {
+                            // Check if email and password match
+                            if (usuario.getEmail().equals(user.getEmail()) && usuario.getPassword().equals(user.getPassword())) {
+                                // Match found, call onFinished
+                                onLoginUserListener.onFinished(usuarios);
+                                return; // No need to continue checking
+                            }
+                        }
+
                     }else{
                         Log.d("Bryan Error", "1");
                         onLoginUserListener.onFailure("Fallo: Login");
