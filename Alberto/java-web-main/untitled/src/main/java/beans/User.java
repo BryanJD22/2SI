@@ -6,10 +6,19 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 
 public class User {
+    private int id_user;
     private String username;
     private String email; // Puedes agregar otros campos según tus necesidades
 
     private String pass;
+
+    public User() {
+    }
+
+    public User(String email, String pass) {
+        this.email = email;
+        this.pass = pass;
+    }
 
     public User(String username, String email, String pass) {
         this.username = username;
@@ -32,6 +41,15 @@ public class User {
 
     // Getters y setters
 
+
+    public int getId_user() {
+        return id_user;
+    }
+
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
 
     public String getUsername() {
         return username;

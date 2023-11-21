@@ -60,6 +60,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 //1ºValidamos el formato de los datos insertados
                 if(comprobarEmail(valorEmail) && comprobarPass(valorPass)){
                     presenter.login(user);
+
+
                 }
 
             }

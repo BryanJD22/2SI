@@ -39,9 +39,9 @@ public class UserDAO implements DAO<User, Integer> {
 
         try {
             while (rs.next()) {
-                User user = new User(rs.getString("USERNAME"),
+                User user = new User(rs.getString("USER_ID"),
                         rs.getString("EMAIL"),
-                        rs.getString("PASS"));
+                        rs.getString("PASSWORD"));
 
                 usuarios.add(user);
             }
@@ -53,4 +53,23 @@ public class UserDAO implements DAO<User, Integer> {
         motosSql.desconectar();
         return usuarios;
     }
+
+    public ArrayList<User> findId(User bean) throws SQLException {
+        ArrayList<User> lstUsuarios = new ArrayList<>();
+
+        String sql = "SELECT user_id FROM users WHERE email ='"+bean.getEmail()+"' AND pass ='"+bean.getPass()+"'";
+        motosSql.conectar();
+        ResultSet rs = motosSql.consultar(sql);
+
+        while (rs.next()){
+            User user = new User();
+            user.setId_user(rs.getInt("user_id"));
+            lstUsuarios.add(user);
+        }
+
+        motosSql.desconectar();
+
+        return lstUsuarios;
+    }
+
 }

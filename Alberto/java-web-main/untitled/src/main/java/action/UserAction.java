@@ -19,10 +19,14 @@ public class UserAction implements IAction{
             case "FIND_ALL":
                 pagDestino = findAll(request, response);
                 break;
+            case "LOGIN":
+                pagDestino = login(request, response);
+                break;
 
         }
         return pagDestino;
     }
+
 
     private String findAll(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         UserDAO userDao = new UserDAO();
@@ -31,4 +35,14 @@ public class UserAction implements IAction{
         return User.toArrayJson(usuarios);
 
     }
+    private String login(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        String email = request.getParameter("email");
+        String pass = request.getParameter("password");
+        User user = new User(email,pass);
+        UserDAO userDAO = new UserDAO();
+        ArrayList<User> lstUsers = new ArrayList<>();
+        lstUsers = userDAO.findId(user);
+        return null;
+    }
+
 }
