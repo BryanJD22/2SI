@@ -108,4 +108,5 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void failureLogin(String message) {
 
     }
+
 }
