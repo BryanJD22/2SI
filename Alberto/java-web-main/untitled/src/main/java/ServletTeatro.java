@@ -1,3 +1,4 @@
+import action.ObraAction;
 import action.UserAction;
 import beans.User;
 
@@ -32,81 +33,16 @@ public class ServletTeatro extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
+            case "Obras":
+                try {
+                    out.print(new ObraAction().execute(request,response));
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
 
         }
 
 
-
-        // Procesa alguna lógica aquí
-        /*String message = "{message: 'Hola desde el Servlet'}";
-        response.setContentType("application/json");
-
-        String action = request.getParameter("ACTION");
-        //String id= request.getParameter("id");
-        PrintWriter out = response.getWriter();
-        //out.print(message);a
-        String jsonResponse = "{\"message\": \"¡Hola desde el Servlet!_"+ action + "\"}";
-
-        String jsonResponseObject= "{\n" +
-                "    \"message\": \"Este es un mensaje de ejemplo\",\n" +
-                "    \"lstUsers\": [\n" +
-                "        {\n" +
-                "            \"username\": \"username1\",\n" +
-                "            \"token\": \"token1\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"username\": \"username2\",\n" +
-                "            \"token\": \"token2\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"username\": \"username3\",\n" +
-                "            \"token\": \"token3\"\n" +
-                "        }\n" +
-                "    ]\n" +
-                "}";
-        User user1 = new User("username1", "token1");
-        User user2 = new User("username2", "token2");
-
-        List<User> userList = new ArrayList<>();
-        userList.add(user1);
-        userList.add(user2);
-
-        String peliculas = "{\n" +
-                "    \"message\": \"Este es un mensaje de ejemplo\",\n" +
-                "    \"lstPeliculas\": [\n" +
-                "        {\n" +
-                "            \"id\": 1,\n" +
-                "            \"titulo\": \"Pelicula 1\",\n" +
-                "            \"descripcion\": \"Descripción de la Pelicula 1\",\n" +
-                "            \"director\": \"Director 1\",\n" +
-                "            \"anyo\": 2022\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"id\": 2,\n" +
-                "            \"titulo\": \"Pelicula 2\",\n" +
-                "            \"descripcion\": \"Descripción de la Pelicula 2\",\n" +
-                "            \"director\": \"Director 2\",\n" +
-                "            \"anyo\": 2023\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"id\": 3,\n" +
-                "            \"titulo\": \"Pelicula 3\",\n" +
-                "            \"descripcion\": \"Descripción de la Pelicula 3\",\n" +
-                "            \"director\": \"Director 3\",\n" +
-                "            \"anyo\": 2021\n" +
-                "        }\n" +
-                "    ]\n" +
-                "}";
-        //out.print(convertUsersToJSONString(userList));
-        // out.print(jsonResponseObject);
-
-        // Escribir el JSON en el PrintWriter1email.
-        //out.print(jsonResponse);
-            /*request.setAttribute("message", message);
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
-
-        out.print(peliculas);
-        out.close();*/
     }
 
 

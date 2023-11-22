@@ -18,6 +18,10 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.Mo
         this.modelo.getUsuarios(usuario, this);
 
     }
+    public void login2(Usuario usuario) {
+        this.modelo.login(usuario, this);
+
+    }
 
     @Override
     public void onFinished(ArrayList<Usuario> usuarios) {

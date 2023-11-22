@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class UserAction implements IAction{
+public class ObraAction implements IAction{
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         String pagDestino = "";
@@ -20,13 +20,12 @@ public class UserAction implements IAction{
                 pagDestino = findAll(request, response);
                 break;
             case "LOGIN":
-                pagDestino = login(request, response);
+                //pagDestino = login(request, response);
                 break;
 
         }
         return pagDestino;
     }
-
 
     private String findAll(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         UserDAO userDao = new UserDAO();
@@ -35,14 +34,4 @@ public class UserAction implements IAction{
         return User.toArrayJson(usuarios);
 
     }
-    private String login(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        String email = request.getParameter("EMAIL");
-        String pass = request.getParameter("PASS");
-        User user = new User(email,pass);
-        UserDAO userDAO = new UserDAO();
-        ArrayList<User> lstUsers = userDAO.login(user);;
-
-        return user.toArrayJson(lstUsers);
-    }
-
 }
