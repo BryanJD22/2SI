@@ -39,9 +39,8 @@ public class ObraModel implements ObraContract.Model{
             @Override
             public void onFailure(Call<ArrayList<Obra>> call, Throwable t) {
 
-                Log.e("Retrofit Error", "Failed to make login request", t);
-                onLstObrasListener.onFailure("Failed to make login request");
-                Log.d("Bryan Error", "1");
+                Log.e("Retrofit Error", "Failed to make obras request", t);
+                onLstObrasListener.onFailure("Failed to retrieve obras: " + t.getMessage());
             }
         });
 

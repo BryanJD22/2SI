@@ -49,7 +49,7 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
     public void sucessListObras(ArrayList<Obra> lstObras) {
         // Crear un nuevo adaptador
         adapter = new AdapterObras(lstObras);
-        lstObras=lstObras;
+        this.lstObras=lstObras;
         recycler.setAdapter(adapter);
 
     }

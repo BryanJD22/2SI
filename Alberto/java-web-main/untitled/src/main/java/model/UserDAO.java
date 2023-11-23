@@ -45,21 +45,9 @@ public class UserDAO implements DAO<User, Integer> {
                         rs.getString("apellidos"),
                         rs.getString("telefono"),
                         rs.getString("email"),
-                        rs.getString("contraseña"),
-                        rs.getTimestamp("fecha_creacion"),
-                        rs.getTimestamp("fecha_modificacion"));
+                        rs.getString("contraseña"));
 
                 usuarios.add(user);
-                System.out.println("User ID: " + user.getUserId());
-                System.out.println("DNI: " + user.getDni());
-                System.out.println("Nombre: " + user.getNombre());
-                System.out.println("Apellidos: " + user.getApellidos());
-                System.out.println("Teléfono: " + user.getTelefono());
-                System.out.println("Email: " + user.getEmail());
-                System.out.println("Contraseña: " + user.getPassword());
-                System.out.println("Fecha Creación: " + user.getFechaCreacion());
-                System.out.println("Fecha Modificación: " + user.getFechaModificacion());
-                System.out.println("------------------------");
             }
 
 

@@ -17,6 +17,13 @@ public class Obra {
     public Obra() {
     }
 
+    public Obra(int idObra, String tituloObra, String descripcionObra, String imagenObra) {
+        this.idObra = idObra;
+        this.tituloObra = tituloObra;
+        this.descripcionObra = descripcionObra;
+        this.imagenObra = imagenObra;
+    }
+
     public Obra(int idObra, String tituloObra, String descripcionObra, String imagenObra, Timestamp fechaCreacion, Timestamp fechaModificacion) {
         this.idObra = idObra;
         this.tituloObra = tituloObra;

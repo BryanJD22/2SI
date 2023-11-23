@@ -22,6 +22,7 @@ public class ObraPresenter implements ObraContract.Presenter {
 
             @Override
             public void onFinished(ArrayList<Obra> lstObras) {
+
                 vista.sucessListObras(lstObras);
             }
 

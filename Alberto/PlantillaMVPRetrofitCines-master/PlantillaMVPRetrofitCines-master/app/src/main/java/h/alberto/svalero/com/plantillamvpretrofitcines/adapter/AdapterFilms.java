@@ -19,7 +19,7 @@ import h.alberto.svalero.com.plantillamvpretrofitcines.beans.Film;
 public class AdapterFilms extends RecyclerView.Adapter<AdapterFilms.FilmViewHolder> {
 
     private ArrayList<Film> lstFilms;
-    //private FilmViewHolder.OnFilmListener onFilmListener;
+    private FilmViewHolder.OnFilmListener onFilmListener;
 
 
     public static class FilmViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
@@ -34,9 +34,9 @@ public class AdapterFilms extends RecyclerView.Adapter<AdapterFilms.FilmViewHold
             imagen = (ImageView) v.findViewById(R.id.imagen);
             nombre = (TextView) v.findViewById(R.id.nombre);
             visitas = (TextView) v.findViewById(R.id.visitas);
-            //this.onFilmListener=onFilmListener;
+            this.onFilmListener=onFilmListener;
 
-            //v.setOnClickListener(this);
+            v.setOnClickListener(this);
         }
 
         @Override

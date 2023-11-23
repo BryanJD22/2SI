@@ -45,9 +45,7 @@ public class ObraDAO implements DAO<Obra,Integer>{
                 Obra obra = new Obra(rs.getInt("id_obra"),
                         rs.getString("titulo_obra"),
                                 rs.getString("descripcion_obra"),
-                                rs.getString("imagen_obra"),
-                                rs.getTimestamp("fecha_creacion"),
-                                rs.getTimestamp("fecha_modificacion"));
+                                rs.getString("imagen_obra"));
 
                 lstObras.add(obra);
             }

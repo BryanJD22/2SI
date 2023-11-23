@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.teatroapp.R;
@@ -19,20 +18,21 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
 
     private ArrayList<Obra> lstObras;
     public static class ObrasViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
+
         // Campos respectivos de un item
         public ImageView imagen;
         public TextView nombre;
-        public TextView visitas;
+        public TextView desc;
 
 
         public ObrasViewHolder(View v) {
             super(v);
             imagen = (ImageView) v.findViewById(R.id.imagen);
             nombre = (TextView) v.findViewById(R.id.nombre);
-            visitas = (TextView) v.findViewById(R.id.visitas);
+            desc = (TextView) v.findViewById(R.id.desc);
             //this.onFilmListener=onFilmListener;
 
-            //v.setOnClickListener(this);
+            v.setOnClickListener(this);
         }
 
         @Override
@@ -68,8 +68,11 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
        Picasso.get().load(urlImage).into(viewHolder.imagen);
       */
         //  viewHolder.imagen.setImageResource(lstFilms.get(posFila).getImagen());
-        viewHolder.nombre.setText(lstObras.get(posFila).getTituloObra());
-
+        if (lstObras.get(posFila).getTituloObra() != null) {
+            viewHolder.nombre.setText(lstObras.get(posFila).getTituloObra());
+        } else {
+            viewHolder.nombre.setText("Título no disponible");
+        }
     }
 
     @Override
