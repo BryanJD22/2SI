@@ -31,7 +31,7 @@ public class UserDAO implements DAO<User, Integer> {
 
     @Override
     public ArrayList<User> findAll() throws SQLException {
-        String sql = "SELECT * FROM USERS";
+        String sql = "SELECT * FROM usuario";
         ArrayList<User> usuarios = new ArrayList<>();
 
         motosSql.conectar();
@@ -39,12 +39,29 @@ public class UserDAO implements DAO<User, Integer> {
 
         try {
             while (rs.next()) {
-                User user = new User(rs.getInt("USER_ID"),
-                        rs.getString("EMAIL"),
-                        rs.getString("PASSWORD"));
+                User user = new User(rs.getInt("id_usuario"),
+                        rs.getString("dni"),
+                        rs.getString("nombre"),
+                        rs.getString("apellidos"),
+                        rs.getString("telefono"),
+                        rs.getString("email"),
+                        rs.getString("contraseña"),
+                        rs.getTimestamp("fecha_creacion"),
+                        rs.getTimestamp("fecha_modificacion"));
 
                 usuarios.add(user);
+                System.out.println("User ID: " + user.getUserId());
+                System.out.println("DNI: " + user.getDni());
+                System.out.println("Nombre: " + user.getNombre());
+                System.out.println("Apellidos: " + user.getApellidos());
+                System.out.println("Teléfono: " + user.getTelefono());
+                System.out.println("Email: " + user.getEmail());
+                System.out.println("Contraseña: " + user.getPassword());
+                System.out.println("Fecha Creación: " + user.getFechaCreacion());
+                System.out.println("Fecha Modificación: " + user.getFechaModificacion());
+                System.out.println("------------------------");
             }
+
 
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,13 +74,13 @@ public class UserDAO implements DAO<User, Integer> {
     public ArrayList<User> login(User bean) throws SQLException {
         ArrayList<User> lstUsuarios = new ArrayList<>();
 
-        String sql = "SELECT user_id FROM users WHERE email ='"+bean.getEmail()+"' AND password ='"+bean.getPass()+"'";
+        String sql = "SELECT id_usuario FROM usuario WHERE email ='"+bean.getEmail()+"' AND contraseña ='"+bean.getPassword()+"'";
         motosSql.conectar();
         ResultSet rs = motosSql.consultar(sql);
 
         while (rs.next()){
             User user = new User();
-            user.setId_user(rs.getInt("user_id"));
+            user.setUserId(rs.getInt("id_usuario"));
             lstUsuarios.add(user);
         }
 

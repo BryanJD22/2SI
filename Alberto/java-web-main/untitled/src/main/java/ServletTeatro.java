@@ -33,7 +33,7 @@ public class ServletTeatro extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
-            case "Obras":
+            case "Obra":
                 try {
                     out.print(new ObraAction().execute(request,response));
                 } catch (SQLException e) {
@@ -47,7 +47,7 @@ public class ServletTeatro extends HttpServlet {
 
 
 
-        public static String convertUsersToJSONString(List<User> users) {
+       /* public static String convertUsersToJSONString(List<User> users) {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("[");
 
@@ -67,6 +67,6 @@ public class ServletTeatro extends HttpServlet {
 
         jsonBuilder.append("]");
         return jsonBuilder.toString();
-    }
+    }*/
 }
 

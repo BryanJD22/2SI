@@ -1,6 +1,8 @@
 package action;
 
+import beans.Obra;
 import beans.User;
+import model.ObraDAO;
 import model.UserDAO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,10 +30,10 @@ public class ObraAction implements IAction{
     }
 
     private String findAll(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        UserDAO userDao = new UserDAO();
-        ArrayList<User> usuarios = userDao.findAll();
+        ObraDAO obraDAO = new ObraDAO();
+        ArrayList<Obra> obras = obraDAO.findAll();
 
-        return User.toArrayJson(usuarios);
+        return Obra.toArrayJson(obras);
 
     }
 }

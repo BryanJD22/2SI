@@ -3,41 +3,41 @@ package beans;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class User {
 
-    private int id_user;
-    private String username;
+    private int userId;
+    private String dni;
+    private String nombre;
+    private String apellidos;
+    private String telefono;
     private String email;
+    private String password;
+    private Timestamp fechaCreacion;
+    private Timestamp fechaModificacion;
 
-    private String pass;
 
     public User() {
     }
 
-    public User(int id_user, String email, String pass) {
-        this.id_user = id_user;
+    public User(String email, String password) {
         this.email = email;
-        this.pass = pass;
+        this.password = password;
     }
 
-    public User(int id_user) {
-        this.id_user = id_user;
-    }
-
-    public User(String email, String pass) {
+    public User(int userId, String dni, String nombre, String apellidos, String telefono, String email, String password, Timestamp fechaCreacion, Timestamp fechaModificacion) {
+        this.userId = userId;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
         this.email = email;
-        this.pass = pass;
+        this.password = password;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaModificacion = fechaModificacion;
     }
-
-    public User(String username, String email, String pass) {
-        this.username = username;
-        this.email = email;
-        this.pass = pass;
-    }
-
-
 
     public static String toArrayJson(ArrayList<User> usuarios) {
         GsonBuilder builder = new GsonBuilder();
@@ -53,21 +53,44 @@ public class User {
     // Getters y setters
 
 
-    public int getId_user() {
-        return id_user;
+    public int getUserId() {
+        return userId;
     }
 
-
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getDni() {
+        return dni;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getEmail() {
@@ -78,11 +101,27 @@ public class User {
         this.email = email;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Timestamp getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Timestamp fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Timestamp getFechaModificacion() {
+        return fechaModificacion;
+    }
+
+    public void setFechaModificacion(Timestamp fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
     }
 }
