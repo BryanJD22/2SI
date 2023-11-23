@@ -39,6 +39,7 @@ public class ObraDAO implements DAO<Obra,Integer>{
         motosSql.conectar();
         ResultSet rs = motosSql.consultar(sql);
 
+
         try {
             while (rs.next()) {
                 Obra obra = new Obra(rs.getInt("id_obra"),

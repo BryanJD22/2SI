@@ -32,7 +32,7 @@ public class ObraAction implements IAction{
     private String findAll(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         ObraDAO obraDAO = new ObraDAO();
         ArrayList<Obra> obras = obraDAO.findAll();
-
+        System.out.println(obras);
         return Obra.toArrayJson(obras);
 
     }

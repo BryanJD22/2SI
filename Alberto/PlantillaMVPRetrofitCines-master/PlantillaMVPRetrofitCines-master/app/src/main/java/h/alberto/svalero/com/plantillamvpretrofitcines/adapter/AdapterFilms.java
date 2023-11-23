@@ -16,9 +16,7 @@ import h.alberto.svalero.com.plantillamvpretrofitcines.R;
 import h.alberto.svalero.com.plantillamvpretrofitcines.beans.Film;
 
 
-public class AdapterFilms
-        extends
-        RecyclerView.Adapter<AdapterFilms.FilmViewHolder> {
+public class AdapterFilms extends RecyclerView.Adapter<AdapterFilms.FilmViewHolder> {
 
     private ArrayList<Film> lstFilms;
     //private FilmViewHolder.OnFilmListener onFilmListener;
