@@ -48,9 +48,12 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
     @Override
     public void sucessListObras(ArrayList<Obra> lstObras) {
         // Crear un nuevo adaptador
-        adapter = new AdapterObras(lstObras);
-        this.lstObras=lstObras;
-        recycler.setAdapter(adapter);
+        //adapter = new AdapterObras(lstObras);
+        this.lstObras = lstObras;
+        RecyclerView recyclerView = findViewById(R.id.lstObras);
+
+        recyclerView.setLayoutManager(new);
+
 
     }
 
