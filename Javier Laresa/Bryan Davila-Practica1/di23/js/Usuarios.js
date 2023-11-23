@@ -33,6 +33,7 @@ function agregarUsuario() {
             if (res.ok) {
 
                 console.log('Usuario agregado correctamente');
+                return res.text();
                 
             }
         })

@@ -1,0 +1,14 @@
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+-- Insertar datos de ejemplo
+INSERT INTO users (username, email, password) VALUES
+    ('usuario1', 'usuario1@email.com', 'contrasena1'),
+    ('usuario2', 'usuario2@email.com', 'contrasena2'),
+    ('usuario3', 'usuario3@email.com', 'contrasena3'),
+    ('usuario4', 'usuario4@email.com', 'contrasena4'),
+    ('usuario5', 'usuario5@email.com', 'contrasena5');

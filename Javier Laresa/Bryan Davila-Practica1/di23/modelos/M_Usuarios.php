@@ -85,19 +85,19 @@ class M_Usuarios extends Modelo
         $nombreEdt='';
         $apellido1Edt='';
         $apellido2Edt='';
-        $loginEdt='';
+        $usuarioEdt='';
         $sexoEdt='';
         $emailEdt='';
-        $passEdt='';
-        $movilEdt='';
+        $contrasenaEdt='';
+        $telefonoEdt='';
         $actividadEdt='';
 
-        echo("1");
+        
         extract($filtros);
         echo(extract($filtros));
         // Construir la consulta SQL utilizando consultas preparadas para evitar inyecciones SQL
-        $SQL = "INSERT INTO usuarios (`nombre`, `apellido_1`, `apellido_2`, `sexo`, 'fecha_Alta', `mail`, `movil`, `login`, `pass`, `activo`)
-        VALUES ('$nombreEdt', '$apellido1Edt', '$apellido2Edt', '$sexoEdt', NOW(), '$emailEdt', '$movilEdt', '$loginEdt', 'MD5($passEdt)', '$actividadEdt')";
+        $SQL = "INSERT INTO usuarios (`nombre`, `apellido_1`, `apellido_2`, `sexo`, `fecha_Alta`, `mail`, `movil`, `login`, `pass`, `activo`)
+        VALUES ('$nombreEdt', '$apellido1Edt', '$apellido2Edt', '$sexoEdt', NOW(), '$emailEdt', '$telefonoEdt', '$usuarioEdt', 'MD5($contrasenaEdt)', '$actividadEdt')";
 
 
         echo($SQL);
@@ -111,7 +111,7 @@ class M_Usuarios extends Modelo
 
 
 
-    
+
     public function xUsuario($parametros =  array())
     {
         $apellido_insert = '';
