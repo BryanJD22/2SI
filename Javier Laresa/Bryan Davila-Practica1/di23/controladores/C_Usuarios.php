@@ -36,9 +36,9 @@
                             array('usuarios'=>$usuarios));
         }
 
-        public function crearUsuario($filtros = array()) {
+        public function crearUsuarioddd($filtros = array()) {
             echo("4");
-            $usuarios=$this->modelo->crearUsuario($filtros);
+            //$usuarios=$this->modelo->crearUsuario($filtros);
         }
         
         

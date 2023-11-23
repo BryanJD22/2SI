@@ -7,9 +7,6 @@
     <title>Añadir Usuario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <!-- Incluye la biblioteca de Bootstrap -->
-
-    <!-- Puedes incluir tu archivo de estilos personalizado aquí si es necesario -->
 </head>
 <body id="body_formulario">
 

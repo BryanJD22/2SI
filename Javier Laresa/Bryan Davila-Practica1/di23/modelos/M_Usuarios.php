@@ -1,5 +1,5 @@
 <?php
-echo("dasa");
+
 require_once 'modelos/Modelo.php';
 require_once 'modelos/DAO.php';
 class M_Usuarios extends Modelo
@@ -107,6 +107,10 @@ class M_Usuarios extends Modelo
     }
 
     
+    
+
+
+
     
     public function xUsuario($parametros =  array())
     {
