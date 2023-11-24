@@ -39,7 +39,7 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
 
 
     @Override
-    public void onBindViewHolder(AdapterObras.ObrasViewHolder holder, int posfila) {
+    public void onBindViewHolder(ObrasViewHolder holder, int posfila) {
         Obra obra = lstObras.get(posfila);
 
         holder.tituloObra.setText(lstObras.get(posfila).getTituloObra());
@@ -50,8 +50,7 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
         // Usa Picasso para cargar y mostrar la imagen
         Picasso.get()
                 .load(obra.getImagenObra()) // Reemplaza con el método que obtiene la URL de la imagen
-                .placeholder(R.drawable.pruebaimagenToji.jpg) // Reemplaza con tu recurso de imagen de carga
-                .error(R.drawable.error_image) // Reemplaza con tu recurso de imagen de error
+                .placeholder(R.drawable.pruebaimagentoji) // Reemplaza con tu recurso de imagen de carga
                 .into(holder.imagen);
 
        /* Añadir URL para las imágenes
