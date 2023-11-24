@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -16,12 +17,8 @@ import java.util.ArrayList;
 
 public class ObrasActivity extends AppCompatActivity implements ObraContract.View {
 
-    private RecyclerView recycler;
 
-    private RecyclerView.Adapter adapter;
-
-    private RecyclerView.LayoutManager lManager;
-
+    public AdapterObras adapterObras;
     private ObraPresenter lstObrasPresenter;
 
     private ArrayList<Obra> lstObras;
@@ -29,19 +26,21 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_obras);
+        setContentView(R.layout.obras_row);
 
         lstObrasPresenter = new ObraPresenter(this);
 
         lstObrasPresenter.getObra();
 
-        // Obtener el Recycler
+        /*// Obtener el Recycler
         recycler = (RecyclerView) findViewById(R.id.idReciclador);
         recycler.setHasFixedSize(true);
 
         // Usar un administrador para LinearLayout
         lManager = new LinearLayoutManager(this);
-        recycler.setLayoutManager(lManager);
+        recycler.setLayoutManager(lManager);*/
+
+
 
     }
 
@@ -50,18 +49,16 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
         // Crear un nuevo adaptador
         //adapter = new AdapterObras(lstObras);
         this.lstObras = lstObras;
-        RecyclerView recyclerView = findViewById(R.id.lstObras);
+        RecyclerView recyclerView = findViewById(R.id.recyclerObras);
 
-        recyclerView.setLayoutManager(new);
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+        adapterObras = new AdapterObras(this,lstObras);
+        recyclerView.setAdapter(adapterObras);
 
     }
 
     @Override
     public void failureListFilms(String message) {
-        Toast toast1 =
-                Toast.makeText(getApplicationContext(),
-                        message, Toast.LENGTH_SHORT);
-        toast1.show();
+        Toast.makeText(ObrasActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 }

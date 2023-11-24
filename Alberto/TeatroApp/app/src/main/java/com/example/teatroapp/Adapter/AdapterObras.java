@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.teatroapp.R;
 import com.example.teatroapp.beans.Obra;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -46,7 +47,12 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
         //holder.imagen.setimagelstObras.get(posfila).getImagenObra();
 
         holder.desc.setText(lstObras.get(posfila).getDescripcionObra());
-
+        // Usa Picasso para cargar y mostrar la imagen
+        Picasso.get()
+                .load(obra.getImagenObra()) // Reemplaza con el método que obtiene la URL de la imagen
+                .placeholder(R.drawable.pruebaimagenToji.jpg) // Reemplaza con tu recurso de imagen de carga
+                .error(R.drawable.error_image) // Reemplaza con tu recurso de imagen de error
+                .into(holder.imagen);
 
        /* Añadir URL para las imágenes
        String urlImage="http://192.0.0.0:8080/CinesAragon/images/"+
@@ -62,14 +68,14 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
     public static class ObrasViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
         // Campos respectivos de un item
-       // public ImageView imagen;
+        public ImageView imagen;
         public TextView tituloObra;
         public TextView desc;
 
 
         public ObrasViewHolder(View obra) {
             super(obra);
-            //imagen = (ImageView) obra.findViewById(R.id.imagen);
+            imagen = (ImageView) obra.findViewById(R.id.imagen);
             tituloObra = (TextView) obra.findViewById(R.id.tituloObra);
             desc = (TextView) obra.findViewById(R.id.desc);
             //this.onFilmListener=onFilmListener;

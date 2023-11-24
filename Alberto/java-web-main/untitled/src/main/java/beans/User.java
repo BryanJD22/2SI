@@ -18,6 +18,9 @@ public class User {
     private Timestamp fechaCreacion;
     private Timestamp fechaModificacion;
 
+    public User(int userId) {
+        this.userId = userId;
+    }
 
     public User() {
     }

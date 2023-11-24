@@ -1,45 +1,56 @@
 package com.example.teatroapp.beans;
 
+import java.sql.Timestamp;
+
 public class Usuario {
 
-    private String usuario;
 
+    private int userId;
+    private String dni;
+    private String nombre;
+    private String apellidos;
+    private String telefono;
     private String email;
     private String password;
+    private Timestamp fechaCreacion;
+    private Timestamp fechaModificacion;
 
     public Usuario(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    public Usuario(String usuario, String email, String password) {
-        this.usuario = usuario;
-        this.email = email;
-        this.password = password;
-    }
-
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-/* public Usuario(int idUsuario, String nombre, String apellido, String email, String password) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.password = password;
-    }*/
-
     public Usuario() {
     }
+    public Usuario(int userId, String dni, String nombre, String apellidos, String telefono, String email, String password, Timestamp fechaCreacion, Timestamp fechaModificacion) {
+        this.userId = userId;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.email = email;
+        this.password = password;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaModificacion = fechaModificacion;
+    }
 
+    public int getUserId() {
+        return userId;
+    }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
-    /*public String getNombre() {
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getNombre() {
         return nombre;
     }
 
@@ -47,13 +58,41 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }*/
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public Timestamp getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Timestamp fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Timestamp getFechaModificacion() {
+        return fechaModificacion;
+    }
+
+    public void setFechaModificacion(Timestamp fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
+
+
+
+
 
     public String getEmail() {
         return email;
