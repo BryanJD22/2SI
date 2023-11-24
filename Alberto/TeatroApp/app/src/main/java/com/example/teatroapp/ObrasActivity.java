@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.teatroapp.Adapter.AdapterObras;
@@ -17,7 +20,7 @@ import java.util.ArrayList;
 
 public class ObrasActivity extends AppCompatActivity implements ObraContract.View {
 
-
+    private Button agregarbtn;
     public AdapterObras adapterObras;
     private ObraPresenter lstObrasPresenter;
 
@@ -26,7 +29,7 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.obras_row);
+        setContentView(R.layout.activity_obras);
 
         lstObrasPresenter = new ObraPresenter(this);
 
@@ -39,6 +42,17 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
         // Usar un administrador para LinearLayout
         lManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(lManager);*/
+
+        agregarbtn = findViewById(R.id.addBtn);
+
+
+        agregarbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ObrasActivity.this, AddActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

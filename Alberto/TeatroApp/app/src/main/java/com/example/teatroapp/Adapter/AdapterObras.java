@@ -31,7 +31,7 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
     @NonNull
     @Override
     public AdapterObras.ObrasViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.obras_row, parent, false);
+        View view = inflater.inflate(R.layout.activity_obras, parent, false);
         return new ObrasViewHolder(view);
     }
 
