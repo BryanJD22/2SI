@@ -45,6 +45,7 @@ public class LoginModel implements LoginContract.Model{
                 Log.e("Retrofit Error", "Failed to make login request", t);
                 onLoginUserListener.onFailure("Failed to make login request");
                 Log.d("Bryan Error", "1");
+
             }
         });
     }
