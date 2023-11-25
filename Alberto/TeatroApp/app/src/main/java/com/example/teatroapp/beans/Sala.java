@@ -5,6 +5,7 @@ import java.util.Date;
 public class Sala {
     private int idSala;
     private int capacidad;
+    private String imgSala;
     private Date fechaCreacion;
     private Date fechaModificacion;
 
@@ -39,6 +40,14 @@ public class Sala {
 
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
+    }
+
+    public String getImgSala() {
+        return imgSala;
+    }
+
+    public void setImgSala(String imgSala) {
+        this.imgSala = imgSala;
     }
 
     public Date getFechaCreacion() {

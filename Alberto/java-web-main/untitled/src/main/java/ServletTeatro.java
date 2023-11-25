@@ -1,4 +1,5 @@
 import action.ObraAction;
+import action.SalaAction;
 import action.UserAction;
 import beans.User;
 
@@ -39,6 +40,13 @@ public class ServletTeatro extends HttpServlet {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
+            case "Sala":
+                try {
+                    out.print(new SalaAction().execute(request,response));
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+
 
         }
 

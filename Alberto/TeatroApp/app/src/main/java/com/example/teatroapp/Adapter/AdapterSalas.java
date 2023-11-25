@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.teatroapp.ObrasActivity;
 import com.example.teatroapp.R;
+import com.example.teatroapp.beans.Obra;
 import com.example.teatroapp.beans.Sala;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -37,8 +39,12 @@ public class AdapterSalas extends RecyclerView.Adapter<AdapterSalas.SalasViewHol
 
     @Override
     public void onBindViewHolder(@NonNull AdapterSalas.SalasViewHolder holder, int position) {
-        holder.imageView.setImageResource(lstsalas.get(position).getCapacidad());
-        holder.textView.setText(lstsalas.get(position).getIdSala());
+        Sala sala = lstsalas.get(position);
+        Picasso.get()
+                .load(sala.getImgSala()) // Reemplaza con el método que obtiene la URL de la imagen
+                .placeholder(R.drawable.pruebaimagentoji) // Reemplaza con tu recurso de imagen de carga
+                .into(holder.imageSala);
+        holder.nombreSala.setText(lstsalas.get(position).getIdSala());
 
         holder.cardView.setOnClickListener(e->{
             Intent intent = new Intent(context, ObrasActivity.class);
@@ -55,13 +61,13 @@ public class AdapterSalas extends RecyclerView.Adapter<AdapterSalas.SalasViewHol
 
     public class SalasViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
-        ImageView imageView;
-        TextView textView;
+        ImageView imageSala;
+        TextView nombreSala;
         public SalasViewHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.cardView);
-            imageView = itemView.findViewById(R.id.imageView);
-            textView = itemView.findViewById(R.id.textView);
+            imageSala = itemView.findViewById(R.id.imageView);
+            nombreSala = itemView.findViewById(R.id.textView);
 
 
 

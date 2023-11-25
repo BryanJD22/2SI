@@ -17,6 +17,7 @@ CREATE TABLE obra (
     titulo_obra VARCHAR(100),
     descripcion_obra TEXT,
     imagen_obra VARCHAR(255),
+    precio DECIMAL(10,2),
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -24,7 +25,9 @@ CREATE TABLE obra (
 -- Tabla Sala
 CREATE TABLE sala (
     id_sala INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
     capacidad INT,
+    imagen_sala VARCHAR(255),
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -109,14 +112,14 @@ VALUES
     ('La Vida es Sueño', 'Drama filosófico de Calderón de la Barca', 'imagen10.jpg');
 
 
-INSERT INTO sala (capacidad)
+INSERT INTO sala (nombre,capacidad)
 VALUES
-    (100),
-    (80),
-    (120),
-    (90),
-    (110),
-    (150);
+    ('Sala A',100),
+    ('Sala B',80),
+    ('Sala C',120),
+    ('Sala D',90),
+    ('Sala E',110),
+    ('Sala F',150);  
 
 -- Generación de registros adicionales para obra_sala
 INSERT INTO obra_sala (id_obra, id_sala, fecha, hora)

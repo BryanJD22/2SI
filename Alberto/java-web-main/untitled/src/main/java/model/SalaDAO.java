@@ -1,7 +1,7 @@
 package model;
 
 import beans.Obra;
-import beans.User;
+import beans.Sala;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,17 +9,14 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ObraDAO implements DAO<Obra,Integer>{
-
+public class SalaDAO implements DAO<Sala, Integer>{
     MotorSQL motosSql;
 
-    public ObraDAO() {
+    public SalaDAO() {
         this.motosSql = new MotorSQL();
     }
     @Override
-    public int add(Obra bean) {
-
-
+    public int add(Sala bean) {
         return 0;
     }
 
@@ -29,14 +26,14 @@ public class ObraDAO implements DAO<Obra,Integer>{
     }
 
     @Override
-    public int update(Obra bean) {
+    public int update(Sala bean) {
         return 0;
     }
 
     @Override
-    public ArrayList<Obra> findAll() throws SQLException {
-        String sql = "SELECT * FROM OBRA";
-        ArrayList<Obra> lstObras = new ArrayList<>();
+    public ArrayList<Sala> findAll() throws SQLException {
+        String sql = "SELECT * FROM SALA";
+        ArrayList<Sala> lstSalas = new ArrayList<>();
 
         motosSql.conectar();
         ResultSet rs = motosSql.consultar(sql);
@@ -44,12 +41,12 @@ public class ObraDAO implements DAO<Obra,Integer>{
 
         try {
             while (rs.next()) {
-                Obra obra = new Obra(rs.getInt("id_obra"),
-                        rs.getString("titulo_obra"),
-                                rs.getString("descripcion_obra"),
-                                rs.getString("imagen_obra"));
+                Sala sala = new Sala(rs.getInt("id_sala"),
+                        rs.getString("nombre"),
+                        rs.getInt("capacidad")
+                );
 
-                lstObras.add(obra);
+                lstSalas.add(sala);
             }
 
         } catch (SQLException ex) {
@@ -57,6 +54,6 @@ public class ObraDAO implements DAO<Obra,Integer>{
         }
 
         motosSql.desconectar();
-        return lstObras;
+        return lstSalas;
     }
 }

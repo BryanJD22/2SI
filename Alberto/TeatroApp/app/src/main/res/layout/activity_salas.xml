@@ -13,21 +13,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:padding="10dp"
-            tools:srcCompat="@drawable/education" />
+            android:layout_width="163dp"
+            android:layout_height="167dp"
+            android:layout_gravity="center"
+            android:background="@drawable/pruebaimagentoji"
+            android:padding="10dp" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="TextView"
+            android:text="Nombre Sala"
             android:padding="5dp"
             android:textSize="20dp"
             />
