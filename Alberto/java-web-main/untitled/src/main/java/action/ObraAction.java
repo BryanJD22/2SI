@@ -7,6 +7,7 @@ import model.UserDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -21,12 +22,25 @@ public class ObraAction implements IAction{
             case "FIND_ALL":
                 pagDestino = findAll(request, response);
                 break;
-            case "LOGIN":
-                //pagDestino = login(request, response);
+            case "ADD":
+                pagDestino = addObra(request, response);
                 break;
 
         }
         return pagDestino;
+    }
+
+    private String addObra(HttpServletRequest request, HttpServletResponse response) {
+        ObraDAO obraDAO = new ObraDAO();
+        String tituloObra = request.getParameter("TITULO");
+        String desc = request.getParameter("DESC");
+        String duracion = request.getParameter("DURACION");
+        String img = request.getParameter("IMG");
+        String precio = request.getParameter("PRECIO");
+        BigDecimal precioObra = new BigDecimal(precio);
+        Obra obra = new Obra(tituloObra,desc, Integer.parseInt(duracion),precioObra,img);
+        int respuesta = obraDAO.add(obra);
+        return "{\"lineas_afectadas\":"+respuesta+"}";
     }
 
     private String findAll(HttpServletRequest request, HttpServletResponse response) throws SQLException {

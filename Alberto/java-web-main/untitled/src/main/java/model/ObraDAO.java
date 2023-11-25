@@ -18,9 +18,16 @@ public class ObraDAO implements DAO<Obra,Integer>{
     }
     @Override
     public int add(Obra bean) {
+        int resp = 0;
 
+        motosSql.conectar();
 
-        return 0;
+        String sql = "INSERT INTO OBRA(titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES '(" + bean.getTituloObra()+"','"
+                + bean.getDescripcionObra() +"','" +bean.getDuracionMin()+ "','"+bean.getImagenObra()+"','"+bean.getPrecio()+"')";
+        System.out.println(sql);
+        resp = motosSql.modificar(sql);
+        System.out.println(resp);
+        return resp;
     }
 
     @Override

@@ -39,12 +39,14 @@ public class MotorSQL {
     }
 
     //Ejecutamos una sentencia de modificación de base de datos().
-    public void modificar(String sentencia){
+    public int modificar(String sentencia){
+        int respuesta = 0;
         try{
             st.executeUpdate(sentencia);
         }catch(SQLException e){
             e.printStackTrace();
         }
+        return respuesta;
     }
 
     //Cerramos la conexión con la base de datos.

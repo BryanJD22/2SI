@@ -3,18 +3,30 @@ package beans;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Obra {
     private int idObra;
     private String tituloObra;
     private String descripcionObra;
+    private int duracionMin;
+
+    private BigDecimal precio;
     private String imagenObra;
     private Timestamp fechaCreacion;
     private Timestamp fechaModificacion;
 
     public Obra() {
+    }
+
+    public Obra(String tituloObra, String descripcionObra, int duracionMin, BigDecimal precio , String imagenObra ) {
+        this.tituloObra = tituloObra;
+        this.descripcionObra = descripcionObra;
+        this.duracionMin = duracionMin;
+        this.imagenObra = imagenObra;
     }
 
     public Obra(int idObra, String tituloObra, String descripcionObra, String imagenObra) {
@@ -57,12 +69,28 @@ public class Obra {
         this.descripcionObra = descripcionObra;
     }
 
+    public int getDuracionMin() {
+        return duracionMin;
+    }
+
+    public void setDuracionMin(int duracionMin) {
+        this.duracionMin = duracionMin;
+    }
+
     public String getImagenObra() {
         return imagenObra;
     }
 
     public void setImagenObra(String imagenObra) {
         this.imagenObra = imagenObra;
+    }
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
     }
 
     public Timestamp getFechaCreacion() {

@@ -16,6 +16,7 @@ CREATE TABLE obra (
     id_obra INT AUTO_INCREMENT PRIMARY KEY,
     titulo_obra VARCHAR(100),
     descripcion_obra TEXT,
+    duracion_min INT,
     imagen_obra VARCHAR(255),
     precio DECIMAL(10,2),
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -97,19 +98,27 @@ VALUES
     ('890123456', 'Raquel', 'Jiménez', '890123456', 'raquel.jimenez@email.com', 'password678'),
     ('345678901', 'Gabriel', 'Pardo', '345678901', 'gabriel.pardo@email.com', 'securepass890');
 
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 1', 'Una emocionante obra de teatro', 120, 'obra1.jpg', 25.99);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 2', 'Una comedia hilarante', 90, 'obra2.jpg', 19.99);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 3', 'Drama con giros inesperados', 150, 'obra3.jpg', 29.99);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 4', 'Aventuras en el escenario', 105, 'obra4.jpg', 22.50);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 5', 'Suspense y misterio', 135, 'obra5.jpg', 27.75);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 6', 'Amor y desamor', 110, 'obra6.jpg', 24.50);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 7', 'Risas aseguradas', 100, 'obra7.jpg', 21.00);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 8', 'Intriga y acción', 120, 'obra8.jpg', 26.50);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 9', 'Emociones a flor de piel', 95, 'obra9.jpg', 20.75);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 10', 'Humor inteligente', 80, 'obra10.jpg', 18.99);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 11', 'Amor eterno en el escenario', 140, 'obra11.jpg', 28.50);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 12', 'Atrapa al público desde el primer minuto', 115, 'obra12.jpg', 25.25);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 13', 'Aventuras en un mundo imaginario', 125, 'obra13.jpg', 26.99);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 14', 'Un viaje a través del tiempo', 110, 'obra14.jpg', 23.75);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 15', 'Comedia romántica para toda la familia', 95, 'obra15.jpg', 20.50);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 16', 'Intriga y revelaciones sorprendentes', 130, 'obra16.jpg', 27.25);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 17', 'Risas garantizadas', 85, 'obra17.jpg', 19.50);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 18', 'Historia de amor imposible', 150, 'obra18.jpg', 29.75);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 19', 'Aventuras en un mundo fantástico', 120, 'obra19.jpg', 25.00);
+INSERT INTO obra (titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES ('Obra 20', 'Humor y reflexión', 105, 'obra20.jpg', 22.99);
 
-INSERT INTO obra (titulo_obra, descripcion_obra, imagen_obra)
-VALUES
-    ('Romeo y Julieta', 'Tragedia romántica de William Shakespeare', 'imagen1.jpg'),
-    ('La Casa de Bernarda Alba', 'Drama de Federico García Lorca', 'imagen2.jpg'),
-    ('Don Juan Tenorio', 'Drama religioso de Tirso de Molina', 'imagen3.jpg'),
-    ('Esperando a Godot', 'Obra absurda de Samuel Beckett', 'imagen4.jpg'),
-    ('La Celestina', 'Comedia trágica de Fernando de Rojas', 'imagen5.jpg'),
-    ('El Tartufo', 'Comedia satírica de Molière', 'imagen6.jpg'),
-    ('Hamlet', 'Tragedia de William Shakespeare', 'imagen7.jpg'),
-    ('El Burlador de Sevilla y Convidado de Piedra', 'Drama de Tirso de Molina', 'imagen8.jpg'),
-    ('Las Preciosas Ridículas', 'Comedia de Molière', 'imagen9.jpg'),
-    ('La Vida es Sueño', 'Drama filosófico de Calderón de la Barca', 'imagen10.jpg');
 
 
 INSERT INTO sala (nombre,capacidad)
