@@ -17,6 +17,8 @@ public class SalasActivity extends AppCompatActivity implements SalaContract.Vie
     private Button btnobras;
     public AdapterSalas adapterSalas;
     private SalaPresenter lstSalasPresenter;
+    private ArrayList<Sala> lstSalas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

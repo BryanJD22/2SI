@@ -41,6 +41,7 @@ public class ObraAction implements IAction{
         Obra obra = new Obra(tituloObra,desc, Integer.parseInt(duracion),precioObra,img);
         int respuesta = obraDAO.add(obra);
         return "{\"lineas_afectadas\":"+respuesta+"}";
+
     }
 
     private String findAll(HttpServletRequest request, HttpServletResponse response) throws SQLException {
