@@ -1,6 +1,7 @@
 package com.example.teatroapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -19,6 +20,8 @@ public class SalasActivity extends AppCompatActivity implements SalaContract.Vie
     private SalaPresenter lstSalasPresenter;
     private ArrayList<Sala> lstSalas;
 
+    RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,9 @@ public class SalasActivity extends AppCompatActivity implements SalaContract.Vie
 
     @Override
     public void sucessLstSalas(ArrayList<Sala> lstSalas) {
+
+        this.lstSalas = lstSalas;
+
 
     }
 
