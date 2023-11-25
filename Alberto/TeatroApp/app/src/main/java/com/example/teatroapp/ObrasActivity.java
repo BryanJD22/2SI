@@ -65,7 +65,7 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
         this.lstObras = lstObras;
         RecyclerView recyclerView = findViewById(R.id.recyclerObras);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         adapterObras = new AdapterObras(this,lstObras);
         recyclerView.setAdapter(adapterObras);
 

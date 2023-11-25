@@ -3,6 +3,7 @@ package com.example.teatroapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.example.teatroapp.Adapter.AdapterSalas;
 import com.example.teatroapp.Salas.SalaContract;
@@ -12,6 +13,8 @@ import com.example.teatroapp.beans.Sala;
 import java.util.ArrayList;
 
 public class SalasActivity extends AppCompatActivity implements SalaContract.View {
+
+    private Button btnobras;
     public AdapterSalas adapterSalas;
     private SalaPresenter lstSalasPresenter;
     @Override
@@ -22,6 +25,8 @@ public class SalasActivity extends AppCompatActivity implements SalaContract.Vie
         lstSalasPresenter = new SalaPresenter(this);
 
         lstSalasPresenter.getSalas();
+
+
     }
 
     @Override

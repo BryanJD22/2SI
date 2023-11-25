@@ -77,9 +77,7 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
             imagen = (ImageView) obra.findViewById(R.id.imagen);
             tituloObra = (TextView) obra.findViewById(R.id.tituloObra);
             desc = (TextView) obra.findViewById(R.id.desc);
-            //this.onFilmListener=onFilmListener;
-
-            obra.setOnClickListener(this);
+            //obra.setOnClickListener(this);
         }
 
         @Override
