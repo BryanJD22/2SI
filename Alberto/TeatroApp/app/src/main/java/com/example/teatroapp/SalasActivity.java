@@ -36,8 +36,11 @@ public class SalasActivity extends AppCompatActivity implements SalaContract.Vie
 
     @Override
     public void sucessLstSalas(ArrayList<Sala> lstSalas) {
-
         this.lstSalas = lstSalas;
+
+
+
+
 
 
     }

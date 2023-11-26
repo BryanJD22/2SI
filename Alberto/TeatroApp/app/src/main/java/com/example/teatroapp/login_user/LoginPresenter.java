@@ -25,6 +25,7 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.Mo
 
     @Override
     public void onFinished(ArrayList<Usuario> usuarios) {
+
         vista.sucessLogin(usuarios);
     }
 

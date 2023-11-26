@@ -41,7 +41,6 @@ public class UserAction implements IAction{
         User user = new User(email,pass);
         UserDAO userDAO = new UserDAO();
         ArrayList<User> lstUsers = userDAO.login(user);;
-
         return user.toArrayJson(lstUsers);
     }
 

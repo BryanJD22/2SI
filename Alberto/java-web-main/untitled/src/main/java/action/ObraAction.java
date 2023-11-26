@@ -25,10 +25,32 @@ public class ObraAction implements IAction{
             case "ADD":
                 pagDestino = addObra(request, response);
                 break;
+            case "TOP10VENTAS":
+                pagDestino = top10Ventas(request, response);
+
+            case "TOP10PUNTUADAS":
+                pagDestino = top10Puntuas(request, response);
+
 
         }
         return pagDestino;
     }
+
+    private String top10Puntuas(HttpServletRequest request, HttpServletResponse response) {
+        ObraDAO obraDAO = new ObraDAO();
+        ArrayList<Obra> top10Obras = obraDAO.Top10Puntuadas();
+
+        return Obra.toArrayJson(top10Obras);
+    }
+
+    private String top10Ventas(HttpServletRequest request, HttpServletResponse response) {
+        ObraDAO obraDAO = new ObraDAO();
+        ArrayList<Obra> top10Obras = obraDAO.Top10Ventas();
+        return Obra.toArrayJson(top10Obras);
+
+    }
+
+
 
     private String addObra(HttpServletRequest request, HttpServletResponse response) {
         ObraDAO obraDAO = new ObraDAO();

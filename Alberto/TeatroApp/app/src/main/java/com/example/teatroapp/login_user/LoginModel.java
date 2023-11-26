@@ -59,7 +59,7 @@ public class LoginModel implements LoginContract.Model{
             public void onResponse(Call<ArrayList<Usuario>> call,Response<ArrayList<Usuario>> response) {
                 if(response.isSuccessful()){
                     ArrayList<Usuario> usuarios = response.body();// Aquí tengo el JSON
-                    if(usuarios== null || usuarios.size() == 0) {
+                    if(usuarios== null || usuarios.size() == 0 ) {
                         Log.d("Bryan Error", "1");
                         onLoginUserListener.onFailure("Fallo: Login");
                     }else{
