@@ -1,6 +1,7 @@
 package com.example.teatroapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class SalasActivity extends AppCompatActivity implements SalaContract.Vie
     private SalaPresenter lstSalasPresenter;
     private ArrayList<Sala> lstSalas;
 
+
     RecyclerView recyclerView;
 
     @Override
@@ -38,9 +40,15 @@ public class SalasActivity extends AppCompatActivity implements SalaContract.Vie
     public void sucessLstSalas(ArrayList<Sala> lstSalas) {
         this.lstSalas = lstSalas;
 
+        recyclerView = findViewById(R.id.recyclerSalas);
 
+        recyclerView.setHasFixedSize(true);
 
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
+        AdapterSalas adapterSalas = new AdapterSalas(lstSalas,this);
+
+        recyclerView.setAdapter(adapterSalas);
 
 
     }
