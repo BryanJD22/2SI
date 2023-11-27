@@ -36,8 +36,21 @@ public class ObraAction implements IAction{
                 pagDestino = top10Puntuas(request, response);
                 break;
 
+            case "BYCATEGORIA":
+                pagDestino = porCategoria(request, response);
+                break;
+
         }
         return pagDestino;
+    }
+
+    private String porCategoria(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        String categoria = request.getParameter("CATEGORIA");
+        Obra obra = new Obra(categoria);
+        ObraDAO obraDAO = new ObraDAO();
+        ArrayList<Obra> lstporCategoria = obraDAO.porCategoria(obra);
+
+        return Obra.toArrayJson(lstporCategoria);
     }
 
     private String findbyid(HttpServletRequest request, HttpServletResponse response) {

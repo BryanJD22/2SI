@@ -12,7 +12,6 @@ public interface ObraContract {
         void sendRequestTopVentas(ArrayList<Obra> lstObras);
         void sendRequestTopPopular(ArrayList<Obra> lstObras);
 
-
         void failureListObras(String message);
     }
     public interface Presenter{
@@ -20,6 +19,8 @@ public interface ObraContract {
         void getObraTopVentas();
 
         void getObraTopPopular();
+
+        void getObraPorCategoria();
 
     }
     public interface Model{

@@ -176,6 +176,30 @@ public class ObraDAO implements DAO<Obra,Integer>{
         return obrasBySala;
     }
 
+    public ArrayList<Obra> porCategoria(Obra bean) throws SQLException {
+        ArrayList<Obra> lstObras = new ArrayList<>();
+
+        String sql = "SELECT * FROM obra WHERE categoria = '"+bean.getCategoria()+"';";
+        System.out.println(sql);
+        motosSql.conectar();
+        ResultSet rs = motosSql.consultar(sql);
+
+        while (rs.next()){
+            Obra obra = new Obra(
+                    rs.getInt("id_obra"),
+                    rs.getString("titulo_obra"),
+                    rs.getString("descripcion_obra"),
+                    rs.getInt("duracion_min"),
+                    rs.getString("imagen_obra"),
+                    rs.getBigDecimal("precio")
+            );
+            lstObras.add(obra);
+        }
+
+        motosSql.desconectar();
+
+        return lstObras;
+    }
 }
 
 

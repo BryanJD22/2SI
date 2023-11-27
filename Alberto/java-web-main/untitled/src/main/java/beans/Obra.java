@@ -75,6 +75,9 @@ public class Obra {
         this.precio = precio;
     }
 
+    public Obra(String categoria) {
+    }
+
     public int getIdObra() {
         return idObra;
     }

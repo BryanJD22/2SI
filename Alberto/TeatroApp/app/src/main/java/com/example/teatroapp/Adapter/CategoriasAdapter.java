@@ -41,7 +41,7 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ObrasActivity.class);
-            intent.putExtra("Categoria", listCategorias.get(position).getCategoria());
+            intent.putExtra("categoria", listCategorias.get(position).getCategoria());
             context.startActivity(intent);
 
         });
