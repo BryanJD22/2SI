@@ -46,14 +46,18 @@ public class UObrasAdapter extends RecyclerView.Adapter<UObrasAdapter.ViewHolder
         RequestOptions requestOptions = new RequestOptions();
         requestOptions = requestOptions.transform(new CenterCrop(), new RoundedCorners(30));
 
-        Picasso.get()
+        //holder.pic.setImageResource(R.drawable.sukuna);
+
+        /*Picasso.get()
                 .load(obra.getImagenObra()) // Reemplaza con el método que obtiene la URL de la imagen
-                .placeholder(R.drawable.pruebaimagentoji2) // Reemplaza con tu recurso de imagen de carga
-                .into(holder.pic);
-        /*Glide.with(context)
+                .placeholder(R.drawable.sukuna) // Reemplaza con tu recurso de imagen de carga
+                .into(holder.pic);*/
+
+        Glide.with(context)
                 .load(lstObras.get(position).getImagenObra())
                 .apply(requestOptions)
-                .into(holder.pic);*/
+                .placeholder(R.drawable.pruebaimagentoji2)
+                .into(holder.pic);
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(holder.itemView.getContext(), SalasActivity.class);
@@ -68,6 +72,7 @@ public class UObrasAdapter extends RecyclerView.Adapter<UObrasAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         TextView tituloObra;
         ImageView pic;
 
