@@ -10,6 +10,7 @@ public interface ObraContract {
         void sucessListObras(ArrayList<Obra> lstObras);
 
         void sendRequestTopVentas(ArrayList<Obra> lstObras);
+        void sendRequestTopPopular(ArrayList<Obra> lstObras);
 
 
         void failureListObras(String message);
@@ -17,6 +18,8 @@ public interface ObraContract {
     public interface Presenter{
         void getObra();//la original
         void getObraTopVentas();
+
+        void getObraTopPopular();
 
     }
     public interface Model{

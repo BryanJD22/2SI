@@ -66,6 +66,20 @@ public class ObraPresenter extends ArrayList<Obra> implements ObraContract.Prese
 
     }
 
+    public void getObraTopPopular() {
+        this.modelo.getObrasTopPopular(new ObraContract.Model.OnLstObrasListener() {
+            @Override
+            public void onFinished(ArrayList<Obra> lstObras) {
+                vista.sendRequestTopPopular(lstObras);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                vista.failureListObras(error);
+            }
+        });
+    }
+
 
 
 }

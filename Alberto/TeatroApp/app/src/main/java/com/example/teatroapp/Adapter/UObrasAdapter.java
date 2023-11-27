@@ -56,7 +56,7 @@ public class UObrasAdapter extends RecyclerView.Adapter<UObrasAdapter.ViewHolder
         Glide.with(context)
                 .load(lstObras.get(position).getImagenObra())
                 .apply(requestOptions)
-                .placeholder(R.drawable.pruebaimagentoji2)
+                .placeholder(R.drawable.sukuna)
                 .into(holder.pic);
 
         holder.itemView.setOnClickListener(v -> {

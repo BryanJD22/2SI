@@ -35,6 +35,12 @@ public class UserActivity extends AppCompatActivity implements ObraContract.View
         lstObrasPresenter.getObraTopVentas();
         sendRequestTopVentas(lstObrasPresenter);
 
+        lstObrasPresenter.getObraTopPopular();
+        sendRequestTopPopular(lstObrasPresenter);
+
+        lstObrasPresenter.getObra();
+        sucessListObras(lstobras);
+
     }
 
 
@@ -44,11 +50,26 @@ public class UserActivity extends AppCompatActivity implements ObraContract.View
         recyclerViewTopVentas = findViewById(R.id.topVentas);
         loading1.setVisibility(View.GONE);
 
-        adapterTopVentas = new UObrasAdapter(lstObrasPresenter);
+        adapterTopVentas = new UObrasAdapter(lstObrasTopVentas);
         recyclerViewTopVentas.setAdapter(adapterTopVentas);
 
 
     }
+
+    public void sendRequestTopPopular(ArrayList<Obra> lstObrasTopPopular){
+        this.lstobras = lstObrasTopPopular;
+
+        recyclerViewTopVentas = findViewById(R.id.topPopular);
+        loading2.setVisibility(View.GONE);
+
+        adapterTopPopular = new UObrasAdapter(lstObrasTopPopular);
+        recyclerViewTopVentas.setAdapter(adapterTopPopular);
+
+
+    }
+
+
+
     private void initView() {
         recyclerViewTopVentas = findViewById(R.id.topVentas);
         recyclerViewTopVentas.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -63,6 +84,14 @@ public class UserActivity extends AppCompatActivity implements ObraContract.View
 
     @Override
     public void sucessListObras(ArrayList<Obra> lstObras) {
+
+        this.lstobras = lstObras;
+
+        recyclerViewAll = findViewById(R.id.allObras);
+        loading3.setVisibility(View.GONE);
+
+        adapterAll = new UObrasAdapter(lstObras);
+        recyclerViewAll.setAdapter(adapterAll);
 
     }
 
