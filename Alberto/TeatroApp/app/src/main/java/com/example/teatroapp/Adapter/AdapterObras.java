@@ -44,7 +44,7 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
 
         holder.tituloObra.setText(lstObras.get(posfila).getTituloObra());
 
-
+        holder.categoria.setText(lstObras.get(posfila).getCategoria());
 
         holder.desc.setText(lstObras.get(posfila).getDescripcionObra());
         // Usa Picasso para cargar y mostrar la imagen
@@ -72,6 +72,8 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
         // Campos respectivos de un item
         public ImageView imagen;
         public TextView tituloObra;
+
+        public TextView categoria;
         public TextView desc;
 
 
@@ -79,6 +81,7 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
             super(obra);
             imagen = (ImageView) obra.findViewById(R.id.imagen);
             tituloObra = (TextView) obra.findViewById(R.id.tituloObra);
+            categoria = (TextView) obra.findViewById(R.id.categoria);
             desc = (TextView) obra.findViewById(R.id.desc);
             //obra.setOnClickListener(this);
         }

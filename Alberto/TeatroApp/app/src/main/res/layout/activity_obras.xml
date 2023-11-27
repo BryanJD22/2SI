@@ -44,11 +44,19 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/categoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tituloObra"
+                android:text="TextView"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
                 android:id="@+id/desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tituloObra"
-                android:layout_alignLeft="@+id/tituloObra"
+                android:layout_alignLeft="@+id/categoria"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </RelativeLayout>

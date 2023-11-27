@@ -99,11 +99,22 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void sucessLogin(ArrayList<Usuario> usuarios) {
         System.out.println("Login Hecho");
-        Intent intent = new Intent(LoginActivity.this, UserActivity.class);
-        startActivity(intent);
+        int userId = usuarios.get(0).getUserId();
+
+        if (isAdministrador(userId)) {
+            // Caso de administrador
+            Intent adminIntent = new Intent(LoginActivity.this, SalasActivity.class);
+            startActivity(adminIntent);
+        } else {
+            //Caso Usuario
+            Intent userIntent = new Intent(LoginActivity.this, UserActivity.class);
+            startActivity(userIntent);
+        }
 
     }
-
+    private boolean isAdministrador(int userId) {
+        return userId == 1 || userId == 2 || userId == 3;
+    }
     @Override
     public void failureLogin(String message) {
 

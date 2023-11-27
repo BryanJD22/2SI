@@ -5,7 +5,9 @@ import java.sql.Timestamp;
 public class Obra {
     private int idObra;
     private String tituloObra;
+    private String categoria;
     private String descripcionObra;
+
     private String imagenObra;
     private Timestamp fechaCreacion;
     private Timestamp fechaModificacion;
@@ -36,6 +38,14 @@ public class Obra {
 
     public void setTituloObra(String tituloObra) {
         this.tituloObra = tituloObra;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getDescripcionObra() {
