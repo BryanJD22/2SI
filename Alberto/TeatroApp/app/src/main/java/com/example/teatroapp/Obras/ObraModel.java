@@ -136,11 +136,11 @@ public class ObraModel implements ObraContract.Model{
 
     }
 
-    public void getObrasPorCategoria(final OnLstObrasListener onLstObrasListener) {
+    public void getObrasPorCategoria(String categoria, final OnLstObrasListener onLstObrasListener) {
         /*Ejecuto Webservice con retrofit*/
         ApiObras apiObras = ApiTeatro.getClient().create(ApiObras.class);
         //petición asíncrona.
-        Call<ArrayList<Obra>> call = apiObras.lst_obras("Obra.TOP10PUNTUADAS");
+        Call<ArrayList<Obra>> call = apiObras.lst_obras_categoria("Obra.BYCATEGORIA", categoria);
         call.enqueue(new Callback<ArrayList<Obra>>() {
             public void onResponse(Call<ArrayList<Obra>> call, Response<ArrayList<Obra>> response) {
                 if(response.isSuccessful()){

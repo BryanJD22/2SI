@@ -20,7 +20,7 @@ public interface ObraContract {
 
         void getObraTopPopular();
 
-        void getObraPorCategoria();
+
 
     }
     public interface Model{

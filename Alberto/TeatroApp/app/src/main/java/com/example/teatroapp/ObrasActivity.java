@@ -39,6 +39,7 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
             lstObrasPresenter.getObrasPorSala(idSala);
         } else if(intent.hasExtra("categoria")){
             String categoria = intent.getStringExtra("categoria");
+            lstObrasPresenter.getObraPorCategoria(categoria);
 
         }else {
             // Manejar el caso en el que no se proporcionó un ID de sala

@@ -160,10 +160,11 @@ public class ObraDAO implements DAO<Obra,Integer>{
                 Obra obra = new Obra(
                         rs.getInt("id_obra"),
                         rs.getString("titulo_obra"),
+                        rs.getString("categoria"),
                         rs.getString("descripcion_obra"),
                         rs.getInt("duracion_min"),
-                        rs.getString("imagen_obra"),
-                        rs.getBigDecimal("precio")
+                        rs.getBigDecimal("precio"),
+                        rs.getString("imagen_obra")
                 );
 
                 obrasBySala.add(obra);
