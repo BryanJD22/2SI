@@ -40,7 +40,7 @@ public class AddActivity extends AppCompatActivity implements AddContract.View {
         edtDesc = findViewById(R.id.desc);
         edtCategoria = findViewById(R.id.categoria);
         edtDuracion = findViewById(R.id.duracion);
-        edtPrecio = findViewById(R.id.precio);
+        //edtPrecio = findViewById(R.id.precio);
 
         addBtn = findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,7 @@ public class AddActivity extends AppCompatActivity implements AddContract.View {
                 obra.setCategoria(String.valueOf(edtCategoria));
                 obra.setDescripcionObra(String.valueOf(edtDesc));
                 obra.setDuracionMin(edtDuracion);
-                obra.setPrecio(edtPrecio);
+                //obra.setPrecio(edtPrecio);
 
                 presenter.add(obra);
             }

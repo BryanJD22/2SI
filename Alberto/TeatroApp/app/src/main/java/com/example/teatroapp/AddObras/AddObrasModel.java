@@ -27,7 +27,7 @@ public class AddObrasModel implements AddContract.Model {
                     ArrayList<Obra> obras = response.body();
                     if (obras != null && obras.size() > 0) {
                         // La obra se agregó correctamente, obtenemos el ID de la obra
-                        String idObra = obras.get(0).getIdObra();
+                       // String idObra = obras.get(0).getIdObra();
 
                         // Ahora, llamamos a la API para agregar la relación en la tabla 'obra_sala'
                         //addObraSala(idObra, obra.getIdSala(), obra.getFecha(), obra.getHora(), onLstObrasListener);
