@@ -1,5 +1,8 @@
 package com.example.teatroapp.beans;
 
+import android.widget.EditText;
+
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Obra {
@@ -7,12 +10,30 @@ public class Obra {
     private String tituloObra;
     private String categoria;
     private String descripcionObra;
+    private int duracionMin;
 
+    private BigDecimal precio;
     private String imagenObra;
     private Timestamp fechaCreacion;
     private Timestamp fechaModificacion;
 
     public Obra() {
+    }
+
+    public Obra(String tituloObra, String categoria, String descripcionObra, int duracionMin, BigDecimal precio) {
+        this.tituloObra = tituloObra;
+        this.categoria = categoria;
+        this.descripcionObra = descripcionObra;
+        this.duracionMin = duracionMin;
+        this.precio = precio;
+    }
+
+    public Obra(String tituloObra, String categoria, String descripcionObra, int duracionMin, String imagenObra) {
+        this.tituloObra = tituloObra;
+        this.categoria = categoria;
+        this.descripcionObra = descripcionObra;
+        this.duracionMin = duracionMin;
+        this.imagenObra = imagenObra;
     }
 
     public Obra(int idObra, String tituloObra, String descripcionObra, String imagenObra, Timestamp fechaCreacion, Timestamp fechaModificacion) {
@@ -44,6 +65,14 @@ public class Obra {
         return categoria;
     }
 
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
@@ -54,6 +83,14 @@ public class Obra {
 
     public void setDescripcionObra(String descripcionObra) {
         this.descripcionObra = descripcionObra;
+    }
+
+    public int getDuracionMin() {
+        return duracionMin;
+    }
+
+    public void setDuracionMin(EditText duracionMin) {
+        this.duracionMin = duracionMin;
     }
 
     public String getImagenObra() {

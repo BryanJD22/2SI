@@ -17,11 +17,11 @@ public class AddObraPresenter implements AddContract.Presenter{
     }
 
     @Override
-    public void add() {
-        this.model.getObrasService(new AddContract.Model.OnLstObrasListener() {
+    public void add(Obra obra) {
+        this.model.addObra(obra, new AddContract.Model.OnLstObrasListener() {
             @Override
             public void onFinished(ArrayList<Obra> lstObras) {
-
+                vista.sucessAdd(lstObras);
             }
 
             @Override

@@ -1,8 +1,8 @@
 package com.example.teatroapp.ApiS;
 
 import com.example.teatroapp.beans.Obra;
-import com.example.teatroapp.beans.Usuario;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -19,4 +19,11 @@ public interface ApiObras {
     @GET("ServletTeatro")
     Call<ArrayList<Obra>> lst_obras_categoria(@Query("ACTION") String action, @Query("CATEGORIA") String categoria);
 
+    @GET("ServletTeatro")
+    Call<ArrayList<Obra>> addObra(@Query("ACTION") String action,
+                                  @Query("TITULO") String titulo,
+                                  @Query("CATEGORIA") String categoria,
+                                  @Query("DESC") String desc,
+                                  @Query("DURACION") int duracion,
+                                  @Query("PRECIO") BigDecimal precio);
 }

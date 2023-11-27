@@ -11,7 +11,7 @@ public interface AddContract {
         void failureListFilms(String message);
     }
     public interface Presenter{
-        void add();//la original
+        void add(Obra obra);
 
     }
     public interface Model{
