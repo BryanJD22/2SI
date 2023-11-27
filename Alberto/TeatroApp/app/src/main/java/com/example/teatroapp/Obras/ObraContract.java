@@ -9,11 +9,14 @@ public interface ObraContract {
     public interface View{
         void sucessListObras(ArrayList<Obra> lstObras);
 
+        void sendRequestTopVentas(ArrayList<Obra> lstObras);
+
 
         void failureListObras(String message);
     }
     public interface Presenter{
         void getObra();//la original
+        void getObraTopVentas();
 
     }
     public interface Model{

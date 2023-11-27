@@ -21,6 +21,8 @@ public class UserActivity extends AppCompatActivity implements ObraContract.View
     private ProgressBar loading1, loading2, loading3;
     private RecyclerView recyclerViewTopVentas, recyclerViewTopPopular, recyclerViewAll;
 
+    ArrayList<Obra> lstobras = new ArrayList<>();
+
     private ObraPresenter lstObrasPresenter;
 
     @Override
@@ -29,15 +31,15 @@ public class UserActivity extends AppCompatActivity implements ObraContract.View
         setContentView(R.layout.activity_user);
 
         initView();
-        sendRequestTopVentas();
+        lstObrasPresenter = new ObraPresenter(this);
+        lstObrasPresenter.getObraTopVentas();
+        sendRequestTopVentas(lstObrasPresenter);
+
     }
 
 
-    private void sendRequestTopVentas(){
-
-        lstObrasPresenter = new ObraPresenter(this);
-        lstObrasPresenter.getObraTopVentas();
-
+    public void sendRequestTopVentas(ArrayList<Obra> lstObrasTopVentas){
+        this.lstobras = lstObrasTopVentas;
 
         recyclerViewTopVentas = findViewById(R.id.topVentas);
         loading1.setVisibility(View.GONE);

@@ -54,7 +54,7 @@ public class ObraPresenter extends ArrayList<Obra> implements ObraContract.Prese
             @Override
             public void onFinished(ArrayList<Obra> lstObras) {
 
-                vista.sucessListObras(lstObras);
+                vista.sendRequestTopVentas(lstObras);
             }
 
             @Override
