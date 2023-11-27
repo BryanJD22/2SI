@@ -1,6 +1,7 @@
 package com.example.teatroapp.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.teatroapp.R;
+import com.example.teatroapp.SalasActivity;
 import com.example.teatroapp.beans.Obra;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -34,22 +41,40 @@ public class UObrasAdapter extends RecyclerView.Adapter<UObrasAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull UObrasAdapter.ViewHolder holder, int position) {
+        Obra obra = lstObras.get(position);
+        holder.tituloObra.setText(lstObras.get(position).getTituloObra());
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions = requestOptions.transform(new CenterCrop(), new RoundedCorners(30));
 
+        Picasso.get()
+                .load(obra.getImagenObra()) // Reemplaza con el método que obtiene la URL de la imagen
+                .placeholder(R.drawable.pruebaimagentoji2) // Reemplaza con tu recurso de imagen de carga
+                .into(holder.pic);
+        /*Glide.with(context)
+                .load(lstObras.get(position).getImagenObra())
+                .apply(requestOptions)
+                .into(holder.pic);*/
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.itemView.getContext(), SalasActivity.class);
+            intent.putExtra("idObra", String.valueOf(lstObras.get(position).getIdObra()));
+            context.startActivity(intent);
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return lstObras.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTxt;
+        TextView tituloObra;
         ImageView pic;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            //titleTxt = itemView.findViewById(R.id.titleTxt);
-            //pic = itemView.findViewById(R.id.pic);
+            tituloObra = itemView.findViewById(R.id.titleTxt);
+            pic = itemView.findViewById(R.id.pic);
         }
     }
 }

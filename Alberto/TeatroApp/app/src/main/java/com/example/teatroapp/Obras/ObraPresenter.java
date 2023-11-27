@@ -5,7 +5,7 @@ import com.example.teatroapp.beans.Usuario;
 
 import java.util.ArrayList;
 
-public class ObraPresenter implements ObraContract.Presenter {
+public class ObraPresenter extends ArrayList<Obra> implements ObraContract.Presenter {
 
     private ObraContract.View vista;
     private ObraModel modelo;

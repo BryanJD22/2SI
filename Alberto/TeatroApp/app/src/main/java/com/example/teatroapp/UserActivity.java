@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.example.teatroapp.Adapter.UObrasAdapter;
 import com.example.teatroapp.Obras.ObraContract;
 import com.example.teatroapp.Obras.ObraPresenter;
 import com.example.teatroapp.beans.Obra;
@@ -18,7 +19,7 @@ public class UserActivity extends AppCompatActivity implements ObraContract.View
 
     private RecyclerView.Adapter adapterTopVentas, adapterTopPopular, adapterAll;
     private ProgressBar loading1, loading2, loading3;
-    private RecyclerView recyclerViewTopPentas, recyclerViewTopPopular, recyclerViewAll;
+    private RecyclerView recyclerViewTopVentas, recyclerViewTopPopular, recyclerViewAll;
 
     private ObraPresenter lstObrasPresenter;
 
@@ -28,6 +29,7 @@ public class UserActivity extends AppCompatActivity implements ObraContract.View
         setContentView(R.layout.activity_user);
 
         initView();
+        sendRequestTopVentas();
     }
 
 
@@ -37,14 +39,17 @@ public class UserActivity extends AppCompatActivity implements ObraContract.View
         lstObrasPresenter.getObraTopVentas();
 
 
-        recyclerViewTopPentas = findViewById(R.id.topVentas);
+        recyclerViewTopVentas = findViewById(R.id.topVentas);
         loading1.setVisibility(View.GONE);
+
+        adapterTopVentas = new UObrasAdapter(lstObrasPresenter);
+        recyclerViewTopVentas.setAdapter(adapterTopVentas);
 
 
     }
     private void initView() {
-        recyclerViewTopPentas = findViewById(R.id.topVentas);
-        recyclerViewTopPentas.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewTopVentas = findViewById(R.id.topVentas);
+        recyclerViewTopVentas.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerViewTopPopular = findViewById(R.id.topPopular);
         recyclerViewTopPopular.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerViewAll = findViewById(R.id.allObras);

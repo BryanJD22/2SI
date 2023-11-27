@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void sucessLogin(ArrayList<Usuario> usuarios) {
         System.out.println("Login Hecho");
-        Intent intent = new Intent(LoginActivity.this, SalasActivity.class);
+        Intent intent = new Intent(LoginActivity.this, UserActivity.class);
         startActivity(intent);
 
     }
