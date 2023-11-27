@@ -34,6 +34,21 @@ public class ObraPresenter implements ObraContract.Presenter {
 
 
     }
+    public void getObrasPorSala(String idSala) {
+        this.modelo.getObrasPorSala(idSala, new ObraContract.Model.OnLstObrasListener(){
+            @Override
+            public void onFinished(ArrayList<Obra> lstObras) {
+                vista.sucessListObras(lstObras);
+            }
+
+            @Override
+            public void onFailure(String error) {
+
+            }
+            // Implementa los métodos onFinished y onFailure según tus necesidades
+        });
+    }
+
 
 
 }

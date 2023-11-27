@@ -44,6 +44,7 @@ public class SalaDAO implements DAO<Sala, Integer>{
                 Sala sala = new Sala(rs.getInt("id_sala"),
                         rs.getString("nombre"),
                         rs.getInt("capacidad")
+
                 );
 
                 lstSalas.add(sala);

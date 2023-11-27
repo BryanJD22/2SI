@@ -25,28 +25,45 @@ public class ObraAction implements IAction{
             case "ADD":
                 pagDestino = addObra(request, response);
                 break;
+            case "FINDBY_ID":
+                pagDestino = findbyid(request, response);
+                break;
             case "TOP10VENTAS":
                 pagDestino = top10Ventas(request, response);
+                break;
 
             case "TOP10PUNTUADAS":
                 pagDestino = top10Puntuas(request, response);
-
+                break;
 
         }
         return pagDestino;
     }
 
+    private String findbyid(HttpServletRequest request, HttpServletResponse response) {
+        String idSala = request.getParameter("IDSALA");
+
+        if (idSala != null && !idSala.isEmpty()) {
+            ArrayList<Obra> obrasBySala = new ObraDAO().findObrasBySala(Integer.parseInt(idSala));
+
+            return Obra.toArrayJson(obrasBySala);
+        } else {
+
+            return "{'error': 'Missing or empty IDSALA parameter'}";
+        }
+    }
+
     private String top10Puntuas(HttpServletRequest request, HttpServletResponse response) {
         ObraDAO obraDAO = new ObraDAO();
-        ArrayList<Obra> top10Obras = obraDAO.Top10Puntuadas();
+        ArrayList<Obra> top10Puntuadas = obraDAO.Top10Puntuadas();
 
-        return Obra.toArrayJson(top10Obras);
+        return Obra.toArrayJson(top10Puntuadas);
     }
 
     private String top10Ventas(HttpServletRequest request, HttpServletResponse response) {
         ObraDAO obraDAO = new ObraDAO();
-        ArrayList<Obra> top10Obras = obraDAO.Top10Ventas();
-        return Obra.toArrayJson(top10Obras);
+        ArrayList<Obra> top10Ventas = obraDAO.Top10Ventas();
+        return Obra.toArrayJson(top10Ventas);
 
     }
 

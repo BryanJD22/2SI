@@ -44,9 +44,9 @@ public class SalasActivity extends AppCompatActivity implements SalaContract.Vie
 
         recyclerView.setHasFixedSize(true);
 
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,1));
 
-        AdapterSalas adapterSalas = new AdapterSalas(lstSalas,this);
+         adapterSalas = new AdapterSalas(lstSalas,this);
 
         recyclerView.setAdapter(adapterSalas);
 

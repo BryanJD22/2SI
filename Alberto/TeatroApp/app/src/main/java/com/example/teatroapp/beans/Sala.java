@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Sala {
     private int idSala;
+
+    private String nombre;
     private int capacidad;
     private String imgSala;
     private Date fechaCreacion;
@@ -12,6 +14,13 @@ public class Sala {
     public Sala() {
 
 
+    }
+
+    public Sala(int idSala, String nombre, int capacidad, String imgSala) {
+        this.idSala = idSala;
+        this.nombre = nombre;
+        this.capacidad = capacidad;
+        this.imgSala = imgSala;
     }
 
     public Sala(int idSala, int capacidad) {
@@ -32,6 +41,14 @@ public class Sala {
 
     public void setIdSala(int idSala) {
         this.idSala = idSala;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getCapacidad() {

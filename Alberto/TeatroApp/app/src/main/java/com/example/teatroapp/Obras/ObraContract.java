@@ -8,7 +8,9 @@ public interface ObraContract {
 
     public interface View{
         void sucessListObras(ArrayList<Obra> lstObras);
-        void failureListFilms(String message);
+
+
+        void failureListObras(String message);
     }
     public interface Presenter{
         void getObra();//la original

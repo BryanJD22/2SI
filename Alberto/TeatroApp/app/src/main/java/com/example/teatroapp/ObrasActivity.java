@@ -33,7 +33,14 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
 
         lstObrasPresenter = new ObraPresenter(this);
 
-        lstObrasPresenter.getObra();
+        Intent intent = getIntent();
+        if (intent.hasExtra("idSala")) {
+            String idSala = intent.getStringExtra("idSala");
+            lstObrasPresenter.getObrasPorSala(idSala);
+        } else {
+
+            // Manejar el caso en el que no se proporcionó un ID de sala
+        }
 
         /*// Obtener el Recycler
         recycler = (RecyclerView) findViewById(R.id.idReciclador);
@@ -43,16 +50,16 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
         lManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(lManager);*/
 
-        agregarbtn = findViewById(R.id.addBtn);
+        //agregarbtn = findViewById(R.id.addBtn);
 
 
-        agregarbtn.setOnClickListener(new View.OnClickListener() {
+       /* agregarbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ObrasActivity.this, AddActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
 
@@ -72,7 +79,7 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
     }
 
     @Override
-    public void failureListFilms(String message) {
+    public void failureListObras(String message) {
         Toast.makeText(ObrasActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 }

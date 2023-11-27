@@ -83,7 +83,7 @@ public class ObraDAO implements DAO<Obra,Integer>{
                 "ORDER BY total_ventas DESC\n" +
                 "LIMIT 10;";
         System.out.println(sql);
-        ArrayList<Obra> top10Obras = new ArrayList<>();
+        ArrayList<Obra> top10OVentas = new ArrayList<>();
 
         motosSql.conectar();
         ResultSet rs = motosSql.consultar(sql);
@@ -99,14 +99,14 @@ public class ObraDAO implements DAO<Obra,Integer>{
                         rs.getBigDecimal("precio")
                 );
 
-                top10Obras.add(obra);
+                top10OVentas.add(obra);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ObraDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         motosSql.desconectar();
-        return top10Obras;
+        return top10OVentas;
     }
 
     public ArrayList<Obra> Top10Puntuadas() {
@@ -142,4 +142,40 @@ public class ObraDAO implements DAO<Obra,Integer>{
         motosSql.desconectar();
         return top10Puntuadas;
     }
+
+
+
+    public ArrayList<Obra> findObrasBySala(int idSala) {
+        String sql = "SELECT obra.* FROM obra_sala " +
+                "JOIN obra ON obra_sala.id_obra = obra.id_obra " +
+                "WHERE obra_sala.id_sala = " + idSala;
+        System.out.println(sql);
+        ArrayList<Obra> obrasBySala = new ArrayList<>();
+
+        motosSql.conectar();
+        ResultSet rs = motosSql.consultar(sql);
+
+        try {
+            while (rs.next()) {
+                Obra obra = new Obra(
+                        rs.getInt("id_obra"),
+                        rs.getString("titulo_obra"),
+                        rs.getString("descripcion_obra"),
+                        rs.getInt("duracion_min"),
+                        rs.getString("imagen_obra"),
+                        rs.getBigDecimal("precio")
+                );
+
+                obrasBySala.add(obra);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ObraDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        motosSql.desconectar();
+        return obrasBySala;
+    }
+
 }
+
+

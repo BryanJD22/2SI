@@ -5,7 +5,7 @@
 <h1>Comunicación entre JSP y Servlet</h1>
 
 <form action="ServletTeatro" method="get">
-    <input type="hidden" name="ACTION" value="Obra.TOP10PUNTUADAS">
+    <input type="hidden" name="ACTION" value="Obra.TOP10VENTAS">
     <input type="submit" value="Llamar al Servlet">
 </form>
 

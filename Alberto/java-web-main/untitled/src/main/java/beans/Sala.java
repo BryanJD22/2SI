@@ -17,6 +17,13 @@ public class Sala {
         // Constructor vacío necesario para algunos frameworks de persistencia.
     }
 
+    public Sala(int idSala, String nombre, int capacidad, String imgSala) {
+        this.idSala = idSala;
+        this.nombre = nombre;
+        this.capacidad = capacidad;
+        this.imgSala = imgSala;
+    }
+
     public Sala(int idSala, String nombre, int capacidad) {
         this.idSala = idSala;
         this.nombre = nombre;
