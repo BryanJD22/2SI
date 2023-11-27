@@ -48,6 +48,23 @@ public class ObraPresenter implements ObraContract.Presenter {
             // Implementa los métodos onFinished y onFailure según tus necesidades
         });
     }
+    public void getObraTopVentas() {
+        this.modelo.getObrasTopVentas(new ObraContract.Model.OnLstObrasListener(){
+
+            @Override
+            public void onFinished(ArrayList<Obra> lstObras) {
+
+                vista.sucessListObras(lstObras);
+            }
+
+            @Override
+            public void onFailure(String error) {
+
+            }
+        });
+
+
+    }
 
 
 

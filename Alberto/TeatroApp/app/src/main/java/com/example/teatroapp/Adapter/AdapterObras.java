@@ -44,7 +44,7 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
 
         holder.tituloObra.setText(lstObras.get(posfila).getTituloObra());
 
-        //holder.imagen.setimagelstObras.get(posfila).getImagenObra();
+
 
         holder.desc.setText(lstObras.get(posfila).getDescripcionObra());
         // Usa Picasso para cargar y mostrar la imagen
@@ -52,6 +52,9 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
                 .load(obra.getImagenObra()) // Reemplaza con el método que obtiene la URL de la imagen
                 .placeholder(R.drawable.pruebaimagentoji) // Reemplaza con tu recurso de imagen de carga
                 .into(holder.imagen);
+
+        //holder.imagen.setimagelstObras.get(posfila).getImagenObra();
+
 
        /* Añadir URL para las imágenes
        String urlImage="http://192.0.0.0:8080/CinesAragon/images/"+
@@ -77,7 +80,7 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
             imagen = (ImageView) obra.findViewById(R.id.imagen);
             tituloObra = (TextView) obra.findViewById(R.id.tituloObra);
             desc = (TextView) obra.findViewById(R.id.desc);
-            obra.setOnClickListener(this);
+            //obra.setOnClickListener(this);
         }
 
         @Override

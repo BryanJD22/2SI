@@ -13,7 +13,7 @@ public class IntroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
-        Button getinBtn=findViewById(R.id.getInBtn);
+        Button getinBtn=findViewById(R.id.addBtn);
         getinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

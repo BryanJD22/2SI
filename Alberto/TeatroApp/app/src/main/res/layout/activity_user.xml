@@ -50,7 +50,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/view1"
+                    android:id="@+id/topVentas"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
@@ -89,7 +89,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/view2"
+                    android:id="@+id/topPopular"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
@@ -106,9 +106,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/view2"
-                    app:layout_constraintStart_toStartOf="@+id/view2"
-                    app:layout_constraintTop_toTopOf="@+id/view2" />
+                    app:layout_constraintEnd_toEndOf="@+id/topPopular"
+                    app:layout_constraintStart_toStartOf="@+id/topPopular"
+                    app:layout_constraintTop_toTopOf="@+id/topPopular" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -118,7 +118,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
-                android:text="Upcomming Movies"
+                android:text="Todas Nuestras Obrasz"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="normal" />
@@ -128,7 +128,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/view3"
+                    android:id="@+id/allObras"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
@@ -146,8 +146,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/view3"
-                    app:layout_constraintStart_toStartOf="@+id/view3"
+                    app:layout_constraintEnd_toEndOf="@+id/allObras"
+                    app:layout_constraintStart_toStartOf="@+id/allObras"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 

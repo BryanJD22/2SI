@@ -50,16 +50,16 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
         lManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(lManager);*/
 
-        //agregarbtn = findViewById(R.id.addBtn);
+        agregarbtn = findViewById(R.id.addBtn);
 
 
-       /* agregarbtn.setOnClickListener(new View.OnClickListener() {
+       agregarbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ObrasActivity.this, AddActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
 
 
