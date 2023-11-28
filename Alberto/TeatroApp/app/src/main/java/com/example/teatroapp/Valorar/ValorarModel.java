@@ -50,28 +50,28 @@ public class ValorarModel implements ValorarContract.Model{
     }
     public void addValoracion(Valoracion valoracion, final ValorarContract.Model.OnLstValoracionesListener OnLstValoracionesListener) {
         ApiValorar apiValorar = ApiTeatro.getClient().create(ApiValorar.class);
-        Call<ArrayList<Obra>> call = apiValorar.addValoracion(
+        Call<ArrayList<Valoracion>> call = apiValorar.addValoracion(
                 "Valorar.ADDVALORACION",
                 valoracion.getValoracion(),
                 valoracion.getIdObra(),
                 valoracion.getIdUsuario()
         );
-        call.enqueue(new Callback<ArrayList<Obra>>() {
+        call.enqueue(new Callback<ArrayList<Valoracion>>() {
             @Override
-            public void onResponse(Call<ArrayList<Obra>> call, Response<ArrayList<Obra>> response) {
+            public void onResponse(Call<ArrayList<Valoracion>> call, Response<ArrayList<Valoracion>> response) {
                 if (response.isSuccessful()) {
-                    ArrayList<Obra> obras = response.body();
-                    if (obras != null) {
-                        OnLstValoracionesListener.onFinished(obras);
+                    ArrayList<Valoracion> valoraciones = response.body();
+                    if (valoraciones != null) {
+                        OnLstValoracionesListener.onFinished(valoraciones);
                     } else {
-                        OnLstValoracionesListener.onFailure("Fallo: Agregar obra");
+                        OnLstValoracionesListener.onFailure("Fallo: Agregar valoracion");
                     }
                 } else {
                     OnLstValoracionesListener.onFailure("Fallo en la respuesta del servidor");
                 }
             }
             @Override
-            public void onFailure(Call<ArrayList<Obra>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Valoracion>> call, Throwable t) {
                 OnLstValoracionesListener.onFailure("Error en la solicitud: " + t.getMessage());
             }
         });
