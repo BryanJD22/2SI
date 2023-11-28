@@ -85,7 +85,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/movieStar"
+                    android:id="@+id/obraValoracion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/star"
@@ -97,7 +97,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/movieTime"
+                    android:id="@+id/duracionDetalles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -106,12 +106,12 @@
                     android:text="0"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/movieStar"
+                    app:layout_constraintStart_toEndOf="@+id/obraValoracion"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/movieNameTxt"
+                android:id="@+id/tituloObraDetalles"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -123,7 +123,7 @@
                 app:layout_constraintStart_toStartOf="@+id/constraintLayout2" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/genreView"
+                android:id="@+id/categoriaDetalles"
                 android:layout_width="match_parent"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
@@ -142,10 +142,10 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/genreView" />
+                app:layout_constraintTop_toBottomOf="@+id/categoriaDetalles" />
 
             <TextView
-                android:id="@+id/movieSummery"
+                android:id="@+id/descDetalles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -166,7 +166,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/textView16"
-                app:layout_constraintTop_toBottomOf="@+id/movieSummery" />
+                app:layout_constraintTop_toBottomOf="@+id/descDetalles" />
 
             <TextView
                 android:id="@+id/movieActorInfo"
@@ -177,16 +177,6 @@
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="@+id/textView18"
                 app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/imagesRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingEnd="8dp"
-                android:paddingStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/movieActorInfo" />
 
             <ProgressBar
                 android:id="@+id/progressBarDetail"

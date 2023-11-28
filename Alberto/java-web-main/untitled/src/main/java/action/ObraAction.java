@@ -25,8 +25,8 @@ public class ObraAction implements IAction{
             case "ADD":
                 pagDestino = addObra(request, response);
                 break;
-            case "FINDBY_ID":
-                pagDestino = findbyid(request, response);
+            case "FINDBY_IDSALA":
+                pagDestino = findbyidSala(request, response);
                 break;
             case "TOP10VENTAS":
                 pagDestino = top10Ventas(request, response);
@@ -40,8 +40,17 @@ public class ObraAction implements IAction{
                 pagDestino = porCategoria(request, response);
                 break;
 
+            case "FINDBY_ID":
+                pagDestino = findbyid(request,response);
+                break;
         }
         return pagDestino;
+    }
+
+    private String findbyid(HttpServletRequest request, HttpServletResponse response) {
+        String idobra = request.getParameter("IDOBRA");
+        ArrayList<Obra> obraById = new ObraDAO().findIdObra(Integer.parseInt(idobra));
+        return Obra.toArrayJson(obraById);
     }
 
     private String porCategoria(HttpServletRequest request, HttpServletResponse response) throws SQLException {
@@ -52,7 +61,7 @@ public class ObraAction implements IAction{
         return Obra.toArrayJson(lstporCategoria);
     }
 
-    private String findbyid(HttpServletRequest request, HttpServletResponse response) {
+    private String findbyidSala(HttpServletRequest request, HttpServletResponse response) {
         String idSala = request.getParameter("IDSALA");
 
         if (idSala != null && !idSala.isEmpty()) {

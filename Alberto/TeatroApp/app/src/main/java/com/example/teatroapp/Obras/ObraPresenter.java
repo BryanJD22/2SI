@@ -54,6 +54,24 @@ public class ObraPresenter extends ArrayList<Obra> implements ObraContract.Prese
 
         });
     }
+
+    public void getObrasPorId(String idObra) {
+        this.modelo.getObrasPorID(idObra, new ObraContract.Model.OnLstObrasListener(){
+            @Override
+            public void onFinished(ArrayList<Obra> lstObras) {
+
+                vista.sucessListObras(lstObras);
+            }
+
+
+
+            @Override
+            public void onFailure(String error) {
+
+            }
+
+        });
+    }
     public void getObraTopVentas() {
         this.modelo.getObrasTopVentas(new ObraContract.Model.OnLstObrasListener(){
 

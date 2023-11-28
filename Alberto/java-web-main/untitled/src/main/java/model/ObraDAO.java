@@ -203,6 +203,36 @@ public class ObraDAO implements DAO<Obra,Integer>{
 
         return lstObras;
     }
+
+    public ArrayList<Obra> findIdObra(int idObra) {
+        String sql = "SELECT * FROM obra WHERE id_obra = " + idObra;, m
+        System.out.println(sql);
+        ArrayList<Obra> obraById = new ArrayList<>();
+
+        motosSql.conectar();
+        ResultSet rs = motosSql.consultar(sql);
+
+        try {
+            while (rs.next()) {
+                Obra obra = new Obra(
+                        rs.getInt("id_obra"),
+                        rs.getString("titulo_obra"),
+                        rs.getString("descripcion_obra"),
+                        rs.getInt("duracion_min"),
+                        rs.getBigDecimal("precio"),
+                        rs.getString("imagen_obra")
+                );
+
+                obraById.add(obra);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ObraDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        motosSql.desconectar();
+        return obraById;
+    }
+
 }
 
 

@@ -1,6 +1,7 @@
 package com.example.teatroapp.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.teatroapp.DetallesActivity;
+import com.example.teatroapp.ObrasActivity;
 import com.example.teatroapp.R;
 import com.example.teatroapp.beans.Obra;
 import com.squareup.picasso.Picasso;
@@ -18,7 +22,7 @@ import java.util.ArrayList;
 
 public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHolder> {
 
-
+    Context context;
     private ArrayList<Obra> lstObras;
     private LayoutInflater inflater;
 
@@ -53,6 +57,14 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
                 .placeholder(R.drawable.pruebaimagentoji) // Reemplaza con tu recurso de imagen de carga
                 .into(holder.Aimagen);
 
+        holder.cardView.setOnClickListener(e->{
+            Intent intent = new Intent(holder.itemView.getContext(), DetallesActivity.class);
+            intent.putExtra("idObra", String.valueOf(obra.getIdObra()));
+            context.startActivity(intent);
+        });
+
+
+
         //holder.imagen.setimagelstObras.get(posfila).getImagenObra();
 
 
@@ -68,6 +80,9 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
 
 
     public static class ObrasViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
+
+        CardView cardView;
+
         public ImageView Aimagen;
         public TextView AtituloObra;
 
@@ -77,6 +92,7 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
 
         public ObrasViewHolder(View obra) {
             super(obra);
+            cardView = obra.findViewById(R.id.cardView2);
             Aimagen = (ImageView) obra.findViewById(R.id.Aimagen);
             AtituloObra = (TextView) obra.findViewById(R.id.AtituloObra);
             //Acategoria = (TextView) obra.findViewById(R.id.Acategoria);
