@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.teatroapp.Valorar.ValorarContract;
+import com.example.teatroapp.Valorar.ValorarPresenter;
 import com.example.teatroapp.beans.Obra;
 import com.example.teatroapp.beans.Valoracion;
 
@@ -23,12 +24,15 @@ public class DetallesActivity extends AppCompatActivity implements ValorarContra
     private ImageView pic2, backImg;
     private RecyclerView recyclerViewCategorias;
     private int idObra;
+    ValorarPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalles);
 
         idObra = getIntent().getIntExtra("idObra",0);
+        presenter = new ValorarPresenter(this);
+        presenter.getObraById(String.valueOf(idObra));
         initView();
     }
 

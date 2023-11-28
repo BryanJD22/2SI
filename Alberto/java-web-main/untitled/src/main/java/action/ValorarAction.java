@@ -15,7 +15,7 @@ public class ValorarAction implements IAction{
 
         String[] arrayAction = action.split("\\.");
         switch (arrayAction[1]) {
-            case "VALORAR":
+            case "ADDVALORACION":
                 pagDestino = valorar(request, response);
                 break;
 

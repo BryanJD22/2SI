@@ -22,9 +22,10 @@ public interface ValorarContract {
         /*Programación Reactiva*/
         interface OnLstValoracionesListener{
             void onFinished(ArrayList<Valoracion> lstValoraciones);
+            void getObrasByid(ArrayList<Obra> lstObras);
             void onFailure(String error);
         }
-        void getValoracionesService(SalaContract.Model.OnLstSalasListener onLstSalasListener);
+        void getValoracionesService(ValorarContract.Model.OnLstValoracionesListener OnLstValoracionesListener);
     }
 }
 
