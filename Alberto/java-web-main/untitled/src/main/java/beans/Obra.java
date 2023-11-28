@@ -78,6 +78,12 @@ public class Obra {
     public Obra(String categoria) {
     }
 
+    public Obra(String tituloObra, String desc, int i, BigDecimal precioObra) {
+    }
+
+    public Obra(String tituloObra, String categoria, String desc, int i, BigDecimal precioObra) {
+    }
+
     public int getIdObra() {
         return idObra;
     }

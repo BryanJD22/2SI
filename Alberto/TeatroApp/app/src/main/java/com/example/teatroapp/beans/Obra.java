@@ -89,7 +89,7 @@ public class Obra {
         return duracionMin;
     }
 
-    public void setDuracionMin(EditText duracionMin) {
+    public void setDuracionMin(int duracionMin) {
         this.duracionMin = duracionMin;
     }
 

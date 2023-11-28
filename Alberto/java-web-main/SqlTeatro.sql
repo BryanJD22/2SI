@@ -72,7 +72,42 @@ CREATE TABLE valoracion (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
+CREATE TABLE categoria (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_categoria VARCHAR(50) UNIQUE
+);
 
+INSERT INTO categoria (nombre_categoria) VALUES ('Drama'), ('Comedia'), ('Aventura'), ('Romance'), ('Suspense'), ('Fantasía'), ('Acción'), ('Humor'), ('Amor'), ('Familia');
+
+CREATE TABLE obra_categoria (
+    id_obra_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    id_obra INT,
+    id_categoria INT,
+    FOREIGN KEY (id_obra) REFERENCES obra(id_obra),
+    FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
+);
+
+INSERT INTO obra_categoria (id_obra, id_categoria) VALUES
+    (1, 1), (1, 9),  
+    (2, 2), (2, 8),  
+    (3, 1), (3, 5),  
+    (4, 3), (4, 7),   
+    (5, 5), (5, 6),   
+    (6, 8), (6, 9),   
+    (7, 2), (7, 8),   
+    (8, 5), (8, 7),   
+    (9, 9), (9, 10),  
+    (10, 2), (10, 8), 
+    (11, 9), (11, 10),
+    (12, 5), (12, 7), 
+    (13, 3), (13, 6), 
+    (14, 7), (14, 10),
+    (15, 2), (15, 10),
+    (16, 5), (16, 7), 
+    (17, 2), (17, 8), 
+    (18, 9), (18, 10),
+    (19, 3), (19, 6), 
+    (20, 8), (20, 10);
 
 
 INSERT INTO usuario (dni, nombre, apellidos, telefono, email, contraseña)

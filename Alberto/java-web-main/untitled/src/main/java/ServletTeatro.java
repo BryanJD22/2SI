@@ -1,6 +1,8 @@
+import action.CategoriaAction;
 import action.ObraAction;
 import action.SalaAction;
 import action.UserAction;
+import beans.Categoria;
 import beans.User;
 
 import javax.servlet.ServletException;
@@ -40,12 +42,21 @@ public class ServletTeatro extends HttpServlet {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
+                break;
             case "Sala":
                 try {
                     out.print(new SalaAction().execute(request,response));
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
+                break;
+            case "Categoria":
+                try {
+                    out.print(new CategoriaAction().execute(request,response));
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
 
 
         }

@@ -1,5 +1,6 @@
 package com.example.teatroapp.Obras;
 
+import com.example.teatroapp.beans.Categoria;
 import com.example.teatroapp.beans.Obra;
 import com.example.teatroapp.beans.Usuario;
 
@@ -26,6 +27,8 @@ public class ObraPresenter extends ArrayList<Obra> implements ObraContract.Prese
                 vista.sucessListObras(lstObras);
             }
 
+
+
             @Override
             public void onFailure(String error) {
 
@@ -40,6 +43,8 @@ public class ObraPresenter extends ArrayList<Obra> implements ObraContract.Prese
             public void onFinished(ArrayList<Obra> lstObras) {
                 vista.sucessListObras(lstObras);
             }
+
+
 
             @Override
             public void onFailure(String error) {
@@ -57,6 +62,8 @@ public class ObraPresenter extends ArrayList<Obra> implements ObraContract.Prese
                 vista.sendRequestTopVentas(lstObras);
             }
 
+
+
             @Override
             public void onFailure(String error) {
 
@@ -73,6 +80,8 @@ public class ObraPresenter extends ArrayList<Obra> implements ObraContract.Prese
                 vista.sendRequestTopPopular(lstObras);
             }
 
+
+
             @Override
             public void onFailure(String error) {
                 vista.failureListObras(error);
@@ -81,19 +90,9 @@ public class ObraPresenter extends ArrayList<Obra> implements ObraContract.Prese
     }
 
 
-    public void getObraPorCategoria(String categoria) {
-        this.modelo.getObrasPorCategoria(categoria,new ObraContract.Model.OnLstObrasListener() {
-            @Override
-            public void onFinished(ArrayList<Obra> lstObras) {
-                vista.sucessListObras(lstObras);
-            }
 
-            @Override
-            public void onFailure(String error) {
-                vista.failureListObras(error);
-            }
-        });
-    }
+
+
 
 
 }

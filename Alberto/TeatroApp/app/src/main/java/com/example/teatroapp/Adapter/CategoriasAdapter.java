@@ -13,15 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.teatroapp.ObrasActivity;
 import com.example.teatroapp.R;
+import com.example.teatroapp.beans.Categoria;
 import com.example.teatroapp.beans.Obra;
 
 import java.util.ArrayList;
 
 public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.ViewHolder> {
-    ArrayList<Obra> listCategorias;
+    ArrayList<Categoria> listCategorias;
     Context context;
 
-    public CategoriasAdapter(ArrayList<Obra> listCategorias) {
+    public CategoriasAdapter(ArrayList<Categoria> listCategorias) {
         this.listCategorias = listCategorias;
     }
 
@@ -35,13 +36,14 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull CategoriasAdapter.ViewHolder holder, int position) {
-        Obra obra = listCategorias.get(position);
-        holder.categoriaTxt.setText(listCategorias.get(position).getCategoria());
+
+        Categoria categoria = listCategorias.get(position);
+        holder.categoriaTxt.setText(listCategorias.get(position).getNombre_categoria());
 
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ObrasActivity.class);
-            intent.putExtra("categoria", listCategorias.get(position).getCategoria());
+            intent.putExtra("categoria", listCategorias.get(position).getNombre_categoria());
             context.startActivity(intent);
 
         });

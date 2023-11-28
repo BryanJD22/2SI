@@ -46,9 +46,8 @@ public class ObraAction implements IAction{
 
     private String porCategoria(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         String categoria = request.getParameter("CATEGORIA");
-        Obra obra = new Obra(categoria);
         ObraDAO obraDAO = new ObraDAO();
-        ArrayList<Obra> lstporCategoria = obraDAO.porCategoria(obra);
+        ArrayList<Obra> lstporCategoria = obraDAO.porCategoria(categoria);
 
         return Obra.toArrayJson(lstporCategoria);
     }
@@ -91,7 +90,7 @@ public class ObraAction implements IAction{
         //String img = request.getParameter("IMG");
         String precio = request.getParameter("PRECIO");
         BigDecimal precioObra = new BigDecimal(precio);
-        Obra obra = new Obra(tituloObra,desc, Integer.parseInt(duracion),precioObra,img);
+        Obra obra = new Obra(tituloObra,categoria,desc, Integer.parseInt(duracion),precioObra);
         int respuesta = obraDAO.add(obra);
         return "{\"lineas_afectadas\":"+respuesta+"}";
 

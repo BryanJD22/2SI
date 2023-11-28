@@ -49,7 +49,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/view2"
+                    android:id="@+id/lstCategorias"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
@@ -66,9 +66,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/view2"
-                    app:layout_constraintStart_toStartOf="@+id/view2"
-                    app:layout_constraintTop_toTopOf="@+id/view2" />
+                    app:layout_constraintEnd_toEndOf="@+id/lstCategorias"
+                    app:layout_constraintStart_toStartOf="@+id/lstCategorias"
+                    app:layout_constraintTop_toTopOf="@+id/lstCategorias" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -157,7 +157,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
-                android:text="Todas Nuestras Obrasz"
+                android:text="Todas Nuestras Obras"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="normal" />
@@ -293,7 +293,6 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
-
                         app:tint="@color/white" />
 
                     <TextView

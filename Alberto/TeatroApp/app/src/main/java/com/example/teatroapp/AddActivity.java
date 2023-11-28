@@ -22,7 +22,7 @@ public class AddActivity extends AppCompatActivity implements AddContract.View {
 
 
     private EditText edtDesc;
-    private EditText edtDuracion;
+    private int edtDuracion;
     private BigDecimal edtPrecio;
 
     Obra obra = new Obra();
@@ -39,7 +39,7 @@ public class AddActivity extends AppCompatActivity implements AddContract.View {
         edtTituloObra = findViewById(R.id.tituloObra);
         edtDesc = findViewById(R.id.desc);
         edtCategoria = findViewById(R.id.categoria);
-        edtDuracion = findViewById(R.id.duracion);
+        //edtDuracion = findViewById(R.id.duracion);
         //edtPrecio = findViewById(R.id.precio);
 
         addBtn = findViewById(R.id.addBtn);
@@ -49,7 +49,7 @@ public class AddActivity extends AppCompatActivity implements AddContract.View {
                 obra.setTituloObra(String.valueOf(edtTituloObra));
                 obra.setCategoria(String.valueOf(edtCategoria));
                 obra.setDescripcionObra(String.valueOf(edtDesc));
-                obra.setDuracionMin(edtDuracion);
+                //obra.setDuracionMin(edtDuracion);
                 //obra.setPrecio(edtPrecio);
 
                 presenter.add(obra);

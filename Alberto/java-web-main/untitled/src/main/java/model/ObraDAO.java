@@ -177,10 +177,13 @@ public class ObraDAO implements DAO<Obra,Integer>{
         return obrasBySala;
     }
 
-    public ArrayList<Obra> porCategoria(Obra bean) throws SQLException {
+    public ArrayList<Obra> porCategoria(String categoria) throws SQLException {
         ArrayList<Obra> lstObras = new ArrayList<>();
 
-        String sql = "SELECT * FROM obra WHERE categoria = '"+bean.getCategoria()+"';";
+        String sql = "SELECT o.* FROM obra o " +
+                "JOIN obra_categoria oc ON o.id_obra = oc.id_obra " +
+                "JOIN categoria c ON oc.id_categoria = c.id_categoria " +
+                "WHERE c.nombre_categoria = "+categoria+";";
         System.out.println(sql);
         motosSql.conectar();
         ResultSet rs = motosSql.consultar(sql);

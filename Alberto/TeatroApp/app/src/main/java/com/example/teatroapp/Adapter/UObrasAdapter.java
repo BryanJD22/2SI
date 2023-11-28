@@ -28,6 +28,7 @@ public class UObrasAdapter extends RecyclerView.Adapter<UObrasAdapter.ViewHolder
     Context context;
 
     public UObrasAdapter(ArrayList<Obra> lstObras) {
+
         this.lstObras = lstObras;
     }
 

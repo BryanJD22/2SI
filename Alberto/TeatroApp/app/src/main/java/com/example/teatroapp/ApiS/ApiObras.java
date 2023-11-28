@@ -16,8 +16,7 @@ public interface ApiObras {
     @GET("ServletTeatro")
     Call<ArrayList<Obra>> lst_obras_sala(@Query("ACTION") String action, @Query("IDSALA") String idSala);
 
-    @GET("ServletTeatro")
-    Call<ArrayList<Obra>> lst_obras_categoria(@Query("ACTION") String action, @Query("CATEGORIA") String categoria);
+
 
     @GET("ServletTeatro")
     Call<ArrayList<Obra>> addObra(@Query("ACTION") String action,

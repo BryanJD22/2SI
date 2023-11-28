@@ -1,5 +1,6 @@
 package com.example.teatroapp.Obras;
 
+import com.example.teatroapp.beans.Categoria;
 import com.example.teatroapp.beans.Obra;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public interface ObraContract {
         /*Programación Reactiva*/
         interface OnLstObrasListener{
             void onFinished(ArrayList<Obra> lstObras);
+
             void onFailure(String error);
         }
         void getObrasService(OnLstObrasListener onLstObrasListener);

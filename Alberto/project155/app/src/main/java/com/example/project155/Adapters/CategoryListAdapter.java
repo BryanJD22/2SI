@@ -27,6 +27,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     Context context;
 
     public CategoryListAdapter(ArrayList<GenresItem> items) {
+
         this.items = items;
     }
 
