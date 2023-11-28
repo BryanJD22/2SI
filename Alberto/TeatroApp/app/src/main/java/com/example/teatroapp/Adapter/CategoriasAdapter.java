@@ -41,12 +41,12 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
         holder.categoriaTxt.setText(categoria.getNombre_categoria());
 
 
-       /* holder.itemView.setOnClickListener(v -> {
+        holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ObrasActivity.class);
             intent.putExtra("categoria", categoria.getNombre_categoria());
             context.startActivity(intent);
 
-        });*/
+        });
 
     }
 

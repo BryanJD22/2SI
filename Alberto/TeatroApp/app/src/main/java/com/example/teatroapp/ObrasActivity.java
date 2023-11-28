@@ -12,17 +12,23 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.teatroapp.Adapter.AdapterObras;
+import com.example.teatroapp.Adapter.CategoriasAdapter;
+import com.example.teatroapp.Categorias.CategoriaContract;
+import com.example.teatroapp.Categorias.CategoriaPresenter;
 import com.example.teatroapp.Obras.ObraContract;
 import com.example.teatroapp.Obras.ObraPresenter;
+import com.example.teatroapp.beans.Categoria;
 import com.example.teatroapp.beans.Obra;
 
 import java.util.ArrayList;
 
-public class ObrasActivity extends AppCompatActivity implements ObraContract.View {
+public class ObrasActivity extends AppCompatActivity implements ObraContract.View, CategoriaContract.View {
 
     private Button agregarbtn;
     public AdapterObras adapterObras;
     private ObraPresenter lstObrasPresenter;
+
+    private CategoriaPresenter lstCategoriaPresenter;
 
     private ArrayList<Obra> lstObras;
 
@@ -33,15 +39,27 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
         setContentView(R.layout.activity_obras);
 
         lstObrasPresenter = new ObraPresenter(this);
+        lstCategoriaPresenter = new CategoriaPresenter(this);
 
 
         Intent intent = getIntent();
         if (intent.hasExtra("idSala")) {
             String idSala = intent.getStringExtra("idSala");
             lstObrasPresenter.getObrasPorSala(idSala);
+            agregarbtn = findViewById(R.id.addbtnObras);
+
+
+            agregarbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ObrasActivity.this, AddActivity.class);
+                    startActivity(intent);
+                }
+            });
+
         } else if(intent.hasExtra("categoria")){
             String categoria = intent.getStringExtra("categoria");
-            //lstObrasPresenter.getObraPorCategoria(categoria);
+            lstCategoriaPresenter.getObrasPorCategoria(categoria);
 
         }else {
             // Manejar el caso en el que no se proporcionó un ID de sala
@@ -56,16 +74,7 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
         lManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(lManager);*/
 
-        agregarbtn = findViewById(R.id.addbtnObras);
 
-
-       agregarbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ObrasActivity.this, AddActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
 
@@ -97,5 +106,20 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
     @Override
     public void failureListObras(String message) {
         Toast.makeText(ObrasActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void sucessListCategorias(ArrayList<Categoria> lstcategoria) {
+
+    }
+
+    @Override
+    public void failureListCategoria(String message) {
+
+    }
+
+    @Override
+    public void successListObrasPorCategoria(ArrayList<Obra> lstObras) {
+
     }
 }

@@ -14,6 +14,8 @@ public interface CategoriaContract {
 
 
         void failureListCategoria(String message);
+
+        void successListObrasPorCategoria(ArrayList<Obra> lstObras);
     }
     public interface Presenter{
         void getCategoria();//la original
@@ -26,6 +28,8 @@ public interface CategoriaContract {
             void onFinished(ArrayList<Categoria> lstcategorias);
 
             void onFailure(String error);
+
+            void obraPorCategoria(ArrayList<Obra> obras);
         }
         void getCategoriasService(CategoriaContract.Model.OnLstCategoriaListener onLstCategoriaListener);
     }

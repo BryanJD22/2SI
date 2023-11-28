@@ -29,6 +29,29 @@ public class CategoriaPresenter extends ArrayList<Categoria> implements Categori
             public void onFailure(String error) {
 
             }
+
+            @Override
+            public void obraPorCategoria(ArrayList<Obra> obras) {
+
+            }
+        });
+
+    }
+
+    public void getObrasPorCategoria(String categoria) {
+        this.model.getObrasPorCategoria(categoria,new CategoriaContract.Model.OnLstCategoriaListener() {
+            @Override
+            public void onFinished(ArrayList<Categoria> lstcategorias) {
+                vista.sucessListCategorias(lstcategorias);
+            }
+            public void obraPorCategoria(ArrayList<Obra> lstObras){
+                vista.successListObrasPorCategoria(lstObras);
+            }
+
+            @Override
+            public void onFailure(String error) {
+
+            }
         });
 
     }

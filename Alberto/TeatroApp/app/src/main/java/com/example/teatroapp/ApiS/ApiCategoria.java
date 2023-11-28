@@ -13,4 +13,7 @@ import retrofit2.http.Query;
 public interface ApiCategoria {
     @GET("ServletTeatro")
     Call<ArrayList<Categoria>> lstcategorias(@Query("ACTION") String action);
+
+    @GET("ServletTeatro")
+    Call<ArrayList<Obra>> lst_obras_categoria(@Query("ACTION") String action, @Query("categoria") String categoria);
 }

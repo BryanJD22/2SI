@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.example.teatroapp.Categorias.CategoriaContract;
 import com.example.teatroapp.beans.Categoria;
+import com.example.teatroapp.beans.Obra;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,9 @@ public class CategoriaActivity extends AppCompatActivity implements CategoriaCon
 
     }
 
+    public void successListObrasPorCategoria(ArrayList<Obra> lstObras){
+
+    }
     @Override
     public void failureListCategoria(String message) {
 

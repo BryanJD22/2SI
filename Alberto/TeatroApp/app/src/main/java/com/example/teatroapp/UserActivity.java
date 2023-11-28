@@ -141,4 +141,9 @@ public class UserActivity extends AppCompatActivity implements ObraContract.View
     public void failureListCategoria(String message) {
 
     }
+
+    @Override
+    public void successListObrasPorCategoria(ArrayList<Obra> lstObras) {
+
+    }
 }
