@@ -27,6 +27,7 @@
         android:background="@drawable/custom_edittext"
         android:gravity="bottom"
         android:text="Añadir obra"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
         card_view:layout_constraintBottom_toBottomOf="parent"

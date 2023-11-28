@@ -60,6 +60,8 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
         } else if(intent.hasExtra("categoria")){
             String categoria = intent.getStringExtra("categoria");
             lstCategoriaPresenter.getObrasPorCategoria(categoria);
+            agregarbtn = findViewById(R.id.addbtnObras);
+            agregarbtn.setVisibility(View.GONE);
 
         }else {
             // Manejar el caso en el que no se proporcionó un ID de sala
@@ -120,6 +122,12 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
 
     @Override
     public void successListObrasPorCategoria(ArrayList<Obra> lstObras) {
+        this.lstObras = lstObras;
+        RecyclerView recyclerView = findViewById(R.id.recyclerObras);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        adapterObras = new AdapterObras(this,lstObras);
+        recyclerView.setAdapter(adapterObras);
 
     }
 }

@@ -182,7 +182,7 @@ public class ObraDAO implements DAO<Obra,Integer>{
         String sql = "SELECT o.* FROM obra o " +
                 "JOIN obra_categoria oc ON o.id_obra = oc.id_obra " +
                 "JOIN categoria c ON oc.id_categoria = c.id_categoria " +
-                "WHERE c.nombre_categoria = "+categoria+";";
+                "WHERE c.nombre_categoria = '"+categoria+"';";
         System.out.println(sql);
         motosSql.conectar();
         ResultSet rs = motosSql.consultar(sql);

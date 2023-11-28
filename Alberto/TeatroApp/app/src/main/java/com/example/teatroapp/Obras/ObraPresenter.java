@@ -41,6 +41,7 @@ public class ObraPresenter extends ArrayList<Obra> implements ObraContract.Prese
         this.modelo.getObrasPorSala(idSala, new ObraContract.Model.OnLstObrasListener(){
             @Override
             public void onFinished(ArrayList<Obra> lstObras) {
+
                 vista.sucessListObras(lstObras);
             }
 
