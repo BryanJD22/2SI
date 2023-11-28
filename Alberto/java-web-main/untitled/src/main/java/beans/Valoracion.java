@@ -18,6 +18,9 @@ public class Valoracion {
     public Valoracion() {
     }
 
+    public Valoracion(int idObra) {
+        this.idObra = idObra;
+    }
 
     public Valoracion(int idValoracion, int valoracion, int idObra, int idUsuario) {
         this.idValoracion = idValoracion;

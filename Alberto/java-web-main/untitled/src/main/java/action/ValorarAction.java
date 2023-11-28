@@ -5,7 +5,9 @@ import model.ValorarDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Array;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ValorarAction implements IAction{
     @Override
@@ -18,10 +20,24 @@ public class ValorarAction implements IAction{
             case "ADDVALORACION":
                 pagDestino = valorar(request, response);
                 break;
+            case"VALORACIONOBRA":
+                pagDestino = valoracionObra(request, response);
+                break;
+
 
 
         }
         return pagDestino;
+    }
+
+    private String valoracionObra(HttpServletRequest request, HttpServletResponse response) {
+        ValorarDAO valorarDAO = new ValorarDAO();
+        int id_obra = Integer.parseInt(request.getParameter("IDOBRA"));
+        Valoracion valoracion = new Valoracion(id_obra);
+
+        //ArrayList<Valoracion> valoracionObra = new ValorarDAO().
+
+        return null;
     }
 
 

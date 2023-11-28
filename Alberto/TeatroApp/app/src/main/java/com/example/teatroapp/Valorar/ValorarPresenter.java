@@ -29,7 +29,8 @@ public class ValorarPresenter implements ValorarContract.Presenter{
 
             @Override
             public void getObrasByid(ArrayList<Obra> lstObras) {
-                    vista.sendRequestObras(lstObras);
+
+                vista.sendRequestObras(lstObras);
             }
 
             @Override
@@ -41,6 +42,21 @@ public class ValorarPresenter implements ValorarContract.Presenter{
     }
 
     public void addValoracion(Valoracion valoracion){
+        this.modelo.addValoracion(valoracion, new ValorarContract.Model.OnLstValoracionesListener() {
+            @Override
+            public void onFinished(ArrayList<Valoracion> lstValoraciones) {
+                    vista.sucessLstValoraciones(lstValoraciones);
+            }
 
+            @Override
+            public void getObrasByid(ArrayList<Obra> lstObras) {
+
+            }
+
+            @Override
+            public void onFailure(String error) {
+
+            }
+        });
     }
 }

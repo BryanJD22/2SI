@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.teatroapp.Adapter.CategoriasAdapter;
 import com.example.teatroapp.Valorar.ValorarContract;
 import com.example.teatroapp.Valorar.ValorarPresenter;
 import com.example.teatroapp.beans.Obra;
@@ -25,6 +26,11 @@ public class DetallesActivity extends AppCompatActivity implements ValorarContra
     private RecyclerView recyclerViewCategorias;
     private int idObra;
     ValorarPresenter presenter;
+
+    private RecyclerView.Adapter adaptercategorias;
+
+    private RecyclerView  recyclerViewCategoria;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +62,17 @@ public class DetallesActivity extends AppCompatActivity implements ValorarContra
 
     @Override
     public void sendRequestObras(ArrayList<Obra> lstObras) {
+        Obra obra = lstObras.get(0);
 
+        tituloObra.setText(obra.getTituloObra());
+        //obraValoracionTxt.setText();
+        duracionTxt.setText(obra.getDuracionMin());
+        descObra.setText(obra.getDescripcionObra());
+
+        if (obra.getCategoria() != null) {
+            //adaptercategorias = new CategoriasAdapter(obra.getCategoria());
+            recyclerViewCategoria.setAdapter(adaptercategorias);
+        }
     }
 
     @Override
