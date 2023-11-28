@@ -22,8 +22,8 @@ public class ObraDAO implements DAO<Obra,Integer>{
 
         motosSql.conectar();
 
-        String sql = "INSERT INTO OBRA(titulo_obra, descripcion_obra, duracion_min, imagen_obra, precio) VALUES '(" + bean.getTituloObra()+"','"
-                + bean.getDescripcionObra() +"','" +bean.getDuracionMin()+ "','"+bean.getImagenObra()+"','"+bean.getPrecio()+"')";
+        String sql = "INSERT INTO OBRA(titulo_obra, descripcion_obra, duracion_min, precio) VALUES ('" + bean.getTituloObra()+"','"
+                + bean.getDescripcionObra() +"'," +bean.getDuracionMin()+ ","+bean.getPrecio()+")";
         System.out.println(sql);
         resp = motosSql.modificar(sql);
         System.out.println(resp);
@@ -160,7 +160,6 @@ public class ObraDAO implements DAO<Obra,Integer>{
                 Obra obra = new Obra(
                         rs.getInt("id_obra"),
                         rs.getString("titulo_obra"),
-                        rs.getString("categoria"),
                         rs.getString("descripcion_obra"),
                         rs.getInt("duracion_min"),
                         rs.getBigDecimal("precio"),

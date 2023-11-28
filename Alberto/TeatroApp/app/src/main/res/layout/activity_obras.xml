@@ -7,66 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".ObrasActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        card_view:cardCornerRadius="4dp"
-        card_view:cardElevation="4dp"
-        card_view:cardUseCompatPadding="true"
-        tools:ignore="MissingConstraints">
 
-        <RelativeLayout
-            android:id="@+id/lstObras"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerObras"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" />
-
-            <ImageView
-                android:id="@+id/imagen"
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop" />
-
-            <TextView
-                android:id="@+id/tituloObra"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/imagen"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <TextView
-                android:id="@+id/categoria"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tituloObra"
-                android:text="TextView"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-            <TextView
-                android:id="@+id/desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tituloObra"
-                android:layout_alignLeft="@+id/categoria"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerObras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints" />
 
 
-    </androidx.cardview.widget.CardView>
+
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/addBtn"
+        android:id="@+id/addbtnObras"
         style="@android:style/Widget.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

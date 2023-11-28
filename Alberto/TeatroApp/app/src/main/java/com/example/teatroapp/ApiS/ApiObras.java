@@ -21,7 +21,6 @@ public interface ApiObras {
     @GET("ServletTeatro")
     Call<ArrayList<Obra>> addObra(@Query("ACTION") String action,
                                   @Query("TITULO") String titulo,
-                                  @Query("CATEGORIA") String categoria,
                                   @Query("DESC") String desc,
                                   @Query("DURACION") int duracion,
                                   @Query("PRECIO") BigDecimal precio);

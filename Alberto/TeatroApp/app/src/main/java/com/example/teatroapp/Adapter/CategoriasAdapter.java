@@ -38,21 +38,21 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
     public void onBindViewHolder(@NonNull CategoriasAdapter.ViewHolder holder, int position) {
 
         Categoria categoria = listCategorias.get(position);
-        holder.categoriaTxt.setText(listCategorias.get(position).getNombre_categoria());
+        holder.categoriaTxt.setText(categoria.getNombre_categoria());
 
 
-        holder.itemView.setOnClickListener(v -> {
+       /* holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ObrasActivity.class);
-            intent.putExtra("categoria", listCategorias.get(position).getNombre_categoria());
+            intent.putExtra("categoria", categoria.getNombre_categoria());
             context.startActivity(intent);
 
-        });
+        });*/
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listCategorias.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

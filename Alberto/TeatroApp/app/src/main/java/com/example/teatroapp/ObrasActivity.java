@@ -26,6 +26,7 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
 
     private ArrayList<Obra> lstObras;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,7 @@ public class ObrasActivity extends AppCompatActivity implements ObraContract.Vie
         lManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(lManager);*/
 
-        agregarbtn = findViewById(R.id.addBtn);
+        agregarbtn = findViewById(R.id.addbtnObras);
 
 
        agregarbtn.setOnClickListener(new View.OnClickListener() {

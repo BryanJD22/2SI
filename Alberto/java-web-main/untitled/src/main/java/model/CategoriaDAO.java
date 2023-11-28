@@ -41,7 +41,7 @@ public class CategoriaDAO implements DAO<Categoria,Integer> {
 
         try {
             while (rs.next()) {
-                Categoria categoria = new Categoria(rs.getInt("id_categoria"),
+                Categoria categoria = new Categoria(
                                                 rs.getString("nombre_categoria")
 
                 );

@@ -83,7 +83,7 @@ check out our recommendation for you"
                     android:textColor="#9F9A9A"/>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/addBtn"
+                    android:id="@+id/addBtnintro"
                     style="@android:style/Widget.Button"
                     android:layout_marginTop="8dp"
                     android:layout_width="match_parent"

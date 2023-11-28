@@ -84,13 +84,17 @@ public class ObraAction implements IAction{
     private String addObra(HttpServletRequest request, HttpServletResponse response) {
         ObraDAO obraDAO = new ObraDAO();
         String tituloObra = request.getParameter("TITULO");
-        String categoria = request.getParameter("CATEGORIA");
+        //String categoria = request.getParameter("CATEGORIA");
         String desc = request.getParameter("DESC");
         String duracion = request.getParameter("DURACION");
         //String img = request.getParameter("IMG");
         String precio = request.getParameter("PRECIO");
+        System.out.println("Título recibido: " + tituloObra);
+        System.out.println("Descripción recibida: " + desc);
+        System.out.println("Duración recibida: " + duracion);
+        System.out.println("Precio recibido: " + precio);
         BigDecimal precioObra = new BigDecimal(precio);
-        Obra obra = new Obra(tituloObra,categoria,desc, Integer.parseInt(duracion),precioObra);
+        Obra obra = new Obra(tituloObra,desc, Integer.parseInt(duracion),precioObra);
         int respuesta = obraDAO.add(obra);
         return "{\"lineas_afectadas\":"+respuesta+"}";
 

@@ -31,7 +31,7 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
     @NonNull
     @Override
     public AdapterObras.ObrasViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.activity_obras, parent, false);
+        View view = inflater.inflate(R.layout.obras_row, parent, false);
         return new ObrasViewHolder(view);
     }
 
@@ -42,16 +42,16 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
     public void onBindViewHolder(ObrasViewHolder holder, int posfila) {
         Obra obra = lstObras.get(posfila);
 
-        holder.tituloObra.setText(lstObras.get(posfila).getTituloObra());
+        holder.AtituloObra.setText(lstObras.get(posfila).getTituloObra());
 
-        holder.categoria.setText(lstObras.get(posfila).getCategoria());
+        //holder.Acategoria.setText(lstObras.get(posfila).getCategoria());
 
-        holder.desc.setText(lstObras.get(posfila).getDescripcionObra());
+        holder.Adesc.setText(lstObras.get(posfila).getDescripcionObra());
         // Usa Picasso para cargar y mostrar la imagen
         Picasso.get()
                 .load(obra.getImagenObra()) // Reemplaza con el método que obtiene la URL de la imagen
                 .placeholder(R.drawable.pruebaimagentoji) // Reemplaza con tu recurso de imagen de carga
-                .into(holder.imagen);
+                .into(holder.Aimagen);
 
         //holder.imagen.setimagelstObras.get(posfila).getImagenObra();
 
@@ -68,21 +68,19 @@ public class AdapterObras extends RecyclerView.Adapter<AdapterObras.ObrasViewHol
 
 
     public static class ObrasViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
+        public ImageView Aimagen;
+        public TextView AtituloObra;
 
-        // Campos respectivos de un item
-        public ImageView imagen;
-        public TextView tituloObra;
-
-        public TextView categoria;
-        public TextView desc;
+        public TextView Acategoria;
+        public TextView Adesc;
 
 
         public ObrasViewHolder(View obra) {
             super(obra);
-            imagen = (ImageView) obra.findViewById(R.id.imagen);
-            tituloObra = (TextView) obra.findViewById(R.id.tituloObra);
-            categoria = (TextView) obra.findViewById(R.id.categoria);
-            desc = (TextView) obra.findViewById(R.id.desc);
+            Aimagen = (ImageView) obra.findViewById(R.id.Aimagen);
+            AtituloObra = (TextView) obra.findViewById(R.id.AtituloObra);
+            //Acategoria = (TextView) obra.findViewById(R.id.Acategoria);
+            Adesc = (TextView) obra.findViewById(R.id.Adesc);
             //obra.setOnClickListener(this);
         }
 

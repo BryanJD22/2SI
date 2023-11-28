@@ -24,6 +24,22 @@ public class Obra {
     public Obra() {
     }
 
+    public Obra(String tituloObra, String descripcionObra, int duracionMin, BigDecimal precio) {
+        this.tituloObra = tituloObra;
+        this.descripcionObra = descripcionObra;
+        this.duracionMin = duracionMin;
+        this.precio = precio;
+    }
+
+    public Obra(int idObra, String tituloObra, String descripcionObra, int duracionMin, BigDecimal precio, String imagenObra) {
+        this.idObra = idObra;
+        this.tituloObra = tituloObra;
+        this.descripcionObra = descripcionObra;
+        this.duracionMin = duracionMin;
+        this.precio = precio;
+        this.imagenObra = imagenObra;
+    }
+
     public Obra(String tituloObra, String descripcionObra, String categoria, int duracionMin, BigDecimal precio, String imagenObra) {
         this.tituloObra = tituloObra;
         this.descripcionObra = descripcionObra;
@@ -78,11 +94,12 @@ public class Obra {
     public Obra(String categoria) {
     }
 
-    public Obra(String tituloObra, String desc, int i, BigDecimal precioObra) {
-    }
+
 
     public Obra(String tituloObra, String categoria, String desc, int i, BigDecimal precioObra) {
     }
+
+
 
     public int getIdObra() {
         return idObra;
