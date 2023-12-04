@@ -112,38 +112,17 @@ class M_Usuarios extends Modelo
 
 
 
-    public function xUsuario($parametros =  array())
-    {
-        $apellido_insert = '';
-        $nombre_insert = '';
-        $usuario_insert = '';
-        $sexo_insert = '';
-        $telefono_insert = '';
-        $password_insert = '';
+    public function obtenerUsuarioPorId($idUsuario) {
+        $idUsuario = intval($idUsuario); // Aseguramos que $idUsuario sea un entero para evitar inyecciones SQL
 
+        // Construir la consulta SQL utilizando consultas preparadas para evitar inyecciones SQL
+        $SQL = "SELECT * FROM usuarios WHERE id_Usuario = $idUsuario";
 
-        extract($parametros);
-        $SQL = "INSERT INTO usuarios (nombre, apellido_1, apellido_2, sexo, fecha_Alta, mail,movil, login, pass, activo )";
+        // Llamamos al método consultar del DAO con la consulta SQL y los parámetros
+        $usuario = $this->DAO->consultar($SQL, array($idUsuario));
 
-
-        $nombre_insert = addslashes($nombre_insert);
-        $apellido_insert = addslashes($apellido_insert);
-        $usuario_insert = addslashes($usuario_insert);
-        $telefono_insert = addslashes($telefono_insert);
-        $sexo_insert = addslashes($sexo_insert);
-        $password_insert = addslashes($password_insert);
-
-        $SQL .= "VALUES('$nombre_insert','$apellido_insert','$apellido_insert','$sexo_insert',NOW(),'$usuario_insert@correoPrueba.com','$telefono_insert','$usuario_insert',MD5('$password_insert'),'S')";
-
-
-
-
-        $this->DAO->insertar($SQL);
-
-        $mensaje = 'Usuario introducido correctamente';
-
-
-        return $mensaje;
+        // Devolvemos el primer resultado (debería ser único por el ID)
+        return $usuario;
 
     }
 

@@ -42,3 +42,23 @@ function agregarUsuario() {
         });
 
 }
+
+function getVistaEditar(idUsuario) {
+    let opciones = { method: "GET" };
+    
+
+    // Construye la URL de la petición AJAX
+    let url = 'http://localhost/C_Ajax.php?controlador=Usuarios&metodo=getVistaEditar&id_Usuario=' + idUsuario;
+
+
+    // Realiza la petición AJAX
+    fetch(url, opciones)
+        .then(response => response.text())
+        .then(data => {
+
+            document.getElementById('contenedorEdicionUsuario').innerHTML = data;
+            return res.text();
+            
+        })
+        .catch(error => console.error('Error:', error));
+}

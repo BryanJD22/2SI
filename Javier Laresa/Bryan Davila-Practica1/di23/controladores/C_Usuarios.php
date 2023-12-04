@@ -39,8 +39,17 @@
         public function crearUsuario($filtros = array()) {
             
             $usuarios=$this->modelo->crearUsuario($filtros);
+
         }
-        
+        public function getVistaEditar($idUsuario) {
+
+            $usuario = $this->modelo->obtenerUsuarioPorId($idUsuario);
+
+            var_dump($usuario);
+            
+            Vista::render('vistas/Usuarios/V_Usuarios_Editar.php', array('usuarios' => $usuario));
+
+        }
         
 
 

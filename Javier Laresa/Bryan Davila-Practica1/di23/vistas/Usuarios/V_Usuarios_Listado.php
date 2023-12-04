@@ -51,6 +51,8 @@
             echo '<td>' . returnGenero($fila) . '</td>';
             echo '<td>' . $fila['movil'] . '</td>';
             echo '<td>' . returnActivos($fila) . '</td>';
+            echo '<td><button onclick="getVistaEditar(' . $fila['id_Usuario'] . ')">Editar</button></td>';
+            echo '<td><button onclick="eliminarUsuario(' . $fila['id_Usuario'] . ')">Eliminar</button></td>';
             echo '</tr>';
         }
 

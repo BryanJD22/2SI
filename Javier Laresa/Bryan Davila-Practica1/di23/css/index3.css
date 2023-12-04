@@ -1,6 +1,7 @@
 html {
     background: linear-gradient(180deg, #4CAF50 0%, #689F38 100%) !important;
     min-height: 100%;
+    background-color: white;
 }
 
 body {
@@ -59,16 +60,19 @@ body {
     padding-left: unset;
     padding-right: unset;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
 #bloqueContenido {
     background: transparent;
+    background-color: white;
     padding-bottom: 45px;
 
 }
 
 #secContenidoPagina {
     background: transparent;
+    background-color: white;
 }
 
 #bloqueTxt {
@@ -104,24 +108,24 @@ input {
 
 /* Personalización para colores de Bootstrap */
 .bg-success {
-    background-color: #4CAF50 !important;
+    background-color: white !important;
 }
 
 .bg-info {
-    background-color: #689F38 !important;
+    background-color: white !important;
 }
 
 .table-dark th, .table-dark td {
-    background-color: #4CAF50 !important;
-    color: #fff;
+    background-color: white !important;
+    color: black;
 }
 
 .table-dark tbody tr:nth-child(odd) td {
-    background-color: #4CAF50 !important;
+    background-color: white !important;
 }
 
 .table-dark tbody tr:hover td {
-    background-color: #45a049 !important;
+    background-color: white !important;
 }
 
 #capaResultadosBusqueda {
