@@ -112,16 +112,14 @@ class M_Usuarios extends Modelo
 
 
 
-    public function obtenerUsuarioPorId($idUsuario) {
-        $idUsuario = intval($idUsuario); // Aseguramos que $idUsuario sea un entero para evitar inyecciones SQL
+    public function obtenerUsuarioPorId($filtro=array()) {
+        $id_Usuario='';
+        extract($filtro);
+        
+        $SQL="SELECT * FROM usuarios WHERE id_Usuario=$id_Usuario";
 
-        // Construir la consulta SQL utilizando consultas preparadas para evitar inyecciones SQL
-        $SQL = "SELECT * FROM usuarios WHERE id_Usuario = $idUsuario";
-
-        // Llamamos al método consultar del DAO con la consulta SQL y los parámetros
-        $usuario = $this->DAO->consultar($SQL, array($idUsuario));
-
-        // Devolvemos el primer resultado (debería ser único por el ID)
+        $usuario=$this->DAO->consultar($SQL);
+        
         return $usuario;
 
     }

@@ -41,17 +41,20 @@
             $usuarios=$this->modelo->crearUsuario($filtros);
 
         }
-        public function getVistaEditar($idUsuario) {
+        public function getVistaEditar() {
 
-            $usuario = $this->modelo->obtenerUsuarioPorId($idUsuario);
-
-            var_dump($usuario);
-            
-            Vista::render('vistas/Usuarios/V_Usuarios_Editar.php', array('usuarios' => $usuario));
+            Vista::render('vistas/Usuarios/V_Usuarios_Editar.php');
 
         }
         
+        public function buscarUsuarioPorID($filtros=array()){
+            $usuario = $this->modelo->obtenerUsuarioPorId($filtros);
 
+            //echo json_encode($usuarios);e
+            //Esta funcion renderiza el listado de usuarios mandandole el array de usuarios encontrados
+            Vista::render('vistas/Usuarios/V_Usuarios_Editar.php', array('usuarios' => $usuario));
+        }
+    
 
     }
 ?>

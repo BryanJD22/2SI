@@ -10,6 +10,8 @@
         echo '<th>Sexo</th>';
         echo '<th>Telefono</th>';
         echo '<th>Actividad</th>';
+        echo '<th>Editar</th>';
+        echo '<th>Eliminar</th>';
         echo '</tr>';
         echo '</thead>';
         echo '<tbody>';
@@ -51,7 +53,7 @@
             echo '<td>' . returnGenero($fila) . '</td>';
             echo '<td>' . $fila['movil'] . '</td>';
             echo '<td>' . returnActivos($fila) . '</td>';
-            echo '<td><button onclick="getVistaEditar(' . $fila['id_Usuario'] . ')">Editar</button></td>';
+            echo '<td><button onclick=getParams('. $fila['id_Usuario'].');getVistaMenuSeleccionado('.'Usuarios'.','.'getVistaEditar'.')>Editar</button></td>';
             echo '<td><button onclick="eliminarUsuario(' . $fila['id_Usuario'] . ')">Eliminar</button></td>';
             echo '</tr>';
         }

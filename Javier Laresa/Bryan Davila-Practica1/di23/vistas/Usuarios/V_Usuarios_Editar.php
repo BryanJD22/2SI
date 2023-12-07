@@ -1,31 +1,7 @@
 <?php
-echo("vista");
+    //Hacemos una comprobacion para saber si el usuario ha iniciado sesion y en caso de que haya iniciado le mosntramos el siguiente mensaje
 
-
-$usuarios = $usuarios['usuarios'];
-var_dump($usuario);
-
-
-
-
-
-
-
-
-
-// Asegúrate de tener los datos del usuario disponibles en $usuario (puedes pasarlo desde el controlador)
-$idUsuario = $usuario['id_Usuario'];
-$nombre = $usuario['nombre'];
-$apellido1 = $usuario['apellido_1'];
-$apellido2 = $usuario['apellido_2'];
-$sexo = $usuario['sexo'];
-$mail = $usuario['mail'];
-$movil = $usuario['movil'];
-$login = $usuario['login'];
-$pass = $usuario['pass'];
-$activo = $usuario['activo'];
-
-
+    $usuario = $datos['usuarios'];
 ?>
 
 
@@ -49,15 +25,20 @@ $activo = $usuario['activo'];
     <body>
     <div id="contenedorEdicionUsuario">
         <form id="formularioEdicionUsuario">
-            <input type="hidden" name="id_Usuario" value="<?php echo $idUsuario; ?>">
-            Nombre: <input type="text" name="nombre" value="<?php echo $nombre; ?>"><br>
-            Apellido 1: <input type="text" name="apellido1" value="<?php echo $apellido1; ?>"><br>
-            Apellido 2: <input type="text" name="apellido2" value="<?php echo $apellido2; ?>"><br>
-            Sexo: <input type="text" name="sexo" value="<?php echo $sexo; ?>"><br>
-            Mail: <input type="text" name="mail" value="<?php echo $mail; ?>"><br>
-            Movil: <input type="text" name="movil" value="<?php echo $movil; ?>"><br>
-            Login: <input type="text" name="login" value="<?php echo $login; ?>"><br>
-            Contraseña: <input type="password" name="pass" value="<?php echo $pass; ?>"><br>
+            <input type="hidden" name="id_Usuario" value="<?php echo $usuario[0]['id_Usuario'] ?>">
+            Nombre: <input type="text" name="nombre" value="<?php echo $usuario[0]['nombre'] ?>"><br>
+            Apellido 1: <input type="text" name="apellido1" value="<?php echo $usuario[0]['apellido_1']?>"><br>
+            Apellido 2: <input type="text" name="apellido2" value="<?php echo $usuario[0]['apellido_2'] ?>"><br>    
+            <label for="sexo">Sexo:
+                <select id="sexo" name="sexo">
+                    <option value="M" selected="selected">M</option>
+                    <option value="H">H</option>
+                </select>
+            </label>
+            Mail: <input type="text" name="mail" value="<?php echo $usuario[0]['mail'] ?>" ><br>
+            Movil: <input type="text" name="movil" value="<?php echo $usuario[0]['movil'] ?>" ><br>
+            Login: <input type="text" name="login" value="<?php echo $usuario[0]['login'] ?>" ><br>
+            Contraseña: <input type="password" name="pass" value="<?php echo $usuario[0]['pass'] ?>"><br>
             Activo: <input type="text" name="activo" value="<?php echo $activo; ?>"><br>
 
            <button type="button" onclick="guardarCambios()">Guardar cambios</button>

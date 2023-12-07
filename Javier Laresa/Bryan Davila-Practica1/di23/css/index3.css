@@ -1,5 +1,5 @@
 html {
-    background: linear-gradient(180deg, #4CAF50 0%, #689F38 100%) !important;
+    background: white;
     min-height: 100%;
     background-color: white;
 }
@@ -31,7 +31,7 @@ body {
 }
 
 #secEncabezadoPagina {
-    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    background: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -87,8 +87,8 @@ body {
 }
 
 input {
-    background: linear-gradient(180deg, #4CAF50 0%, #689F38 100%);
-    border: none;
+    background: white;
+    border: solid #45a049;
 }
 
 #btnBuscar {

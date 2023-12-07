@@ -19,6 +19,8 @@ echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
     <input type="checkbox" id="d_texto" name="d_texto" value="S" >
 </label>
 <button type="button" id="btnBuscar" onclick="buscarUsuarios()">Buscar</button>
+
+
 </form>
 <div id="capaResultadosBusqueda">
 </div>
