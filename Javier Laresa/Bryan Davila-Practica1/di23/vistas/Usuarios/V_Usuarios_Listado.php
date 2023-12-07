@@ -33,15 +33,7 @@
             }
         }
             
-            
-
-
-
-            // }elseif($fila['sexo'] == 'H'){
-            //     return "Activo";
-            // }else{
-            //     return"Inactivo";
-            // }
+    
         
     
 
@@ -53,7 +45,7 @@
             echo '<td>' . returnGenero($fila) . '</td>';
             echo '<td>' . $fila['movil'] . '</td>';
             echo '<td>' . returnActivos($fila) . '</td>';
-            echo '<td><button onclick=getParams('. $fila['id_Usuario'].');getVistaMenuSeleccionado('.'Usuarios'.','.'getVistaEditar'.')>Editar</button></td>';
+            echo '<td><button class="btn btn-success" onclick=getParams('. $fila['id_Usuario'].');getVistaMenuSeleccionado('.'Usuarios'.','.'getVistaEditar'.')>Editar</button></td>';
             echo '<td><button onclick="eliminarUsuario(' . $fila['id_Usuario'] . ')">Eliminar</button></td>';
             echo '</tr>';
         }

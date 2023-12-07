@@ -9,18 +9,18 @@ echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
     <input type="text" id="b_texto" name="b_texto" placeholder="Nombre">
 </label>
 <label for="c_texto">Sexo
-   <select name="c_texto">
+   <select  class="form-control" id="form_sexo"  name="c_texto">
    <option value="T">Todos</option>
     <option value="H">H</option>
     <option value="M">M</option>
    </select>
 </label>
-<label for="d_texto">Actividad
+<label  for="d_texto">Actividad
     <input type="checkbox" id="d_texto" name="d_texto" value="S" >
 </label>
-<button type="button" id="btnBuscar" onclick="buscarUsuarios()">Buscar</button>
+<button type="button" class="btn btn-success"  id="btnBuscar" onclick="buscarUsuarios()">Buscar</button>
 
-<button type="button" id="btnAñadir" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaAñadir')">Añadir</button>
+<button type="button" class="btn btn-success" id="btnAñadir" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaAñadir')">Añadir</button>
 
 </form>
 <div id="capaResultadosBusqueda">

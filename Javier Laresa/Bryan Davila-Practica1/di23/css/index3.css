@@ -95,8 +95,17 @@ input {
     background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
     border: none;
 }
+
+#btnAñadir {
+    background: linear-gradient(180deg, #689F38 0%, #4CAF50 100%);
+    border: none;
+    float: right; /* Agregado para alinear a la derecha */
+    margin-right: 10px; /* Opcional: Agrega un pequeño margen derecho */
+}
+
 #tablaListado {
-    margin-top: 15px;
+    width: 100%;
+    
 }
 
 #tablaListado th,
@@ -105,6 +114,7 @@ input {
     border-bottom: 1px solid #4CAF50;
     text-align: left;
 }
+
 
 /* Personalización para colores de Bootstrap */
 .bg-success {
@@ -132,7 +142,7 @@ input {
     width: 100% !important;
     height: 700px;
     overflow: auto;
-    border: solid #4CAF50 1px;
+    margin-top: 10px;
 }
 
 select {
@@ -161,9 +171,22 @@ select {
     background-color: #45a049;
 }
 
+form_sexo
+
 #body_formulario{
     background-color: #4CAF50;
 }
 
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
 
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
 
+.titulo-verde {
+    background-color: #4CAF50 !important; 
+    color: white; 
+    padding: 10px; 
+    text-align: center;
+}
