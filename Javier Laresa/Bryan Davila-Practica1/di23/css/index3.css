@@ -171,7 +171,9 @@ select {
     background-color: #45a049;
 }
 
-form_sexo
+#form_sexo{
+    color: white !important;
+}
 
 #body_formulario{
     background-color: #4CAF50;
