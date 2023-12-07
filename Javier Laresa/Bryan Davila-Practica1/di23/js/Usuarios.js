@@ -43,30 +43,27 @@ function agregarUsuario() {
 
 }
 
-function getVistaEditar(idUsuario) {
+function guardarCambios(id){
     let opciones = { method: "GET" };
-    
+    let parametros = "controlador=Usuarios&metodo=editarUsuarios";
+    parametros += "&id_Usuario=" + id + "&" + new URLSearchParams(new FormData(document.getElementById("formularioEdicionUsuario"))).toString();
 
-    // Construye la URL de la petición AJAX
-    let url = 'http://localhost/C_Ajax.php?controlador=Usuarios&metodo=getVistaEditar&id_Usuario=' + idUsuario;
+    console.log(parametros)
 
-    console.log(url);
-
-    // Realiza la petición AJAX
-    fetch(url, opciones)
-        .then(response => {
-            if(response.ok){
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
                 console.log('respuesta ok');
-                return response.text();
+                return res.text();
             }
-
         })
-        .then(data => {
-
-            document.getElementById("contenedorEdicionUsuario").innerHTML = data;
-            
+        .then(vista => {
+            document.getElementById("capaResultadosUpdatear").innerHTML = vista;
         })
-        .catch(error => console.error('Error:', error));
+        .catch(err => {
+            //Error al realizar la petición Cannot set properties of null (setting 'innerHTML')
+            console.log("Error al realizar la petición", err.message);
+        });
 }
 
 function getParams(id){

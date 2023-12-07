@@ -50,11 +50,15 @@
         public function buscarUsuarioPorID($filtros=array()){
             $usuario = $this->modelo->obtenerUsuarioPorId($filtros);
 
-            //echo json_encode($usuarios);e
-            //Esta funcion renderiza el listado de usuarios mandandole el array de usuarios encontrados
             Vista::render('vistas/Usuarios/V_Usuarios_Editar.php', array('usuarios' => $usuario));
         }
-    
+        
+        public function editarUsuarios($filtros=array()){
+            $usuario = $this->modelo->editarUsuarios($filtros);
+            
+            Vista::render('vistas/Usuarios/V_Resultado_Editar.php', array('usuarios' => $usuario));
+            
+        }
 
     }
 ?>

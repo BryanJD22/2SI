@@ -41,7 +41,7 @@
             Contraseña: <input type="password" name="pass" value="<?php echo $usuario[0]['pass'] ?>"><br>
             Activo: <input type="text" name="activo" value="<?php echo $activo; ?>"><br>
 
-           <button type="button" onclick="guardarCambios()">Guardar cambios</button>
+           <button type="button" onclick="guardarCambios(<?php echo $usuario[0]['id_Usuario'] ?>)">Guardar cambios</button>
         </form>
     </div>
     </body>

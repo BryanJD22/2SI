@@ -124,5 +124,61 @@ class M_Usuarios extends Modelo
 
     }
 
+    public function editarUsuarios($filtro=array()){
+        //sexo  mail  movil  login  pass
+        $id_Usuario='';
+        $nombre='';
+        $pass='';
+        $movil='';
+        $mail='';
+        $apellido1='';
+        $apellido2='';
+        $sexo='';
+        $login='';
+        extract($filtro);
+
+        $SET='';
+
+        if($nombre!=null){
+            $SET.= "nombre='$nombre',";
+        }
+        if($apellido1!= ''){
+            $SET.= "apellido_1='$apellido1',";
+        }
+        if($apellido2!= ''){
+            $SET.= "apellido_2='$apellido2',";
+        }
+        if($sexo!= ''){
+            $SET.= "sexo='$sexo',";
+        }
+        if($mail!= ''){
+            $SET.= "mail='$mail',";
+        }
+        if($movil!= ''){
+            $SET.= "movil='$movil',";
+        }
+        if($login!= ''){
+            $SET.= "login='$login',";
+        }
+        if($pass!= ''){
+            $SET.= "pass='$pass',";
+        }
+
+        $SET = mb_substr($SET, 0, -1);
+        $SQL="UPDATE usuarios SET $SET WHERE id_Usuario=$id_Usuario";
+
+        echo($SQL);
+        $respuesta=$this->DAO->actualizar($SQL);
+        
+        if($respuesta!=null){
+            $insertado = 'Actualizado correctamente';
+            return $insertado;
+        }else{
+            $insertado = 'Ha ocurrido un error al actualizar';
+            return $insertado;
+        }
+        
+    }
+
 
 }

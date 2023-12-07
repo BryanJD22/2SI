@@ -20,6 +20,7 @@ echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
 </label>
 <button type="button" id="btnBuscar" onclick="buscarUsuarios()">Buscar</button>
 
+<button type="button" id="btnAñadir" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaAñadir')">Añadir</button>
 
 </form>
 <div id="capaResultadosBusqueda">
