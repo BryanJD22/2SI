@@ -66,10 +66,10 @@
                         <input type="text" class="form-control" name="login" value="<?php echo $usuario[0]['login'] ?>">
                     </div>
 
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <label for="pass">Contraseña:</label>
                         <input type="password" class="form-control" name="pass" value="<?php echo $usuario[0]['pass'] ?>">
-                    </div>
+                    </div>-->
 
                     <div class="form-group">
                         <label for="activo">Activo:</label>

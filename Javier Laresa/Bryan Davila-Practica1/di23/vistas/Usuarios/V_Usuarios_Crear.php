@@ -17,29 +17,29 @@
 
         <div class="form-group">
             <label for="nombreEdt">Nombre:</label>
-            <input type="text" class="form-control" name="nombreEdt" >
+            <input type="text" class="form-control" name="nombreEdt" required>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="apellido1Edt">Apellido 1:</label>
-                <input type="text" class="form-control" name="apellido1Edt" >
+                <input type="text" class="form-control" name="apellido1Edt" require>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="apellido2Edt">Apellido 2:</label>
-                <input type="text" class="form-control" name="apellido2Edt" >
+                <input type="text" class="form-control" name="apellido2Edt" require>
             </div>
         </div>
 
         <div class="form-group">
             <label for="usuarioEdt">Usuario:</label>
-            <input type="text" class="form-control" name="usuarioEdt" >
+            <input type="text" class="form-control" name="usuarioEdt" require>
         </div>
 
         <div class="form-group">
             <label for="sexoEdt">Sexo:</label>
-            <select class="form-control" name="sexoEdt" >
+            <select class="form-control" name="sexoEdt" require>
                 <option value="H">Hombre</option>
                 <option value="M">Mujer</option>
             </select>
@@ -47,22 +47,22 @@
 
         <div class="form-group">
             <label for="emailEdt">Email:</label>
-            <input type="email" class="form-control" name="emailEdt" >
+            <input type="email" class="form-control" name="emailEdt" require>
         </div>
 
-        <div class="form-group">
+        <!--<div class="form-group">
             <label for="contrasenaEdt">Contraseña:</label>
-            <input type="password" class="form-control" name="contrasenaEdt" >
-        </div>
+            <input type="password" class="form-control" name="contrasenaEdt" require>
+        </div>-->
 
         <div class="form-group">
             <label for="telefonoEdt">Teléfono:</label>
-            <input type="tel" class="form-control" name="telefonoEdt">
+            <input type="tel" class="form-control" name="telefonoEdt" require>
         </div>
 
         <div class="form-group">
             <label for="actividadEdt">Actividad:</label>
-            <select class="form-control" name="actividadEdt" >
+            <select class="form-control" name="actividadEdt" require>
                 <option value="S">Activo</option>
                 <option value="N">Inactivo</option>
             </select>
