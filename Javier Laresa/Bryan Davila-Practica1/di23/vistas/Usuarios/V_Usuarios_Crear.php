@@ -23,23 +23,23 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="apellido1Edt">Apellido 1:</label>
-                <input type="text" class="form-control" name="apellido1Edt" require>
+                <input type="text" class="form-control" name="apellido1Edt" required>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="apellido2Edt">Apellido 2:</label>
-                <input type="text" class="form-control" name="apellido2Edt" require>
+                <input type="text" class="form-control" name="apellido2Edt" required>
             </div>
         </div>
 
         <div class="form-group">
             <label for="usuarioEdt">Usuario:</label>
-            <input type="text" class="form-control" name="usuarioEdt" require>
+            <input type="text" class="form-control" name="usuarioEdt" required>
         </div>
 
         <div class="form-group">
             <label for="sexoEdt">Sexo:</label>
-            <select class="form-control" name="sexoEdt" require>
+            <select class="form-control" name="sexoEdt" required>
                 <option value="H">Hombre</option>
                 <option value="M">Mujer</option>
             </select>
@@ -47,7 +47,7 @@
 
         <div class="form-group">
             <label for="emailEdt">Email:</label>
-            <input type="email" class="form-control" name="emailEdt" require>
+            <input type="email" class="form-control" name="emailEdt" required>
         </div>
 
         <!--<div class="form-group">
@@ -57,12 +57,12 @@
 
         <div class="form-group">
             <label for="telefonoEdt">Teléfono:</label>
-            <input type="tel" class="form-control" name="telefonoEdt" require>
+            <input type="tel" class="form-control" name="telefonoEdt" required>
         </div>
 
         <div class="form-group">
             <label for="actividadEdt">Actividad:</label>
-            <select class="form-control" name="actividadEdt" require>
+            <select class="form-control" name="actividadEdt" required>
                 <option value="S">Activo</option>
                 <option value="N">Inactivo</option>
             </select>

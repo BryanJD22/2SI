@@ -140,7 +140,6 @@ input {
 
 #capaResultadosBusqueda {
     width: 100% !important;
-    height: 700px;
     overflow: auto;
     margin-top: 10px;
 }
@@ -173,6 +172,7 @@ select {
 
 #form_sexo{
     color: white !important;
+    background-color: #4CAF50;
 }
 
 #body_formulario{

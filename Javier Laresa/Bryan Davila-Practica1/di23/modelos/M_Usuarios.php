@@ -108,7 +108,44 @@ class M_Usuarios extends Modelo
 
     
     
+    public function crearUsuario2($parametros =  array())
+    {
+        $apellido_insert = '';
+        $nombre_insert = '';
+        $usuario_insert = '';
+        $sexo_insert = '';
+        $telefono_insert = '';
+        $password_insert = '';
 
+
+        extract($parametros);
+        $SQL = "INSERT INTO usuarios (nombre, apellido_1, apellido_2, sexo, fecha_Alta, mail,movil, login, pass, activo )";
+
+
+        $nombre_insert = addslashes($nombre_insert);
+        $apellido_insert = addslashes($apellido_insert);
+        $usuario_insert = addslashes($usuario_insert);
+        $telefono_insert = addslashes($telefono_insert);
+        $sexo_insert = addslashes($sexo_insert);
+        $password_insert = addslashes($password_insert);
+
+        $SQL .= "VALUES('$nombre_insert','$apellido_insert','$apellido_insert','$sexo_insert',NOW(),'$usuario_insert@2si2023.es','$telefono_insert','$usuario_insert',MD5('$password_insert'),'S')";
+
+        $SQLCheckLogin = "SELECT * FROM usuarios WHERE login = '$usuario_insert'";
+        $login_antiguo = $this->DAO->consultar($SQLCheckLogin);
+        $numeroLoginAntiguos = sizeof($login_antiguo);
+        if($numeroLoginAntiguos==0){
+            if($usuario_insert == "" || $password_insert==""){
+                $mensaje = 'Ha de introducir al menos un nombre de usuario y una password.';
+            }else{
+                $this->DAO->insertar($SQL);
+                $mensaje = 'Usuario introducido correctamente';
+            }
+        }else{
+            $mensaje = 'El nombre de usuario introducido ya existe. Introduzca de nuevo los datos.';
+        }
+        return $mensaje;
+    }
 
 
 
