@@ -1,13 +1,12 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2023 a las 21:26:49
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Tiempo de generación: 09-01-2024 a las 12:23:33
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -21,8 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `di23`
 --
-CREATE DATABASE IF NOT EXISTS `di23` DEFAULT CHARACTER SET latin1 COLLATE latin1_spanish_ci;
-USE `di23`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `menus`
+--
+
+CREATE TABLE `menus` (
+  `id_menu` int(11) NOT NULL,
+  `posicion` int(2) DEFAULT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `id_menu_padre` int(11) DEFAULT NULL,
+  `accion` varchar(500) DEFAULT NULL,
+  `privado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `menus`
+--
+
+INSERT INTO `menus` (`id_menu`, `posicion`, `titulo`, `id_menu_padre`, `accion`, `privado`) VALUES
+(1, 1, 'Home', NULL, NULL, 1),
+(2, 2, 'Link', NULL, NULL, 0),
+(3, 3, 'Disable', NULL, NULL, 1),
+(4, 4, 'Cruds', NULL, NULL, 1),
+(5, 1, 'Usuarios', 4, 'getVistaMenuSeleccionado(\'Usuarios\', \'getVistaUsuarios\')', 1),
+(6, 2, 'Something Else here', 4, NULL, 1),
+(7, 3, 'Something Else here', 4, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -42,7 +67,7 @@ CREATE TABLE `usuarios` (
   `login` varchar(40) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `pass` varchar(32) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `activo` char(1) NOT NULL DEFAULT 'N'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -182,6 +207,12 @@ INSERT INTO `usuarios` (`id_Usuario`, `nombre`, `apellido_1`, `apellido_2`, `sex
 --
 
 --
+-- Indices de la tabla `menus`
+--
+ALTER TABLE `menus`
+  ADD PRIMARY KEY (`id_menu`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -193,11 +224,16 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `menus`
+--
+ALTER TABLE `menus`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_Usuario` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=498;
-SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
