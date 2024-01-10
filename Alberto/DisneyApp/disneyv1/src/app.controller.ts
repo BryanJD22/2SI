@@ -8,15 +8,6 @@ import { Query } from '@nestjs/common';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-
-
- 
-
-
-
-
-
-
   @Get()
   getHello(): string {
     return 'Mi primer WebService por Get';
@@ -24,14 +15,11 @@ export class AppController {
 
   @Get('nuevo')
   getMiPrimerGet1(): string {
-    return "Mi primer Get";
+    return 'Mi primer Get';
   }
 
   @Get('ruta')
   getMiPrimerGet2(): string {
-    return "Mi segundo Get";
+    return 'Mi segundo Get';
   }
-
-
 }
-
