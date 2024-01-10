@@ -7,7 +7,19 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return "Mi primer WebService por Get"
-    //return this.appService.getHello();
+    return "Mi primer WebService por Get";
   }
+
+  @Get('nuevo')
+  getMiPrimerGet1(): string {
+    return "Mi primer Get";
+  }
+
+  @Get('ruta')
+  getMiPrimerGet2(): string {
+    return "Mi segundo Get";
+  }
+
+
 }
+
