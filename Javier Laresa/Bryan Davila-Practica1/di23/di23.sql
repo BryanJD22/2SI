@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-01-2024 a las 12:23:33
+-- Tiempo de generación: 11-01-2024 a las 10:05:49
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `di23`
 --
+CREATE DATABASE IF NOT EXISTS `di23` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `di23`;
 
 -- --------------------------------------------------------
 

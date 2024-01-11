@@ -12,7 +12,7 @@ class M_Usuarios extends Modelo
         $this->DAO = new DAO();
     }
 
-    public function buscarUsuarios($filtros = array()){
+    /*public function buscarUsuarios($filtros = array()){
         $d_texto='';
         $c_texto='';
         $b_texto = '';
@@ -50,13 +50,65 @@ class M_Usuarios extends Modelo
             }
         }
         
+        $id_Usuario='';
+        extract($filtro);
+        
+        $SQL="SELECT * FROM usuarios WHERE id_Usuario=$id_Usuario";
 
 
         // echo $SQL;
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
-    }
+    }*/
 
+
+    public function buscarUsuarios($filtros = array()){
+        $d_texto='';
+        $c_texto='';
+        $b_texto = '';
+        $usuario = '';
+        $pass = '';
+        $id_Usuario = ''; // Added to declare $id_Usuario variable
+        extract($filtros);
+    
+        $SQL = "SELECT * FROM usuarios WHERE 1=1";
+    
+        if ($id_Usuario != '') {
+            // If an ID is provided, search for the user by ID
+            $id_Usuario = intval($id_Usuario); // Ensure ID is an integer to prevent SQL injection
+            $SQL .= " AND id_Usuario = $id_Usuario";
+        } else {
+            if ($usuario != '' && $pass != '') {
+                $usuario = addslashes($usuario);
+                $pass = addslashes($pass);
+                $SQL .= " AND login = '$usuario' AND pass = MD5('$pass')";
+            } else {
+                if ($b_texto != '') {
+                    $aTexto = explode(' ', $b_texto);
+                    $SQL .= " AND (1=2 ";
+                    foreach ($aTexto as $palabra) {
+                        $SQL .= " OR apellido_1 LIKE '%$palabra%' ";
+                        $SQL .= " OR apellido_2 LIKE '%$palabra%' ";
+                        $SQL .= " OR nombre LIKE '%$palabra%' ";
+                    }
+                    $SQL .= " ) ";
+                }
+    
+                if ($c_texto != 'T') {
+                    $SQL .= " AND sexo = '$c_texto'";
+                }
+    
+                if ($d_texto != '') {
+                    $SQL .= " AND activo = '$d_texto'";
+                }
+            }
+        }
+    
+        // echo $SQL;
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
+    
 
     // public function buscarUsuariosMayores($filtros=array()){
     //     $c_texto='';

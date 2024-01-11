@@ -48,7 +48,7 @@
         }
         
         public function buscarUsuarioPorID($filtros=array()){
-            $usuario = $this->modelo->obtenerUsuarioPorId($filtros);
+            $usuario = $this->modelo->buscarUsuarios($filtros);
 
             Vista::render('vistas/Usuarios/V_Usuarios_Editar.php', array('usuarios' => $usuario));
         }

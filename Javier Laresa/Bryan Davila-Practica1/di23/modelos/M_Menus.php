@@ -2,7 +2,7 @@
 
 require_once 'modelos/Modelo.php';
 require_once 'modelos/DAO.php';
-class M_Usuarios extends Modelo
+class M_Menus extends Modelo
 {
     public $DAO;
 
@@ -22,9 +22,12 @@ class M_Usuarios extends Modelo
 
         $SQL = "SELECT * FROM menus WHERE 1=1";
 
+        
 
         // echo $SQL;
         $menus = $this->DAO->consultar($SQL);
+
+        echo $menus;
         return $menus;
     }
 
