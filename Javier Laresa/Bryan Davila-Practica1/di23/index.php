@@ -87,7 +87,8 @@
         <div id="bloqueContenido">
         <section id="secContenidoPagina" class="container-fluid"></section>
         </div>
-        <script src="librerias/bootstrap-5.1.3-di   st/js/bootstrap.bundle.min.js"></script>
+        <script src="librerias/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+
     </body>
 
 </html>
