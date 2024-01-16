@@ -1,7 +1,6 @@
 <?php
 
     $menus = $datos['menus'];
-    echo $menus[0]['titulo'];
 ?>
 
 
@@ -19,6 +18,10 @@ foreach ($menus as $menus){
         echo '<li class="nav-item">';
         echo '<a class="nav-link active" aria-current="page" href="index.php">'. $menus['titulo'] .'</a>';
         echo '</li>';
+
+    }else if($menus ['id_menu_padre'!=null]){
+
+        
 
     }
 }
