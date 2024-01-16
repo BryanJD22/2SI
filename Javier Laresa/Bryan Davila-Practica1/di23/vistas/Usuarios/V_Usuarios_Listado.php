@@ -34,9 +34,7 @@
         }
             
     
-        
     
-
         foreach ($usuarios as $fila) {
             echo '<tr>';
             echo '<td>' . $fila['apellido_1'] . ' ' . $fila['apellido_2'] . '</td>';
@@ -53,8 +51,5 @@
         echo '</tbody>';
         echo '</table>';
     
-    // foreach($usuarios as $fila){
-    //     echo $fila['apellido_1'].' '.$fila['apellido_2'].', '.$fila['nombre'].'<br>';
-    //  }
 
 ?>

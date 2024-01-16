@@ -12,24 +12,14 @@ class M_Menus extends Modelo
         $this->DAO = new DAO();
     }
 
-    public function buscarmenus($filtros = array()){
-        $posicion = '';
-        $titulo='';
-        $id_padre='';
-        $accion = '';
-        $privado = '';
-        extract($filtros);
-
-        $SQL = "SELECT * FROM menus WHERE 1=1";
-
-        
+    public function buscarmenus(){
+        $SQL = "SELECT * FROM menus";
 
         // echo $SQL;
         $menus = $this->DAO->consultar($SQL);
-
-        echo $menus;
         return $menus;
     }
 
 
 }
+?>

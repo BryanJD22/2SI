@@ -14,9 +14,9 @@
 
         public function getMenus(){ 
             $menus=$this->modelo->buscarmenus();
-            echo json_encode($menus);
-            Vista::render('vistas/Menus/Menus.php', 
-                            array('menus'=>$menus));
+
+            Vista::render('vistas/Menus/V_Menus.php', 
+                            array('menus' => $menus));
         }
 
 
