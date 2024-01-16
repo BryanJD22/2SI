@@ -1,8 +1,13 @@
 /* eslint-disable prettier/prettier */
 import { Controller, Get, Param, Query, Post, Body, Put } from '@nestjs/common';
+import { ProductsService } from 'src/services/products/products.service';
 
 @Controller('products')
 export class ProductsController {
+
+  constructor (private productService: ProductsService){
+    
+  }
   @Get()
   getProducts(@Query('limit') limit, @Query('offset') offset) {
     return `products limit=> ${limit} offset=>${offset}`;

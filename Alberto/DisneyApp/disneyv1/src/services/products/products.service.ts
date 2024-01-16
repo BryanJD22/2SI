@@ -5,7 +5,7 @@ import { Product } from 'src/entities/product.entity';
 export class ProductsService {
 
     private counterId = 0;
-    private products: Product [] = [
+    private products: Product [] = [//esto es provicional, traeremos de otro lado el api
 
         {
             id:1,
