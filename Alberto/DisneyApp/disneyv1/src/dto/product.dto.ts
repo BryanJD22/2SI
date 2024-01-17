@@ -3,8 +3,8 @@ import { IsString, IsNotEmpty,IsNumber, IsPositive, IsUrl } from "class-validato
 
 export class CreateProductDto{
     //EXPRESIONES REGULARES DE VALIDACIÓN QUE VIENEN DE LA PROPIA FRAMEWORK
-    @IsString()
-    @IsNotEmpty()
+    @IsString({message:"Debes insertar texto.."})
+    @IsNotEmpty({message:"No puedes dejar el campo vacio"})
     readonly name: string;
 
 
