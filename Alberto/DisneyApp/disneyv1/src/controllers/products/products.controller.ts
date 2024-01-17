@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Controller, Get, Param, Query, Post, Body, Put, ParseIntPipe } from '@nestjs/common';
+import { CreateProductDto, UpdateProductDto } from 'src/dto/product.dto';
 import { Product } from 'src/entities/product.entity';
 import { ProductsService } from 'src/services/products/products.service';
 
@@ -26,13 +27,14 @@ export class ProductsController {
   }
 
   @Post('ruta')
-  create(@Body() newProduct: Product) { 
+  create(@Body() newProduct: CreateProductDto) { 
   /*
    return {
       message: 'crear producto',
     };
     */
     return this.productService.create(newProduct);
+
   }
 
   @Post()
@@ -45,7 +47,7 @@ export class ProductsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() product: Product) {
+  update(@Param('id') id: string, @Body() product: UpdateProductDto) {
     /*return {
       id,
       product,

@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateProductDto, UpdateProductDto } from 'src/dto/product.dto';
 import { Product } from 'src/entities/product.entity';
 import { productsMocks } from 'src/mocks/product.mocks';
 
@@ -41,7 +42,7 @@ export class ProductsService {
         return product
     }
 
-    create(products:any){
+    create(products: CreateProductDto){
         this.counterId +=1;
         const newProduct = 
         {
@@ -54,7 +55,7 @@ export class ProductsService {
 
     }
 
-    update(id: number, updateProduct: Product){
+    update(id: number, updateProduct: UpdateProductDto){
         const productFound = this.findOne(id);
         let message = '';
         if(productFound){
@@ -63,7 +64,7 @@ export class ProductsService {
                     item.id === id
                 
             );
-            this.products[index] = updateProduct;
+            //this.products[index] = updateProduct;
             // MERGE
             this.products[index] = {
                 ...productFound,
