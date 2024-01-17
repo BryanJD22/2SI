@@ -1,13 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Product } from 'src/entities/product.entity';
+import { productsMocks } from 'src/mocks/product.mocks';
 
 @Injectable()
 export class ProductsService {
 
     private counterId = 0;
-    private products: Product [] = [//esto es provicional, traeremos de otro lado el api
+    private products: Product [] =  productsMocks;
+    
+    /*private products: Product [] =  [    esto es provicional, traeremos de otro lado el api
 
-        {
+       /{
             id:1,
             name:'Product 1',
             description: 'oeoeoeoe',
@@ -18,15 +21,24 @@ export class ProductsService {
     
         },
 
-    ];
+    ];*/
 
     findAll(){
         return this.products;
     }
 
     findOne(id:number){
-        return this.products.find((item)=>item.id === id);
-
+        //return this.products.find((item)=>item.id === id);
+        const product = this.products.find(
+            (item)=>
+                item.id === id
+            
+        )
+        if(!product){
+            //throw 'Bj error';
+            throw new NotFoundException(`Product #${id} not found`)
+        }
+        return product
     }
 
     create(products:any){
@@ -42,12 +54,27 @@ export class ProductsService {
 
     }
 
-    update(id: number, products: any){
+    update(id: number, updateProduct: Product){
         const productFound = this.findOne(id);
-        if(!productFound){
-            return null;
+        let message = '';
+        if(productFound){
+            const index = this.products.findIndex(
+                (item)=>
+                    item.id === id
+                
+            );
+            this.products[index] = updateProduct;
+            // MERGE
+            this.products[index] = {
+                ...productFound,
+                ...updateProduct,
+           }
+           message = 'Product updated';
+        }else{
+            message = 'Product not found';
         }
-        return productFound;
+        return message;
+        
     }
 
     delete(id: number){
