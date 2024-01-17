@@ -32,7 +32,7 @@
                 return"Inactivo";
             }
         }
-            
+
     
     
         foreach ($usuarios as $fila) {
@@ -47,6 +47,25 @@
             echo '<td><button class="btn btn-success" onclick="eliminarUsuario(' . $fila['id_Usuario'] . ')">Eliminar</button></td>';
             echo '</tr>';
         }
+
+
+       
+                
+        $pagina = end($datos['usuarios']);
+        array_pop($datos['usuarios']);
+
+        $paginas = end($datos['usuarios']);
+        array_pop($datos['usuarios']);
+        
+        echo '<div class="paginador">';
+        echo '    <a onclick="buscarUsuarios(1)" href="#" class="pagina">&lt;&lt;</a>';
+        echo '    <a onclick="buscarUsuarios(\'anterior\')" href="#" class="pagina">&lt;</a>';
+        echo '    <input type="text" id="num-pagina" class="num-pagina" value="'.($pagina + 1).'">';
+        echo '    <button onclick="buscarUsuarios()" class="ir-btn">Ir</button>';
+        echo '    <a onclick="buscarUsuarios(\'siguiente\')" href="#" class="pagina">&gt;</a>';
+        echo '    <a onclick="buscarUsuarios('. $paginas .')" href="#" class="pagina">&gt;&gt;</a>';
+        echo '</div>';
+        
 
         echo '</tbody>';
         echo '</table>';

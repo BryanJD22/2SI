@@ -61,6 +61,13 @@ class M_Usuarios extends Modelo
         return $usuarios;
     }*/
 
+    public function paginador($SQL, $cantidad){
+        $SQL2 = str_replace('*', 'COUNT(*) AS cantidadUsuarios', $SQL);
+        $respuesta = $this->DAO->consultar($SQL2);
+        $cantidadUsuarios = $respuesta[0]["cantidadUsuarios"];
+        //echo($cantidadUsuarios);
+        return ceil($cantidadUsuarios/$cantidad);
+    }
 
     public function buscarUsuarios($filtros = array()){
         $d_texto='';
@@ -69,6 +76,9 @@ class M_Usuarios extends Modelo
         $usuario = '';
         $pass = '';
         $id_Usuario = ''; // Added to declare $id_Usuario variable
+        $cantidad='';
+        $pagina='0';
+        $paginas='0';
         extract($filtros);
     
         $SQL = "SELECT * FROM usuarios WHERE 1=1";
@@ -103,9 +113,17 @@ class M_Usuarios extends Modelo
                 }
             }
         }
-    
+        
+        if($cantidad!=''){
+            $paginas = $this->paginador($SQL, $cantidad, $pagina);
+            $inicio = $pagina*$cantidad;
+            $SQL.=" LIMIT $inicio, $cantidad";
+        }
+
         // echo $SQL;
         $usuarios = $this->DAO->consultar($SQL);
+        $usuarios[] = $paginas;
+        $usuarios[] = $pagina;
         return $usuarios;
     }
     

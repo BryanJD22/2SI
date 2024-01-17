@@ -19,10 +19,6 @@ foreach ($menus as $menus){
         echo '<a class="nav-link active" aria-current="page" href="index.php">'. $menus['titulo'] .'</a>';
         echo '</li>';
 
-    }else if($menus ['id_menu_padre'!=null]){
-
-        
-
     }
 }
 

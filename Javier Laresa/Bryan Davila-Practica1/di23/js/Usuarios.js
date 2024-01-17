@@ -1,7 +1,45 @@
-function buscarUsuarios(){
+function buscarUsuarios(pagina){
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=buscarUsuarios";
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
+
+
+        //EXTRA PARA HACER UN PAGINADOR 
+        var numPagina = document.querySelector('#num-pagina');
+        if(pagina === undefined){
+            console.log("pagina: undefined");
+            if(numPagina != null){
+                //alert("pagina: "+numPagina.value);
+                let num = document.querySelector('#num-pagina').value - 1;
+                parametros += "&" + "pagina="+num;
+            }
+            //alert(parametros);
+        }else if(pagina === "siguiente"){
+            console.log("pagina: "+pagina);
+            if(numPagina != null){
+                //alert("pagina: "+numPagina.value);
+                let num = document.querySelector('#num-pagina').value;
+                parametros += "&" + "pagina="+num;
+            }
+            //alert(parametros);
+        }else if(pagina === "anterior"){
+            console.log("pagina: "+pagina);
+            if(numPagina != null){
+                //alert("pagina: "+numPagina.value);
+                let num = document.querySelector('#num-pagina').value - 2;
+                parametros += "&" + "pagina="+num;
+            }
+            //alert(parametros);
+        }else{
+            console.log("pagina: "+pagina);
+            if(numPagina != null){
+                pagina = pagina - 1;
+                //alert("pagina: "+numPagina.value);
+                parametros += "&" + "pagina="+pagina;
+            }
+            //alert(parametros);
+        }
+        //EXTRA PARA HACER UN PAGINADOR 
     fetch("C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
