@@ -19,9 +19,6 @@ echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
 <label  for="d_texto">Actividad
     <input type="checkbox" id="d_texto" name="d_texto" value="S" >
 </label>
-<button type="button" class="btn btn-success"  id="btnBuscar" onclick="buscarUsuarios()">Buscar</button>
-
-<button type="button" class="btn btn-success" id="btnAñadir" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaAñadir')">Añadir</button>
 
 <label for="cantidad">Cantidad:
         <select id="cantidad" name="cantidad">
@@ -33,6 +30,13 @@ echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
             <option value="30">30</option>
         </select>
 </label>
+
+
+<button type="button" class="btn btn-success"  id="btnBuscar" onclick="buscarUsuarios()">Buscar</button>
+
+<button type="button" class="btn btn-success" id="btnAñadir" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaAñadir')">Añadir</button>
+
+
 
 
 </form>

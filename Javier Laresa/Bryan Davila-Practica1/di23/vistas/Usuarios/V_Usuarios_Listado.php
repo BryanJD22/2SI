@@ -1,7 +1,14 @@
+<!DOCTYPE html>
+<html>
 
 <head>
     <link rel="stylesheet" type="text/css" href="css/index3.css">
 </head>
+
+<body>
+ 
+</html>
+
 <?php
     $usuarios= $datos['usuarios'];
 
