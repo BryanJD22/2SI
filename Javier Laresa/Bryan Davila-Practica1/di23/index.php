@@ -53,7 +53,9 @@
             require_once 'controladores/C_Menus.php';
             $menu = new C_Menus();
             $menu -> getMenus();
-            ?>
+        ?>
+
+
         </section>
         <br>
 

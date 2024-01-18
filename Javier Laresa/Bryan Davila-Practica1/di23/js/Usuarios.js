@@ -1,45 +1,58 @@
-function buscarUsuarios(pagina){
+function buscarUsuarios(pagina, paginasTotales){
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=buscarUsuarios";
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
 
 
-        //EXTRA PARA HACER UN PAGINADOR 
-        var numPagina = document.querySelector('#num-pagina');
-        if(pagina === undefined){
-            console.log("pagina: undefined");
-            if(numPagina != null){
-                //alert("pagina: "+numPagina.value);
+       //EXTRA PARA HACER UN PAGINADOR 
+    var numPagina = document.querySelector('#num-pagina');
+    //comprobamos si es un numero
+    //if(isNaN(numPagina.value || numPagina.value == null)){
+    //    numPagina.value = 1;
+    //}
+    if(pagina === undefined){
+        console.log("pagina: undefined");
+        if(numPagina != null){
+            if(numPagina.value > paginasTotales || numPagina.value < 1){
+                numPagina.value = paginasTotales;
+            }else{
                 let num = document.querySelector('#num-pagina').value - 1;
                 parametros += "&" + "pagina="+num;
             }
-            //alert(parametros);
-        }else if(pagina === "siguiente"){
-            console.log("pagina: "+pagina);
-            if(numPagina != null){
-                //alert("pagina: "+numPagina.value);
-                let num = document.querySelector('#num-pagina').value;
-                parametros += "&" + "pagina="+num;
-            }
-            //alert(parametros);
-        }else if(pagina === "anterior"){
-            console.log("pagina: "+pagina);
-            if(numPagina != null){
-                //alert("pagina: "+numPagina.value);
-                let num = document.querySelector('#num-pagina').value - 2;
-                parametros += "&" + "pagina="+num;
-            }
-            //alert(parametros);
-        }else{
-            console.log("pagina: "+pagina);
-            if(numPagina != null){
-                pagina = pagina - 1;
-                //alert("pagina: "+numPagina.value);
-                parametros += "&" + "pagina="+pagina;
-            }
-            //alert(parametros);
         }
-        //EXTRA PARA HACER UN PAGINADOR 
+    }else if(pagina === "siguiente"){
+        console.log("pagina: "+pagina);
+        if(numPagina != null){
+            
+            let num = document.querySelector('#num-pagina').value;
+            if(num > paginasTotales-1){
+                num = paginasTotales-1;
+            }
+
+            parametros += "&" + "pagina="+num;
+            
+        }
+    }else if(pagina === "anterior"){
+        console.log("pagina: "+pagina);
+        if(numPagina != null){
+            
+            let num = document.querySelector('#num-pagina').value - 2;
+            if(num < 1){
+                num = 0;
+            }
+
+            parametros += "&" + "pagina="+num;
+            
+        }
+    }else{
+        console.log("pagina: "+pagina);
+        if(numPagina != null){
+            pagina = pagina - 1;
+            parametros += "&" + "pagina="+pagina;
+        }
+    }
+    //EXTRA PARA HACER UN PAGINADOR 
+
     fetch("C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
