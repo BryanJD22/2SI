@@ -4,7 +4,7 @@ function buscarUsuarios(pagina, paginasTotales){
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
 
 
-       //EXTRA PARA HACER UN PAGINADOR 
+    //EXTRA PARA HACER UN PAGINADOR 
     var numPagina = document.querySelector('#num-pagina');
     //comprobamos si es un numero
     //if(isNaN(numPagina.value || numPagina.value == null)){

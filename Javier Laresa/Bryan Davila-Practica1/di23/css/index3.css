@@ -192,3 +192,16 @@ select {
     padding: 10px; 
     text-align: center;
 }
+
+div.paginador{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+div.paginador input{
+    width: 50px;
+}

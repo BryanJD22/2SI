@@ -5,6 +5,7 @@ echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
 
 ?>
 <form id="formularioBuscar" name="formularioBuscar" onkeydown="return event.key != 'Enter';">
+<link rel="stylesheet" href="css/index3.css">
 <label for="b_texto">
     <input type="text" id="b_texto" name="b_texto" placeholder="Nombre">
 </label>
@@ -22,7 +23,20 @@ echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
 
 <button type="button" class="btn btn-success" id="btnAñadir" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaAñadir')">Añadir</button>
 
+<label for="cantidad">Cantidad:
+        <select id="cantidad" name="cantidad">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+        </select>
+</label>
+
 
 </form>
 <div id="capaResultadosBusqueda">
+
+
 </div>

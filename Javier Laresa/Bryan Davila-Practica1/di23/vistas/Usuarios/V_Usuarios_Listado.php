@@ -1,3 +1,7 @@
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/index3.css">
+</head>
 <?php
     $usuarios= $datos['usuarios'];
 
