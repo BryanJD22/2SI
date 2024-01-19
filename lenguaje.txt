@@ -1,12 +1,9 @@
-Java
-JavaScript
-TypeScript
 Android Studio/SDK
 SQL
 PHP
 HTML/CSS
 Nest
-Reackt
+React
 AWS 
 MySql
 Postrgre
