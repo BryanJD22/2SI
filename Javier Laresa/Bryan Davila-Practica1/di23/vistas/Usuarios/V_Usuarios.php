@@ -9,18 +9,18 @@ echo '<div id="bloqueTxt"><a id="txtBusqueda">Busqueda de Usuarios</a></div>';
 <label for="b_texto">
     <input type="text" id="b_texto" name="b_texto" placeholder="Nombre">
 </label>
-<label for="c_texto">Sexo
+<label class= "sexo"for="c_texto">Sexo
    <select  class="form-control" id="form_sexo"  name="c_texto">
    <option value="T">Todos</option>
     <option value="H">H</option>
     <option value="M">M</option>
    </select>
 </label>
-<label  for="d_texto">Actividad
+<label  class= "actividad"for="d_texto">Actividad
     <input type="checkbox" id="d_texto" name="d_texto" value="S" >
 </label>
 
-<label for="cantidad">Cantidad:
+<label class="cantidad" for="cantidad">Cantidad:
         <select id="cantidad" name="cantidad">
             <option value="5">5</option>
             <option value="10">10</option>

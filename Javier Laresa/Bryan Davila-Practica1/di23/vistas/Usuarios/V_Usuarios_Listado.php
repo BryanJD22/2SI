@@ -2,15 +2,18 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="css/index3.css">
+    <link rel="stylesheet" type="text/css" href="/css/index3.css">
 </head>
 
 <body>
  
-</html>
+
 
 <?php
     $usuarios= $datos['usuarios'];
+
+    array_pop($usuarios);
+    array_pop($usuarios);
 
     echo '<table id="tablaListado" class="table table-dark">';
         echo '<thead>';
@@ -21,7 +24,7 @@
         echo '<th>Sexo</th>';
         echo '<th>Telefono</th>';
         echo '<th>Actividad</th>';
-        echo '<th>Editar</th>';
+        echo '<th>Editar</th>'; 
         echo '<th>Eliminar</th>';
         echo '</tr>';
         echo '</thead>';
@@ -44,7 +47,9 @@
             }
         }
 
-    
+          
+      
+        
     
         foreach ($usuarios as $fila) {
             echo '<tr>';
@@ -59,15 +64,14 @@
             echo '</tr>';
         }
 
-
-       
-        $pagina = end($datos['usuarios']);
-        array_pop($datos['usuarios']);
-
-        $paginas = end($datos['usuarios']);
+        $pagina = intval(end($datos['usuarios']));
         array_pop($datos['usuarios']);
         
-        echo '<div class="paginador">';
+        $paginas = intval(end($datos['usuarios']));
+        array_pop($datos['usuarios']);
+ 
+        
+        echo '<div id = "paginador" class="paginador">';
         echo '    <a onclick="buscarUsuarios(1)" href="javascript:void(0)" class="pagina">&lt;&lt;</a>';
         echo '    <a onclick="buscarUsuarios(\'anterior\', '. $paginas .')" href="javascript:void(0)" class="pagina">&lt;</a>';
         echo '    <input type="text" id="num-pagina" class="num-pagina" value="'.($pagina + 1).'">';
@@ -84,4 +88,4 @@
 
 ?>
 
- 
+</html>
