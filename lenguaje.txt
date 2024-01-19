@@ -1,0 +1,14 @@
+Java
+JavaScript
+TypeScript
+Android Studio/SDK
+SQL
+PHP
+HTML/CSS
+Nest
+Reackt
+AWS 
+MySql
+Postrgre
+Oracle
+SAP
