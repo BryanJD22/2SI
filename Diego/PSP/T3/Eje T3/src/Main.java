@@ -29,6 +29,13 @@ public class Main {
         hilo2.start();
         hilo3.start();
 
+        try {
+            hilo1.join();
+            hilo2.join();
+            hilo3.join();
+        } catch (InterruptedException e) {
+            e.fillInStackTrace();
+        }
 
     }
 
