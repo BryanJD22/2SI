@@ -28,19 +28,26 @@
         public function getVistaAñadir(){
             Vista::render('vistas/Usuarios/V_Usuarios_Crear.php');
         }
-
+////////////////////////////////////////////////////////////////////////////
         public function buscarUsuarios($filtros=array()){
             $usuarios=$this->modelo->buscarUsuarios($filtros);
             //echo json_encode($usuarios);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', 
                             array('usuarios'=>$usuarios));
         }
-
+//////////////////////////////////////////////////////////////////////////
         public function crearUsuario($filtros = array()) {
             
             $usuarios=$this->modelo->crearUsuario($filtros);
+            echo json_encode($usuarios);
+            
+            Vista::render('vistas/Usuarios/V_Usuarios_Crear.php', 
+                            array('usuarios'=>$usuarios));
 
         }
+
+
+        
         public function getVistaEditar() {
 
             Vista::render('vistas/Usuarios/V_Usuarios_Editar.php');

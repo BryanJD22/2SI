@@ -125,6 +125,7 @@ class M_Usuarios extends Modelo
         $usuarios[] = $paginas;
         $usuarios[] = $pagina;
         return $usuarios;
+        
     }
     
 
@@ -171,8 +172,21 @@ class M_Usuarios extends Modelo
 
 
         echo($SQL);
-        
-        $usuarios = $this->DAO->insertar($SQL);
+        $SQLCheckLogin = "SELECT * FROM usuarios WHERE login = '$usuarioEdt'";
+        $login_antiguo = $this->DAO->consultar($SQLCheckLogin);
+        $numeroLoginAntiguos = sizeof($login_antiguo);
+        if($numeroLoginAntiguos==0){
+            if($usuarioEdt == "" ){
+                $mensaje = 'Ha de introducir al menos un nombre de usuario.';
+            }else{
+                $this->DAO->insertar($SQL);
+                $mensaje = 'Usuario introducido correctamente';
+            }
+        }else{
+            $mensaje = 'El nombre de usuario introducido ya existe. Introduzca de nuevo los datos.';
+        }
+        return $mensaje;
+        //$usuarios = $this->DAO->insertar($SQL);
 
     }
 
