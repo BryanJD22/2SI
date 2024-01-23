@@ -16,6 +16,7 @@ public class Cajera {
     }
 
     public long procesarCompra(Cliente cliente, long initialTime) {
+
         System.out.println("La cajera " + getId_cajera() + " COMIENZA A PROCESAR LA COMPRA DEL CLIENTE " +
                 cliente.getId_cliente() + " EN EL TIEMPO: " + (System.currentTimeMillis() - initialTime) / 1000 + "seg");
 
@@ -23,19 +24,31 @@ public class Cajera {
         long tiempo = 0;
 
         for (int i = 0; i < productos.length; i++) {
+
             tiempo += productos[i];
+
             System.out.println("Procesado el producto " + (i + 1) + " del cliente " + cliente.getId_cliente() +
+
                     "->Tiempo: " + tiempo + "seg");
+
             try {
+
                 Thread.sleep(productos[i] * 1000);
+
             } catch (InterruptedException e) {
+
                 e.printStackTrace();
+
             }
+
         }
 
         System.out.println("La cajera " + getId_cajera() + " HA TERMINADO DE PROCESAR " + cliente.getId_cliente() +
+
                 " EN EL TIEMPO: " + (System.currentTimeMillis() - initialTime) / 1000 + "seg");
+
         return tiempo;
+
     }
 
 

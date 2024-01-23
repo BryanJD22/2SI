@@ -18,9 +18,6 @@ public class Cliente {
         return carroCompra;
     }
 
-    public int calcularTiempoTotal() {
-        return Arrays.stream(carroCompra).sum();
-    }
 
     public int getId_cliente() {
         return id_cliente;

@@ -30,5 +30,7 @@ public class Cajera extends Thread {
 
         System.out.println("La cajera Cajera " + cajeraId + " HA TERMINADO DE PROCESAR Cliente " +
                 cliente.getId_cliente() + " EN EL TIEMPO: " + tiempoTotal + "seg");
+
     }
+
 }

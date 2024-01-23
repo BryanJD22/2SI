@@ -11,9 +11,11 @@ public class Main {
 
         Cancion cancion1 = new Cancion("Cancion1", letra1);
 
+
         Hilo hilo1 = new Hilo();
         hilo1.setId(1);
         hilo1.setCancion(cancion1);
+
 
         Hilo hilo2 = new Hilo();
         hilo2.setId(2);
@@ -24,7 +26,7 @@ public class Main {
         hilo3.setId(3);
         hilo3.setCancion(cancion1);
 
-        // Start the threads
+
         hilo1.start();
         hilo2.start();
         hilo3.start();
@@ -33,8 +35,10 @@ public class Main {
             hilo1.join();
             hilo2.join();
             hilo3.join();
+
         } catch (InterruptedException e) {
             e.fillInStackTrace();
+
         }
 
     }
