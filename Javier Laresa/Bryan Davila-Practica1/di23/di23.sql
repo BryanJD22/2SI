@@ -26,6 +26,33 @@ USE `di23`;
 -- --------------------------------------------------------
 
 --
+--Permisos
+--
+CREATE TABLE `permisos` (
+  `id_permiso` int(11) NOT NULL,
+  `id_usuario` int(11) UNSIGNED DEFAULT NULL,
+  `id_rol` int(11) DEFAULT NULL,
+  `id_opcion` int(11) DEFAULT NULL,
+  `tipo_accion` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_permiso`),
+  FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id_Usuario`),
+  FOREIGN KEY (`id_rol`) REFERENCES `roles`(`id_rol`),
+  FOREIGN KEY (`id_opcion`) REFERENCES `opciones_menu`(`id_opcion`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+--
+--Roles
+--
+CREATE TABLE `roles` (
+  `id_rol` int(11) NOT NULL,
+  `nombre_rol` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_rol`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+
+--
 -- Estructura de tabla para la tabla `menus`
 --
 

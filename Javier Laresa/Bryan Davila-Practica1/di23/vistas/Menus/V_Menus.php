@@ -24,7 +24,7 @@
     }
     //Imprimimos el array para comprobar que los datos han sido añadidos correctamente.
     //foreach($padres as $padre){echo print_r($padre);echo '<br>';}
-echo '<section id="secMenuPagina" class="container-fluid">';
+
 echo '<nav class="navbar navbar-expand-sm navbar-light" id="cabeceraApartados" aria-label="Fourth navbar example">';
 echo '<div class="container-fluid">';
 echo '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">';
@@ -50,5 +50,5 @@ foreach($padres as $padre){
         echo '</li>';
     }
 }
-echo '</section>';
+
 ?>
