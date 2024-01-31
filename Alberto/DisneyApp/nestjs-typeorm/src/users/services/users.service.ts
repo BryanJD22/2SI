@@ -6,12 +6,30 @@ import { Order } from '../entities/order.entity';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
 
 import { ProductsService } from './../../products/services/products.service';
+import { Client } from 'pg';
+
+
 
 @Injectable()
 export class UsersService {
+
+  getTasks(){
+    // Todo se maneja como promesas, tiene que haber un retorno hacia el Controller
+    return new Promise((resolve, reject) => {
+       this.clientePG.query('SELECT * FROM task ORDER BY id_task ASC', (err, res) => {
+        if(err){
+            reject(err);
+        }
+        resolve(res.rows);
+      });
+    });
+
+
+  }
   constructor(
     private productsService: ProductsService,
     private configService: ConfigService,
+    @Inject('PG') private clientePG: Client,
   ) {}
 
   private counterId = 1;
@@ -76,4 +94,6 @@ export class UsersService {
       products: this.productsService.findAll(),
     };
   }
+
+
 }
