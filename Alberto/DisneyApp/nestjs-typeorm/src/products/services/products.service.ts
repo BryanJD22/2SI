@@ -3,8 +3,14 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Product } from './../entities/product.entity';
 import { CreateProductDto, UpdateProductDto } from './../dtos/products.dtos';
 
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm'; 
 @Injectable()
 export class ProductsService {
+  constructor(
+    @InjectRepository(Product) private productRepo: Repository<Product>,
+  ){}
+
   private counterId = 1;
   private products: Product[] = [
     {
@@ -18,43 +24,67 @@ export class ProductsService {
   ];
 
   findAll() {
-    return this.products;
+    return this.productRepo.find();
   }
 
   findOne(id: number) {
-    const product = this.products.find((item) => item.id === id);
+
+    const product = this.productRepo.findOne(id);  
     if (!product) {
       throw new NotFoundException(`Product #${id} not found`);
     }
     return product;
+  
+
+    /*const product = this.products.find((item) => item.id === id);
+    if (!product) {
+      throw new NotFoundException(`Product #${id} not found`);
+    }
+    return product;*/
   }
 
   create(data: CreateProductDto) {
-    this.counterId = this.counterId + 1;
+        // const newProduct = new Product();
+    // newProduct.image = data.image;
+    // newProduct.name = data.name;
+    // newProduct.description = data.description;
+    // newProduct.price = data.price;
+    // newProduct.stock = data.stock;
+    // newProduct.image = data.image;
+    const newProduct = this.productRepo.create(data);
+    // Encuentra las coincidencias y las actualiza
+    return this.productRepo.save(newProduct);
+    /*this.counterId = this.counterId + 1;
     const newProduct = {
       id: this.counterId,
       ...data,
     };
     this.products.push(newProduct);
-    return newProduct;
+    return newProduct;*/
   }
 
-  update(id: number, changes: UpdateProductDto) {
-    const product = this.findOne(id);
+  async update(id: number, changes: UpdateProductDto) {
+    const product = await this.productRepo.findOne(id);
+    this.productRepo.merge(product, changes);
+    return this.productRepo.save(product);
+    /*const product = this.findOne(id);
     const index = this.products.findIndex((item) => item.id === id);
     this.products[index] = {
       ...product,
       ...changes,
     };
-    return this.products[index];
+    return this.products[index];*/
   }
 
   remove(id: number) {
-    const index = this.products.findIndex((item) => item.id === id);
+
+    return this.productRepo.delete(id);
+
+    /*const index = this.products.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new NotFoundException(`Product #${id} not found`);
     }
     this.products.splice(index, 1);
-    return true;
+    return true;*/
   }
 }

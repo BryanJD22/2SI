@@ -39,6 +39,8 @@ client.query('SELECT * FROM task ORDER BY id_task ASC', (err, res) => {
           password,
           database: dbName,
           ssl: true,
+          synchronize: true,
+          autoLoadEntities: true,
         };
       },
     }),
