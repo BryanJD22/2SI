@@ -25,30 +25,6 @@ USE `di23`;
 
 -- --------------------------------------------------------
 
---
---Permisos
---
-CREATE TABLE `permisos` (
-  `id_permiso` int(11) NOT NULL,
-  `id_usuario` int(11) UNSIGNED DEFAULT NULL,
-  `id_rol` int(11) DEFAULT NULL,
-  `id_opcion` int(11) DEFAULT NULL,
-  `tipo_accion` varchar(20) NOT NULL,
-  PRIMARY KEY (`id_permiso`),
-  FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id_Usuario`),
-  FOREIGN KEY (`id_rol`) REFERENCES `roles`(`id_rol`),
-  FOREIGN KEY (`id_opcion`) REFERENCES `opciones_menu`(`id_opcion`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
-
---
---Roles
---
-CREATE TABLE `roles` (
-  `id_rol` int(11) NOT NULL,
-  `nombre_rol` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 
 
@@ -65,9 +41,75 @@ CREATE TABLE `menus` (
   `privado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+---
+-- Estructura de tabla para la tabla `permisos`
 --
--- Volcado de datos para la tabla `menus`
+
+CREATE TABLE `permisos` (
+  `id_permiso` int(3) NOT NULL,
+  `id_menu` int(3) DEFAULT NULL,
+  `nombre` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
 --
+-- Volcado de datos para la tabla `permisos`
+--
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `permisosusuarios`
+--
+
+CREATE TABLE `permisosusuarios` (
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_permiso` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `permisosusuarios`
+--
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id_rol` int(3) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rolespermisos`
+--
+
+CREATE TABLE `rolespermisos` (
+  `id_rol` int(3) DEFAULT NULL,
+  `id_permiso` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rolesusuarios`
+--
+
+CREATE TABLE `rolesusuarios` (
+  `id_rol` int(3) DEFAULT NULL,
+  `id_Usuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+
 
 INSERT INTO `menus` (`id_menu`, `posicion`, `titulo`, `id_menu_padre`, `accion`, `privado`) VALUES
 (1, 1, 'Home', NULL, NULL, 1),
