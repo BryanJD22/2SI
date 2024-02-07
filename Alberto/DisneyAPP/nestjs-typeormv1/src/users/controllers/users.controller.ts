@@ -18,12 +18,18 @@ export class UsersController {
 
   @Get()
   findAll() {
-    return this.usersService.findAll();
+    return this.usersService.getTasks();
+    // return this.usersService.findAll();
   }
 
   @Get(':id')
   get(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.findOne(id);
+  }
+
+  @Get(':id/orders')
+  getOrders(@Param('id', ParseIntPipe) id: number) {
+    return this.usersService.getOrderByUser(id);
   }
 
   @Post()
@@ -42,10 +48,5 @@ export class UsersController {
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.remove(+id);
-  }
-
-  @Get(':id/orders')
-  getOrders(@Param('id', ParseIntPipe) id:number){
-    return this.usersService.getOrdersByUser(id);
   }
 }

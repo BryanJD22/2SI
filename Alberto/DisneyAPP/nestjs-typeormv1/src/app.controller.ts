@@ -8,7 +8,6 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
-    //return 'Hola mundo!';
   }
 
   @Get('nuevo')
@@ -19,5 +18,10 @@ export class AppController {
   @Get('/ruta/')
   hello() {
     return 'con /sas/';
+  }
+
+  @Get('/tasks')
+  tasks(){
+    return this.appService.getTasks();
   }
 }
