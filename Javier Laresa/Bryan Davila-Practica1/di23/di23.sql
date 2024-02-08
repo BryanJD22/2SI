@@ -27,7 +27,6 @@ USE `di23`;
 
 
 
-
 --
 -- Estructura de tabla para la tabla `menus`
 --
@@ -41,7 +40,7 @@ CREATE TABLE `menus` (
   `privado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
----
+--
 -- Estructura de tabla para la tabla `permisos`
 --
 
@@ -55,7 +54,10 @@ CREATE TABLE `permisos` (
 -- Volcado de datos para la tabla `permisos`
 --
 
-
+INSERT INTO `permisos` (`id_permiso`, `id_menu`, `nombre`) VALUES
+(1, 5, 'Visualizar'),
+(2, 5, 'Editar'),
+(3, 5, 'Crear');
 
 -- --------------------------------------------------------
 
@@ -72,6 +74,19 @@ CREATE TABLE `permisosusuarios` (
 -- Volcado de datos para la tabla `permisosusuarios`
 --
 
+INSERT INTO `permisosusuarios` (`id_usuario`, `id_permiso`) VALUES
+(498, 1),
+(498, 2),
+(498, 3),
+(499, 1),
+(499, 2),
+(499, 3),
+(502, 1),
+(503, 1),
+(503, 2),
+(503, 3),
+(504, 1),
+(504, 3);
 
 
 -- --------------------------------------------------------
@@ -84,6 +99,18 @@ CREATE TABLE `roles` (
   `id_rol` int(3) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id_rol`, `nombre`) VALUES
+(1, 'administrador'),
+(2, 'desarrollador'),
+(3, 'supervisor'),
+(4, 'invitado'),
+(5, 'tester'),
+(6, 'usuario');
 
 
 -- --------------------------------------------------------
@@ -99,6 +126,14 @@ CREATE TABLE `rolespermisos` (
 
 -- --------------------------------------------------------
 
+INSERT INTO `rolespermisos` (`id_rol`, `id_permiso`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(2, 1),
+(2, 2),
+(3, 1);
+
 --
 -- Estructura de tabla para la tabla `rolesusuarios`
 --
@@ -108,7 +143,17 @@ CREATE TABLE `rolesusuarios` (
   `id_Usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `rolesusuarios`
+--
 
+INSERT INTO `rolesusuarios` (`id_rol`, `id_Usuario`) VALUES
+(1, 498),
+(2, 499),
+(3, 501),
+(4, 502),
+(5, 503),
+(6, 504);
 
 
 INSERT INTO `menus` (`id_menu`, `posicion`, `titulo`, `id_menu_padre`, `accion`, `privado`) VALUES
@@ -307,6 +352,34 @@ ALTER TABLE `usuarios`
   MODIFY `id_Usuario` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=498;
 COMMIT;
 
+--
+-- Filtros para la tabla `permisos`
+--
+ALTER TABLE `permisos`
+  ADD CONSTRAINT `fk_permisos_menus` FOREIGN KEY (`id_menu`) REFERENCES `menus` (`id_menu`);
+
+--
+-- Filtros para la tabla `permisosusuarios`
+--
+ALTER TABLE `permisosusuarios`
+  ADD CONSTRAINT `fk_permisosusuarios_permisos` FOREIGN KEY (`id_permiso`) REFERENCES `permisos` (`id_permiso`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_permisosusuarios_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+--
+-- Filtros para la tabla `rolespermisos`
+--
+ALTER TABLE `rolespermisos`
+  ADD CONSTRAINT `fk_rolespermisos_roles` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`),
+  ADD CONSTRAINT `fk_rolespermisos_permisos` FOREIGN KEY (`id_permiso`) REFERENCES `permisos` (`id_permiso`);
+
+--
+-- Filtros para la tabla `rolesusuarios`
+--
+ALTER TABLE `rolesusuarios`
+  ADD CONSTRAINT `fk_rolesusuarios_roles` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`),
+  ADD CONSTRAINT `fk_rolesusuarios_usuarios` FOREIGN KEY (`id_Usuario`) REFERENCES `usuarios` (`id_Usuario`);
+COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
