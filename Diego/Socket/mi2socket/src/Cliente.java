@@ -38,6 +38,6 @@ public class Cliente {
     private int obtenerClienteId() {
         // Puedes implementar la lógica para obtener o generar un ID único para el cliente
         // En este ejemplo, simplemente retornamos un valor fijo para demostración.
-        return 1;
+        return 2;
     }
 }
