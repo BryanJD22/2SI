@@ -1,5 +1,6 @@
 Trabajo final AD:
 La tabla obra contiene la información de las obras literarias.
+
 CREATE TABLE obra (
 id CHAR(5),
 titulo VARCHAR(100),
@@ -93,9 +94,12 @@ BEGIN
 END;
 /
 
+INSERT INTO obra (id, titulo, anyo) VALUES (id5, 'obra 2', 2012);
+INSERT INTO obra (id, titulo, anyo) VALUES (id5, 'obra 3', 2005);
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////
 
 
 
