@@ -1,0 +1,127 @@
+Trabajo final AD:
+La tabla obra contiene la información de las obras literarias.
+CREATE TABLE obra (
+id CHAR(5),
+titulo VARCHAR(100),
+anyo INTEGER,
+CONSTRAINT PK_obra PRIMARY KEY (id),
+CONSTRAINT NN_titulo CHECK (titulo IS NOT NULL)
+);
+
+///////////////////////////////////////////////////////
+
+La tabla autor contiene la información de los autores de las obras.
+
+CREATE TABLE autor (
+id CHAR(4),
+nombre VARCHAR(30),
+apellidos VARCHAR(60),
+nacimiento DATE,
+CONSTRAINT PK_autor PRIMARY KEY (id),
+CONSTRAINT NN_nombre CHECK (nombre IS NOT NULL),
+CONSTRAINT NN_apellidos CHECK (apellidos IS NOT NULL)
+);
+
+//////////////////////////////////////////////////////////////
+
+La tabla autor_obra contiene la relación de autores y obras.
+
+CREATE TABLE autor_obra (
+id_autor CHAR(4),
+id_obra CHAR(5),
+CONSTRAINT PK_autor_obra PRIMARY KEY (id_autor, id_obra),
+CONSTRAINT FK_autor_obra_id_autor FOREIGN KEY (id_autor) REFERENCES
+autor(id),
+CONSTRAINT FK_autor_obra_id_obra FOREIGN KEY (id_obra)
+REFERENCES obra(id)
+);
+
+///////////////////////////////////////////////////////////////////
+
+La tabla edicion contiene la información de las ediciones publicadas de las obras.
+
+CREATE TABLE edicion (
+id CHAR(6),
+id_obra CHAR(5),
+isbn VARCHAR(20),
+anyo INTEGER,
+CONSTRAINT PK_edicion PRIMARY KEY (id),
+CONSTRAINT NN_id_obra CHECK (id_obra IS NOT NULL),
+CONSTRAINT NN_isbn CHECK (isbn IS NOT NULL),
+CONSTRAINT FK_edicion FOREIGN KEY (id_obra) REFERENCES
+obra(id)
+);
+
+
+///////////////////////////////////////////////////////////////////
+
+
+La tabla ejemplar contiene la información de los ejemplares adquiridos por la
+biblioteca.
+
+CREATE TABLE ejemplar (
+id_edicion CHAR(6),
+numero INTEGER,
+alta DATE,
+baja DATE,
+CONSTRAINT PK_ejemplar PRIMARY KEY (id_edicion, numero),
+CONSTRAINT FK_ejemplar FOREIGN KEY (id_edicion) REFERENCES
+edicion(id),
+CONSTRAINT NN_alta CHECK (alta IS NOT NULL)
+);
+//////////////////////////////////////////////////////////////////////////////////////
+06. Los identificadores serán alfanuméricos y generados de forma aleatoria. Por
+supuesto habrá que tener en cuenta antes de realizar la inserción que la PK no esté
+duplicada, caso de estarlo terminaremos de forma controlada el intento de inserción
+monitorizando por pantalla el error.
+
+
+DECLARE
+   id5 CHAR(5);
+BEGIN
+   -- Generar un identificador alfanumérico de 5 caracteres
+   id5 := DBMS_RANDOM.STRING('X', 5);
+
+   -- Intentar insertar una obra
+   BEGIN
+      INSERT INTO obra (id, titulo) VALUES (id5, 'Cinco semanas en globo');
+   EXCEPTION
+      WHEN DUP_VAL_ON_INDEX THEN
+         -- Capturar la excepción si la clave primaria está duplicada
+         DBMS_OUTPUT.PUT_LINE('Error: Clave primaria duplicada. Inserción abortada.');
+   END;
+END;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
