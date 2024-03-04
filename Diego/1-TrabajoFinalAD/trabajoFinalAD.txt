@@ -70,6 +70,63 @@ CONSTRAINT FK_ejemplar FOREIGN KEY (id_edicion) REFERENCES
 edicion(id),
 CONSTRAINT NN_alta CHECK (alta IS NOT NULL)
 );
+
+///////////////////////////////////////////////////////////////////////////////////
+
+Tabla para guardar los borrados (se utiliza en el punto 9.1)
+
+CREATE TABLE historial_obras (
+   id CHAR(5),
+   titulo VARCHAR(100),
+   anyo INTEGER,
+   fecha_borrado TIMESTAMP,
+   CONSTRAINT PK_historial_obras PRIMARY KEY (id, fecha_borrado)
+);
+
+CREATE TABLE historial_autor (
+   id CHAR(4),
+   nombre VARCHAR(30),
+   apellidos VARCHAR(60),
+   nacimiento DATE,
+   fecha_cambio TIMESTAMP,
+   tipo_cambio VARCHAR(50),
+   CONSTRAINT FK_historial_autor_id FOREIGN KEY (id) REFERENCES autor(id),
+   CONSTRAINT PK_historial_autor PRIMARY KEY (id, fecha_cambio)
+);
+
+
+CREATE TABLE historial_autor_obra (
+   id_autor CHAR(4),
+   id_obra CHAR(5),
+   fecha_cambio TIMESTAMP,
+   tipo_cambio VARCHAR(50), 
+   CONSTRAINT FK_historial_autor_obra_id_autor FOREIGN KEY (id_autor) REFERENCES autor(id),
+   CONSTRAINT FK_historial_autor_obra_id_obra FOREIGN KEY (id_obra) REFERENCES obra(id)
+);
+
+CREATE TABLE historial_edicion (
+   id CHAR(6),
+   id_obra CHAR(5),
+   isbn VARCHAR(20),
+   anyo INTEGER,
+   fecha_cambio TIMESTAMP,
+   tipo_cambio VARCHAR(50),
+   CONSTRAINT FK_historial_edicion_id_edicion FOREIGN KEY (id) REFERENCES edicion(id),
+   CONSTRAINT FK_historial_edicion_id_obra FOREIGN KEY (id_obra) REFERENCES obra(id),
+   CONSTRAINT PK_historial_edicion PRIMARY KEY (id, fecha_cambio)
+);
+
+CREATE TABLE historial_ejemplar (
+   id_edicion CHAR(6),
+   numero INTEGER,
+   alta DATE,
+   baja DATE,
+   fecha_cambio TIMESTAMP,
+   tipo_cambio VARCHAR(50),
+   CONSTRAINT FK_historial_ejemplar_id_edicion FOREIGN KEY (id_edicion) REFERENCES edicion(id),
+   CONSTRAINT PK_historial_ejemplar PRIMARY KEY (id_edicion, numero, fecha_cambio)
+);
+
 //////////////////////////////////////////////////////////////////////////////////////
 06. Los identificadores serán alfanuméricos y generados de forma aleatoria. Por
 supuesto habrá que tener en cuenta antes de realizar la inserción que la PK no esté
@@ -78,14 +135,25 @@ monitorizando por pantalla el error.
 
 
 DECLARE
-   id5 CHAR(5);
+
+   id4 CHAR(4);
+   id5 CHAR(5); 
+   id6 CHAR(6);
+
 BEGIN
+   -- Generar un identificador alfanumérico de 4 caracteres
+   id4 := DBMS_RANDOM.STRING('X', 4);
    -- Generar un identificador alfanumérico de 5 caracteres
    id5 := DBMS_RANDOM.STRING('X', 5);
-
+   -- Generar un identificador alfanumérico de 6 caracteres
+   id6 := DBMS_RANDOM.STRING('X', 6);
    -- Intentar insertar una obra
    BEGIN
       INSERT INTO obra (id, titulo) VALUES (id5, 'Cinco semanas en globo');
+      INSERT INTO autor (id, nombre, apellidos, nacimiento) VALUES (id4, 'Julio', 'Verne', TO_DATE('1828-02-08', 'YYYY-MM-DD'));
+      INSERT INTO autor_obra(id_autor, id_obra) VALUES (id4,id5);
+      INSERT INTO edicion(id, id_obra, isbn, anyo) VALUES (id6, id5,'1234567890',2022);
+      INSERT INTO ejemplar (id_edicion, numero, alta, baja) VALUES (id6, 1, TO_DATE('2022-03-01', 'YYYY-MM-DD'), NULL);
    EXCEPTION
       WHEN DUP_VAL_ON_INDEX THEN
          -- Capturar la excepción si la clave primaria está duplicada
@@ -94,21 +162,169 @@ BEGIN
 END;
 /
 
-INSERT INTO obra (id, titulo, anyo) VALUES (id5, 'obra 2', 2012);
-INSERT INTO obra (id, titulo, anyo) VALUES (id5, 'obra 3', 2005);
+/////////////////////////////////////////////////////////////////////////////////////////
+08. El alta de obras se implementará mediante una función alta_obra.
 
+CREATE OR REPLACE FUNCTION alta_obra(p_titulo VARCHAR, p_anyo INTEGER DEFAULT NULL)
+RETURN VARCHAR IS
+   -- Declaraciones
+   id_obra VARCHAR(5);
+BEGIN
+   -- Generar un identificador alfanumérico de 5 caracteres
+   id_obra := DBMS_RANDOM.STRING('X', 5);
+
+   -- Insertar la nueva obra
+   BEGIN
+      INSERT INTO obra (id, titulo, anyo) VALUES (id_obra, p_titulo, p_anyo);
+   EXCEPTION
+      WHEN OTHERS THEN
+         -- Si ocurre un error, devolver -1
+         RETURN '-1';
+   END;
+
+   -- Devolver el ID asignado
+   RETURN id_obra;
+END;
+/
+
+DECLARE
+   id_obr VARCHAR(5);
+BEGIN
+   -- Supongamos que se quiere insertar una obra con el título 'Cinco semanas en globo'
+   id_obr := alta_obra('Cinco semanas en globo',2022);
+
+   -- Verificar si la operación fue exitosa
+   IF id_obr = '-1' THEN
+      DBMS_OUTPUT.PUT_LINE('Error al insertar la obra. No se pudo asignar un ID.');
+   ELSE
+      DBMS_OUTPUT.PUT_LINE('ID asignado: ' || id_obr);
+   END IF;
+END;
+/
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
+09. El borrado de obras se implementará mediante una función borrado_obra.
+CREATE OR REPLACE FUNCTION borrado_obra(p_id VARCHAR) RETURN INTEGER IS
+   -- Declaraciones
+   v_existencia INTEGER;
+BEGIN
+   v_existencia := 0;
+   -- Verificar si existe la obra con el id proporcionado
+   SELECT COUNT(*) INTO v_existencia
+   FROM obra
+   WHERE id = p_id;
+
+   -- Realizar el borrado si la obra existe
+   IF v_existencia > 0 THEN
+      DELETE FROM obra WHERE id = p_id;
+      RETURN 1; -- Borrado efectuado
+   ELSE
+      RETURN 0; -- No existe el id
+   END IF;
+ 
+   EXCEPTION
+	WHEN OTHERS THEN
+	   RETURN -1;
+END;
+/
+
+SET SERVEROUTPUT ON; -- Esto habilita la salida de DBMS_OUTPUT
+
+DECLARE
+   resultado INTEGER;
+   id_obr VARCHAR(5);
+BEGIN
+   -- Supongamos que ya existe una obra con el ID 'ABCDE'
+   id_obr := 'XNU0I';
+
+   -- Llamada a la función borrado_obra
+   resultado := borrado_obra(id_obr);
+
+   -- Mostrar el resultado
+   CASE resultado
+      WHEN 1 THEN
+         DBMS_OUTPUT.PUT_LINE('La obra se ha borrado exitosamente.');
+      WHEN 0 THEN
+         DBMS_OUTPUT.PUT_LINE('No existe una obra con el ID proporcionado.');
+      WHEN -1 THEN
+         DBMS_OUTPUT.PUT_LINE('Ha ocurrido un error durante el borrado de la obra.');
+      ELSE
+         DBMS_OUTPUT.PUT_LINE('Resultado desconocido.');
+   END CASE;
+END;
+/
 
 
+//////////////////////////////////////////////////////////////////////////////////////////
+
+09.1 Auditoría del borrado de obras: Cada vez que se ejecute el borrado de una obra y
+para no perder datos, lo que querremos es que la obra borrada y todos los datos
+asociados a ella queden guardados en una/s tabla/s de histórico ocultas al usuario
+estándar, de modo que en cualquier momento se pueda auditar el borrado de obras
+recuperando todos sus datos y la fecha/hora en que fue borrada la obra.
+CREATE OR REPLACE TRIGGER auditar_borrado_obra
+AFTER DELETE ON obra
+FOR EACH ROW
+DECLARE
+   -- Declaraciones
+   v_fecha_hora TIMESTAMP := CURRENT_TIMESTAMP;
+BEGIN
+   -- Insertar los datos de la obra borrada en la tabla de historial_obras
+   INSERT INTO historial_obras (id, titulo, anyo, fecha_borrado)
+   VALUES (:OLD.id, :OLD.titulo, :OLD.anyo, v_fecha_hora);
+   
+   -- Puedes agregar más información a la salida de mensajes si es necesario
+   DBMS_OUTPUT.PUT_LINE('Borrado de obra ID ' || :OLD.id || ' auditable. Fecha/Hora: ' || TO_CHAR(v_fecha_hora, 'YYYY-MM-DD HH24:MI:SS'));
+END;
+/
 
 
+CREATE OR REPLACE TRIGGER auditar_borrado_autor_obra
+AFTER DELETE ON autor_obra
+FOR EACH ROW
+DECLARE
+   v_fecha_hora TIMESTAMP := CURRENT_TIMESTAMP;
+BEGIN
+   -- Insertar la relación de autor y obra borrada en la tabla de historial_autor_obra
+   INSERT INTO historial_autor_obra (id_autor, id_obra, fecha_cambio, tipo_cambio)
+   VALUES (:OLD.id_autor, :OLD.id_obra, v_fecha_hora, 'DELETE en autor_obra');
 
+   -- Puedes agregar más información a la salida de mensajes si es necesario
+   DBMS_OUTPUT.PUT_LINE('Borrado de autor_obra ID_Autor ' || :OLD.id_autor || ' ID_Obra ' || :OLD.id_obra || ' auditable. Fecha/Hora: ' || TO_CHAR(v_fecha_hora, 'YYYY-MM-DD HH24:MI:SS'));
+END;
+/
 
+CREATE OR REPLACE TRIGGER auditar_borrado_edicion
+AFTER DELETE ON edicion
+FOR EACH ROW
+DECLARE
+   v_fecha_hora TIMESTAMP := CURRENT_TIMESTAMP;
+BEGIN
+   -- Insertar los datos de la edición borrada en la tabla de historial_edicion
+   INSERT INTO historial_edicion (id, id_obra, isbn, anyo, fecha_cambio, tipo_cambio)
+   VALUES (:OLD.id, :OLD.id_obra, :OLD.isbn, :OLD.anyo, v_fecha_hora, 'DELETE en edicion');
 
+   -- Puedes agregar más información a la salida de mensajes si es necesario
+   DBMS_OUTPUT.PUT_LINE('Borrado de edicion ID ' || :OLD.id || ' auditable. Fecha/Hora: ' || TO_CHAR(v_fecha_hora, 'YYYY-MM-DD HH24:MI:SS'));
+END;
+/
 
+CREATE OR REPLACE TRIGGER auditar_borrado_ejemplar
+AFTER DELETE ON ejemplar
+FOR EACH ROW
+DECLARE
+   v_fecha_hora TIMESTAMP := CURRENT_TIMESTAMP;
+BEGIN
+   -- Insertar los datos del ejemplar borrado en la tabla de historial_ejemplar
+   INSERT INTO historial_ejemplar (id_edicion, numero, alta, baja, fecha_cambio, tipo_cambio)
+   VALUES (:OLD.id_edicion, :OLD.numero, :OLD.alta, :OLD.baja, v_fecha_hora, 'DELETE en ejemplar');
+
+   -- Puedes agregar más información a la salida de mensajes si es necesario
+   DBMS_OUTPUT.PUT_LINE('Borrado de ejemplar ID_Edicion ' || :OLD.id_edicion || ' Numero ' || :OLD.numero || ' auditable. Fecha/Hora: ' || TO_CHAR(v_fecha_hora, 'YYYY-MM-DD HH24:MI:SS'));
+END;
+/
 
 
 
