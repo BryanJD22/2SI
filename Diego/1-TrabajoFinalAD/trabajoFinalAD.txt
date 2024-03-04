@@ -1,5 +1,5 @@
 Trabajo final AD:
-La tabla obra contiene la información de las obras literarias.
+--La tabla obra contiene la información de las obras literarias.
 
 CREATE TABLE obra (
 id CHAR(5),
@@ -9,9 +9,8 @@ CONSTRAINT PK_obra PRIMARY KEY (id),
 CONSTRAINT NN_titulo CHECK (titulo IS NOT NULL)
 );
 
-///////////////////////////////////////////////////////
 
-La tabla autor contiene la información de los autores de las obras.
+--La tabla autor contiene la información de los autores de las obras.
 
 CREATE TABLE autor (
 id CHAR(4),
@@ -23,9 +22,8 @@ CONSTRAINT NN_nombre CHECK (nombre IS NOT NULL),
 CONSTRAINT NN_apellidos CHECK (apellidos IS NOT NULL)
 );
 
-//////////////////////////////////////////////////////////////
 
-La tabla autor_obra contiene la relación de autores y obras.
+--La tabla autor_obra contiene la relación de autores y obras.
 
 CREATE TABLE autor_obra (
 id_autor CHAR(4),
@@ -37,9 +35,9 @@ CONSTRAINT FK_autor_obra_id_obra FOREIGN KEY (id_obra)
 REFERENCES obra(id)
 );
 
-///////////////////////////////////////////////////////////////////
 
-La tabla edicion contiene la información de las ediciones publicadas de las obras.
+
+--La tabla edicion contiene la información de las ediciones publicadas de las obras.
 
 CREATE TABLE edicion (
 id CHAR(6),
@@ -54,11 +52,9 @@ obra(id)
 );
 
 
-///////////////////////////////////////////////////////////////////
 
 
-La tabla ejemplar contiene la información de los ejemplares adquiridos por la
-biblioteca.
+--La tabla ejemplar contiene la información de los ejemplares adquiridos por labiblioteca.
 
 CREATE TABLE ejemplar (
 id_edicion CHAR(6),
@@ -71,9 +67,15 @@ edicion(id),
 CONSTRAINT NN_alta CHECK (alta IS NOT NULL)
 );
 
+Select * from obra;
+Select * from autor;
+Select * from autor_obra;
+Select * from edicion;
+Select * from ejemplar;
+Select * from historial_obras;
 ///////////////////////////////////////////////////////////////////////////////////
 
-Tabla para guardar los borrados (se utiliza en el punto 9.1)
+--Tabla para guardar los borrados (se utiliza en el punto 9.1)
 
 CREATE TABLE historial_obras (
    id CHAR(5),
@@ -326,6 +328,148 @@ BEGIN
 END;
 /
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+10. El alta de autores se implementará mediante una función alta_autor.
+
+
+CREATE OR REPLACE FUNCTION alta_autor(p_nombre VARCHAR, p_apellidos VARCHAR, p_nacimiento DATE DEFAULT NULL)
+RETURN VARCHAR IS
+   -- Declaraciones
+   id_autor CHAR(4);
+BEGIN
+   -- Generar un identificador alfanumérico de 4 caracteres
+   id_autor := DBMS_RANDOM.STRING('X', 4);
+	
+   -- Insertar la nueva obra
+   BEGIN
+      INSERT INTO autor (id, nombre, apellidos, nacimiento) VALUES (id_autor, p_nombre, p_apellidos, p_nacimiento);
+   EXCEPTION
+      WHEN OTHERS THEN
+         -- Si ocurre un error, devolver -1
+         RETURN '-1';
+   END;
+
+   -- Devolver el ID asignado
+   RETURN id_autor;
+END;
+/
+
+DECLARE
+   id_autor VARCHAR(4);
+BEGIN
+   -- Supongamos que se quiere insertar un autor con el nombre 'Julio' y apellidos 'Cesar'
+   -- y se proporciona el año de nacimiento como 2022
+   id_autor := alta_autor('Julio', 'Cesar', DATE '2022-01-01');
+
+   -- Verificar si la operación fue exitosa
+   IF id_autor = '-1' THEN
+      DBMS_OUTPUT.PUT_LINE('Error al insertar el autor. No se pudo asignar un ID.');
+   ELSE
+      DBMS_OUTPUT.PUT_LINE('ID asignado: ' || id_autor);
+   END IF;
+END;
+/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+11. El borrado de autores se implementará mediante una función borrado_autor.
+
+CREATE OR REPLACE FUNCTION borrado_autor(p_id VARCHAR) RETURN INTEGER IS
+   -- Declaraciones
+   v_existencia INTEGER ;
+
+BEGIN
+    v_existencia := 0;
+   -- Verificar si existe la autor con el id proporcionado
+   SELECT COUNT(*) INTO v_existencia
+   FROM autor
+   WHERE id = p_id;
+
+   -- Intentar borrar el autor
+ 	IF v_existencia > 0 THEN
+      DELETE FROM autor WHERE id = p_id;
+      RETURN 1; -- Borrado efectuado
+   ELSE
+      RETURN 0; -- No existe el id
+   END IF;
+ 
+   EXCEPTION
+	WHEN OTHERS THEN
+	   RETURN -1;
+      
+END;
+/
+DECLARE
+   resultado INTEGER;
+   id_autor VARCHAR(4); 
+
+BEGIN
+    id_autor := 'TY5Q';
+    resultado := borrado_autor(id_autor);
+
+   -- Verificar el resultado y mostrar un mensaje adecuado
+   CASE resultado
+      WHEN 1 THEN
+         DBMS_OUTPUT.PUT_LINE('Autor borrado exitosamente.');
+      WHEN 0 THEN
+         DBMS_OUTPUT.PUT_LINE('No existe un autor con ese ID.');
+      WHEN -1 THEN
+         DBMS_OUTPUT.PUT_LINE('Error al intentar borrar el autor.');
+   END CASE;
+END;
+/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+12. La vinculación de un autor a una obra se implementará mediante una función
+vincular.
+
+
+
+CREATE OR REPLACE FUNCTION vincular_autor_obra(p_id_autor VARCHAR, p_id_obra VARCHAR) RETURN INTEGER IS
+   -- Declaraciones
+   v_resultado INTEGER := 1;  -- Por defecto, asumimos que la operación se realiza sin errores.
+
+BEGIN
+   -- Intentar vincular el autor a la obra
+   BEGIN
+      INSERT INTO autor_obra (id_autor, id_obra) VALUES (p_id_autor, p_id_obra);
+      
+      COMMIT;  -- Confirmar la transacción si la inserción fue exitosa
+
+   EXCEPTION
+      WHEN OTHERS THEN
+         -- Si ocurre un error, asignar -1 al resultado y realizar un rollback
+         v_resultado := -1;
+         ROLLBACK;
+   END;
+
+   -- Devolver el resultado
+   RETURN v_resultado;
+END;
+/
+DECLARE
+   resultado INTEGER;
+   id_autor CHAR(4) ; 
+   id_obra CHAR(5) ;  
+
+BEGIN
+    id_autor :='';
+	id_obra :='';
+   resultado := vincular(id_autor, id_obra);
+
+   -- Verificar el resultado y mostrar un mensaje adecuado
+   CASE resultado
+      WHEN 1 THEN
+         DBMS_OUTPUT.PUT_LINE('Vinculación exitosa.');
+      WHEN -1 THEN
+         DBMS_OUTPUT.PUT_LINE('Error al intentar vincular el autor a la obra.');
+   END CASE;
+END;
+/
 
 
 
