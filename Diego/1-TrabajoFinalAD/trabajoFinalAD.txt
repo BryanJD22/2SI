@@ -459,7 +459,7 @@ DECLARE
 
 BEGIN
     id_autor :='EYTW';
-	id_obra :='HUF6N';
+    id_obra :='HUF6N';
    resultado := vincular_autor_obra(id_autor, id_obra);
 
    -- Verificar el resultado y mostrar un mensaje adecuado
