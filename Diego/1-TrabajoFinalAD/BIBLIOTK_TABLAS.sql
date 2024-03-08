@@ -75,3 +75,27 @@ CREATE TABLE historial_obras (
    fecha_borrado TIMESTAMP,
    CONSTRAINT PK_historial_obras PRIMARY KEY (id, fecha_borrado)
 );
+
+--Tabla para guardar los socios de la biblioteca
+CREATE TABLE socio (
+   id_socio CHAR (5)PRIMARY KEY,
+   nombre VARCHAR(30) NOT NULL,
+   apellidos VARCHAR(60) NOT NULL,
+   fecha_inscripcion DATE ,
+   CONSTRAINT NN_nombre CHECK (nombre IS NOT NULL),
+   CONSTRAINT NN_apellidos CHECK (apellidos IS NOT NULL)
+);
+
+
+--Tabla para guardar los préstamos de ejemplares a los socios
+CREATE TABLE prestamo (
+   id_prestamo CHAR(7) PRIMARY KEY,
+   id_socio CHAR(5),
+   id_ejemplar CHAR(6),
+   fecha_inicio DATE ,
+   fecha_fin DATE,
+   CONSTRAINT FK_prestamo_id_socio FOREIGN KEY (id_socio) REFERENCES socio(id_socio),
+   CONSTRAINT FK_prestamo_id_ejemplar FOREIGN KEY (id_ejemplar) REFERENCES ejemplar(id_edicion),
+   CONSTRAINT NN_id_socio CHECK (id_socio IS NOT NULL),
+   CONSTRAINT NN_id_ejemplar CHECK (id_ejemplar IS NOT NULL)
+);

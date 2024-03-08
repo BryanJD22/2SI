@@ -27,7 +27,7 @@ DECLARE
    id_obr VARCHAR(5);
 BEGIN
    -- Supongamos que ya existe una obra con el ID 'ABCDE'
-   id_obr := '2XBIA';
+   id_obr := 'XXXXX';
 
    -- Llamada a la función borrado_obra
    resultado := borrado_obra(id_obr);
@@ -70,7 +70,7 @@ DECLARE
    id_autor VARCHAR(4); 
 
 BEGIN
-    id_autor := 'TY5Q';
+    id_autor := 'XXXX';
     resultado := borrado_autor(id_autor);
 
    -- Verificar el resultado y mostrar un mensaje adecuado
@@ -93,8 +93,8 @@ DECLARE
    id_obra CHAR(5) ;  
 
 BEGIN
-    id_autor :='EYTW';
-    id_obra :='HUF6N';
+    id_autor :='XXXX';
+    id_obra :='XXXXX';
    resultado := vincular_autor_obra(id_autor, id_obra);
 
    -- Verificar el resultado y mostrar un mensaje adecuado
@@ -112,8 +112,8 @@ END;
 
 DECLARE
    resultado INTEGER;
-   id_autor VARCHAR(4) := 'EYTW';  
-   id_obra VARCHAR(5) := 'HUF6N';  
+   id_autor VARCHAR(4) := 'XXXX';  
+   id_obra VARCHAR(5) := 'XXXXX';  
 
 BEGIN
    resultado := desvincular_autor_obra(id_autor, id_obra);
@@ -135,7 +135,7 @@ END;
 
 DECLARE
    id_edicion CHAR(6);
-   id_obra CHAR(5) := 'HUF6N';  -- Reemplaza 'XXXX' con el ID de la obra
+   id_obra CHAR(5) := 'XXXXX';  -- Reemplaza 'XXXX' con el ID de la obra
    isbn_edicion CHAR(20) := '1234567890123';  -- Reemplaza con un ISBN válido
    anyo_edicion INTEGER := 2022;  -- Reemplaza con el año que desees
 
@@ -155,7 +155,7 @@ END;
 
 DECLARE
    resultado INTEGER;
-   id_edicion_a_borrar VARCHAR(6) := 'PCA538';  
+   id_edicion_a_borrar VARCHAR(6) := 'XXXXXXX';  
 
 BEGIN
    resultado := borrado_edicion(id_edicion_a_borrar);
@@ -174,7 +174,7 @@ END;
 
 DECLARE
    numero_ejemplar_asignado INTEGER;
-   id_edicion_existente VARCHAR(6) := 'F4KP37';  -- Reemplaza 'XXXXXX' con un ID de edición existente
+   id_edicion_existente VARCHAR(6) := 'XXXXXX';  -- Reemplaza 'XXXXXX' con un ID de edición existente
 
 BEGIN
    -- Probar con una edición existente
@@ -195,7 +195,7 @@ END;
 
 DECLARE
    resultado_borrado INTEGER;
-   id_edicion VARCHAR(6) := 'F4KP37';  -- Reemplaza con un ID de edición existente
+   id_edicion VARCHAR(6) := 'XXXXX';  -- Reemplaza con un ID de edición existente
    numero_ejemplar INTEGER := 2;        -- Reemplaza con el número de ejemplar existente
 
 BEGIN
@@ -210,7 +210,7 @@ BEGIN
          DBMS_OUTPUT.PUT_LINE('No existe el ejemplar con ese ID y número.');
       WHEN -1 THEN
          DBMS_OUTPUT.PUT_LINE('No se pudo borrar el ejemplar. Verifica si cumple que es el último de su serie, no tiene fecha de baja y
-además no han pasado más de 30 días desde la fecha de alta.');
+         además no han pasado más de 30 días desde la fecha de alta.');
       ELSE
          DBMS_OUTPUT.PUT_LINE('Resultado desconocido.');
    END CASE;
@@ -222,7 +222,7 @@ END;
 
 DECLARE
    resultado_baja INTEGER;
-   id_edicion VARCHAR(6) := 'F4KP37';  -- Reemplaza con un ID de edición existente
+   id_edicion VARCHAR(6) := 'XXXXXX';  -- Reemplaza con un ID de edición existente
    numero_ejemplar INTEGER := 4;        -- Reemplaza con el número de ejemplar existente
 
 BEGIN
