@@ -872,9 +872,8 @@ CREATE TABLE socio (
    id_socio CHAR (5)PRIMARY KEY,
    nombre VARCHAR(30) NOT NULL,
    apellidos VARCHAR(60) NOT NULL,
-   fecha_inscripcion DATE ,
-   CONSTRAINT NN_nombre CHECK (nombre IS NOT NULL),
-   CONSTRAINT NN_apellidos CHECK (apellidos IS NOT NULL)
+   fecha_inscripcion DATE 
+
 );
 
 

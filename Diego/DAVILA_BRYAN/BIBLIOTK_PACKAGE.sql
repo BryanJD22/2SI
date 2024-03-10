@@ -26,8 +26,8 @@ CREATE OR REPLACE PACKAGE BiblioTK AS
     FUNCTION alta_ejemplar(p_id_edicion VARCHAR) RETURN INTEGER;
     FUNCTION borrado_ejemplar(p_id_edicion VARCHAR, p_numero INTEGER) RETURN INTEGER;
     FUNCTION baja_ejemplar(p_id_edicion VARCHAR, p_numero INTEGER) RETURN INTEGER;
-
-
+    FUNCTION apertura_prestamo(p_id_socio CHAR,p_id_edicion CHAR,p_numero_ejemplar INTEGER) RETURN INTEGER
+    FUNCTION cierre_prestamo(p_id_prestamo CHAR) RETURN INTEGER
 
 
 END BiblioTK;

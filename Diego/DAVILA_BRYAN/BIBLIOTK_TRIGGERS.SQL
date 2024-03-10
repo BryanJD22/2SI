@@ -13,3 +13,15 @@ BEGIN
    DBMS_OUTPUT.PUT_LINE('Borrado de obra ID ' || :OLD.id || ' auditable. Fecha/Hora: ' || TO_CHAR(v_fecha_hora, 'YYYY-MM-DD HH24:MI:SS'));
 END;
 /
+
+CREATE OR REPLACE TRIGGER auditar_borrado_autor
+AFTER DELETE ON autor
+FOR EACH ROW
+DECLARE
+BEGIN
+   IF :OLD.id IS NOT NULL AND :OLD.nombre IS NOT NULL AND :OLD.apellidos IS NOT NULL THEN
+      INSERT INTO historial_autor (id, nombre, apellidos, nacimiento)
+      VALUES (:OLD.id, :OLD.nombre, :OLD.apellidos, :OLD.nacimiento);
+   END IF;
+END tr_historial_autor;
+/

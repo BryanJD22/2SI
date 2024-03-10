@@ -169,6 +169,7 @@ BEGIN
    RETURN v_id_edicion;
 END;
 /
+
 CREATE OR REPLACE FUNCTION borrado_edicion(p_id VARCHAR)
 RETURN INTEGER IS
    -- Declaraciones
@@ -198,46 +199,43 @@ BEGIN
    RETURN v_resultado;
 END;
 /
-CREATE SEQUENCE SEQ_EJEMPLAR
-  START WITH 1
-  INCREMENT BY 1
-  NOCACHE
-  NOCYCLE;
+
 
 CREATE OR REPLACE FUNCTION alta_ejemplar(p_id_edicion VARCHAR) RETURN INTEGER IS
-   -- Declaraciones
-   v_numero_ejemplar INTEGER;
+    v_numero INTEGER;
+    v_cantidad_ejemplares INTEGER;
+    v_max_numero INTEGER;
+    v_edicion_existente INTEGER;
+    ejemplar_no_existente EXCEPTION;
+
 BEGIN
-   -- Verificar si la edición con el ID proporcionado existe en la tabla edicion
-   SELECT COUNT(*)
-   INTO v_numero_ejemplar
-   FROM edicion
-   WHERE id = p_id_edicion;
+    SELECT COUNT(*) INTO v_edicion_existente FROM edicion WHERE id = p_id_edicion;
 
-   -- Si no se encuentra la edición, devolver -1
-   IF v_numero_ejemplar = 0 THEN
-      RETURN -1;
-   END IF;
+    IF v_edicion_existente = 1 THEN
+        SELECT COALESCE(MAX(numero), 0) INTO v_max_numero
+        FROM ejemplar
+        WHERE id_edicion = p_id_edicion;
 
-   -- Generar el número de ejemplar utilizando una secuencia
-   SELECT SEQ_EJEMPLAR.NEXTVAL INTO v_numero_ejemplar FROM DUAL;
+        v_numero := v_max_numero + 1;
 
-   -- Insertar el nuevo ejemplar
-   BEGIN
-      INSERT INTO ejemplar (id_edicion, numero, alta) VALUES (p_id_edicion, v_numero_ejemplar, SYSDATE);
-      
-      COMMIT;  -- Confirmar la transacción
+        INSERT INTO ejemplar (id_edicion, numero, alta, baja)
+        VALUES (p_id_edicion, v_numero, SYSTIMESTAMP, null);
 
-   EXCEPTION
-      WHEN OTHERS THEN
-         -- Si ocurre un error, devolver -1
-         RETURN -1;
-   END;
+        RETURN v_numero;
+    ELSE
+        RAISE ejemplar_no_existente;
+    END IF;
 
-   -- Devolver el número de ejemplar asignado
-   RETURN v_numero_ejemplar;
+EXCEPTION
+    WHEN ejemplar_no_existente THEN
+        RETURN 0;
+    WHEN OTHERS THEN
+        RETURN -1;
 END;
+
 /
+
+
 CREATE OR REPLACE FUNCTION borrado_ejemplar(p_id_edicion VARCHAR, p_numero INTEGER) RETURN INTEGER IS
    -- Declaraciones
    v_fecha_alta DATE;
@@ -331,5 +329,87 @@ BEGIN
 END;
 /
     
+
+
+
+
+CREATE OR REPLACE FUNCTION apertura_prestamo(
+    p_id_socio CHAR,
+    p_id_edicion CHAR,
+    p_numero_ejemplar INTEGER
+) RETURN INTEGER IS
+    id_prestamo CHAR(6);
+    v_fecha_baja DATE;
+    v_id_ejemplar CHAR(6);
+BEGIN
+    id_prestamo := DBMS_RANDOM.STRING('X', 6);
+    -- Verificar si el ejemplar existe y tiene fecha de baja null
+    SELECT e.baja, e.id_edicion
+    INTO v_fecha_baja, v_id_ejemplar
+    FROM ejemplar e
+    WHERE e.id_edicion = p_id_edicion AND e.numero = p_numero_ejemplar;
+
+    IF v_fecha_baja IS NULL THEN
+        -- Actualizar el primer ejemplar con fecha de baja null a la fecha actual
+        UPDATE ejemplar
+        SET baja = SYSTIMESTAMP
+        WHERE id_edicion = v_id_ejemplar AND numero = p_numero_ejemplar;
+
+        -- Insertar el nuevo préstamo
+        INSERT INTO prestamo (id_prestamo, id_socio, id_edicion, numero_ejemplar, fecha_inicio, fecha_fin)
+        VALUES (id_prestamo, p_id_socio, p_id_edicion, p_numero_ejemplar, SYSTIMESTAMP, NULL);
+
+        RETURN 1;
+    ELSE
+        RETURN 0;
+    END IF;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN -1;
+    WHEN OTHERS THEN
+        RETURN -2;
+END;
+/
+
+
+
+
+CREATE OR REPLACE FUNCTION cierre_prestamo(
+    p_id_prestamo CHAR
+) RETURN INTEGER IS
+BEGIN
+    -- Actualizar la fecha de fin de préstamo a la fecha actual
+    UPDATE prestamo
+    SET fecha_fin = SYSTIMESTAMP
+    WHERE id_prestamo = p_id_prestamo;
+
+    -- Obtener el id_edicion y numero del ejemplar asociado al préstamo
+    DECLARE
+        v_id_edicion CHAR(6);
+        v_numero_ejemplar INTEGER;
+    BEGIN
+        SELECT id_edicion, numero_ejemplar
+        INTO v_id_edicion, v_numero_ejemplar
+        FROM prestamo
+        WHERE id_prestamo = p_id_prestamo;
+
+        -- Eliminar la fecha de baja y actualizar la fecha de alta a la fecha actual
+        UPDATE ejemplar
+        SET baja = NULL, alta = SYSTIMESTAMP
+        WHERE id_edicion = v_id_edicion AND numero = v_numero_ejemplar;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            -- Manejar la situación en la que no se encuentran datos
+            RETURN -1;
+        WHEN OTHERS THEN
+            -- Manejar otras excepciones
+            RETURN -2;
+    END;
+
+    RETURN 1;
+END;
+/
+
+
 END BiblioTK;
 /

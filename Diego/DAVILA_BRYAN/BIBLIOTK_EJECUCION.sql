@@ -243,3 +243,26 @@ BEGIN
 END;
 /
 
+--Alta prestamo
+
+DECLARE
+    v_id_prestamo CHAR(6);
+    v_resultado INTEGER;
+BEGIN
+    -- Probar la función con parámetros de ejemplo
+    v_resultado := apertura_prestamo('SOC01', '5SD8VC', 1);
+
+    CASE v_resultado
+        WHEN 1 THEN
+            DBMS_OUTPUT.PUT_LINE('Préstamo abierto exitosamente.');
+        WHEN 0 THEN
+            DBMS_OUTPUT.PUT_LINE('El ejemplar no está disponible para préstamo.');
+        WHEN -1 THEN
+            DBMS_OUTPUT.PUT_LINE('Ejemplar no encontrado.');
+        WHEN -2 THEN
+            DBMS_OUTPUT.PUT_LINE('Error al abrir el préstamo.');
+        ELSE
+            DBMS_OUTPUT.PUT_LINE('Resultado no esperado.');
+    END CASE;
+END;
+/
