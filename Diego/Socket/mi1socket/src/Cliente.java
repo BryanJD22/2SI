@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 
-public class Cliente {
+public class    Cliente {
     static final String HOST = "localhost";
     static final int puerto = 5000;
     int id;
