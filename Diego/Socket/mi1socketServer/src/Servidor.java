@@ -1,54 +1,31 @@
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Servidor {
-    static final int puerto = 5000;
 
-    public Servidor() {
-        try (ServerSocket serverSocket = new ServerSocket(puerto)) {
+    public Servidor(int puerto) {
+        try (ServerSocket server = new ServerSocket(puerto)) {
             System.out.println("Escuchando en el puerto " + puerto);
 
-            while (true) {
-                // Aceptar la conexión del cliente
-                Socket skCliente = serverSocket.accept();
+            // Aceptar la conexión del cliente
+            Socket client = server.accept();
+            System.out.println("[" + server.getLocalSocketAddress() + "] Cliente aceptado.");
 
-                // Crear un nuevo hilo para atender al cliente y pasar el socket al constructor
-                Thread clienteThread = new Thread(new ClienteHandler(skCliente, 1));
-                clienteThread.start();
-            }
+            OutputStream outputStream = client.getOutputStream();
+            InputStream inputStream = client.getInputStream();
+            DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
+            DataInputStream dataInputStream = new DataInputStream(inputStream);
+            dataOutputStream.writeUTF("\"[" + server.getInetAddress() + "] Conexión establecida exitosamente.");
+
+
         } catch (IOException e) {
-            e.printStackTrace(); // o usa algún mecanismo de registro adecuado
+            throw new RuntimeException(e);
         }
     }
-    class ClienteHandler implements Runnable {
-        private final Socket skCliente;
-        private final int clientId;
-
-        public ClienteHandler(Socket skCliente, int clientId) {
-            this.skCliente = skCliente;
-            this.clientId = clientId;
-        }
-
-        @Override
-        public void run() {
-            try {
-                System.out.println("Atendiendo al Cliente " + clientId + " desde " + skCliente.getInetAddress());
-
-
-                OutputStream aux = skCliente.getOutputStream();
-                DataOutput flujo = new DataOutputStream(aux);
-                flujo.writeUTF("Hola cliente en " + skCliente.getInetAddress());
-
-                // Cierra la conexión con el cliente después de enviar el mensaje
-                skCliente.close();
-            } catch (IOException e) {
-                e.printStackTrace(); // o usa algún mecanismo de registro adecuado
-            }
-        }
-    }
-
 }
+
+
+
+
+
